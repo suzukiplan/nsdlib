@@ -7,9 +7,9 @@
 
 *******************************************************************************/
 
-// stdafx.h : •W€‚ÌƒVƒXƒeƒ€ ƒCƒ“ƒNƒ‹[ƒh ƒtƒ@ƒCƒ‹‚ÌƒCƒ“ƒNƒ‹[ƒh ƒtƒ@ƒCƒ‹A‚Ü‚½‚Í
-// QÆ‰ñ”‚ª‘½‚­A‚©‚Â‚ ‚Ü‚è•ÏX‚³‚ê‚È‚¢AƒvƒƒWƒFƒNƒgê—p‚ÌƒCƒ“ƒNƒ‹[ƒh ƒtƒ@ƒCƒ‹
-// ‚ğ‹Lq‚µ‚Ü‚·B
+// stdafx.h : æ¨™æº–ã®ã‚·ã‚¹ãƒ†ãƒ  ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ ãƒ•ã‚¡ã‚¤ãƒ«ã€ã¾ãŸã¯
+// å‚ç…§å›æ•°ãŒå¤šãã€ã‹ã¤ã‚ã¾ã‚Šå¤‰æ›´ã•ã‚Œãªã„ã€ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå°‚ç”¨ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ ãƒ•ã‚¡ã‚¤ãƒ«
+// ã‚’è¨˜è¿°ã—ã¾ã™ã€‚
 //
 
 #pragma once
@@ -30,10 +30,10 @@
 
 #ifdef	_WIN32
 	#include <locale>
-	#define _PATH_SPLIT	';'	// MSŒn‚Í ;
+	#define _PATH_SPLIT	';'	// MSç³»ã¯ ;
 #else
 	#include <locale.h>
-	#define _PATH_SPLIT	':'	// UNIXŒn‚Í :
+	#define _PATH_SPLIT	':'	// UNIXç³»ã¯ :
 #endif
 
 
@@ -52,7 +52,7 @@
 #include <iomanip>
 
 /****************************************************************/
-/*			ƒvƒƒgƒ^ƒCƒv										*/
+/*			ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—										*/
 /****************************************************************/
 
 void nsc_exit(int no);
@@ -68,12 +68,12 @@ typedef struct {
 	int		id;
 } Command_Info;
 
-#include "SearchPass.h"			//ŒŸõƒpƒX
+#include "SearchPass.h"			//æ¤œç´¢ãƒ‘ã‚¹
 
-#include "FileInput.h"			//ƒtƒ@ƒCƒ‹“ü—Í—p
-#include "FileOutput.h"			//ƒtƒ@ƒCƒ‹o—Í—p
+#include "FileInput.h"			//ãƒ•ã‚¡ã‚¤ãƒ«å…¥åŠ›ç”¨
+#include "FileOutput.h"			//ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ç”¨
 
-#include "Option.h"				//ƒIƒvƒVƒ‡ƒ“
+#include "Option.h"				//ã‚ªãƒ—ã‚·ãƒ§ãƒ³
 
 #include "MusicItem.h"
 
@@ -89,29 +89,29 @@ typedef struct {
 
 #include "Envelop.h"
 
-#include "MusicEvent.h"			//ŠeƒCƒxƒ“ƒg
-#include "mml_general.h"		//”Ä—p
-#include "mml_repeat.h"			//”Ä—p
-#include "mml_poke.h"			//ƒƒ‚ƒŠ‘‚«‚İ
-#include "mml_note.h"			//‰¹•„E‹x•„
+#include "MusicEvent.h"			//å„ã‚¤ãƒ™ãƒ³ãƒˆ
+#include "mml_general.h"		//æ±ç”¨
+#include "mml_repeat.h"			//æ±ç”¨
+#include "mml_poke.h"			//ãƒ¡ãƒ¢ãƒªæ›¸ãè¾¼ã¿
+#include "mml_note.h"			//éŸ³ç¬¦ãƒ»ä¼‘ç¬¦
 #include "mml_Address.h"
 
-#include "MusicHeader.h"		//ƒwƒbƒ_[
+#include "MusicHeader.h"		//ãƒ˜ãƒƒãƒ€ãƒ¼
 
-#include "MusicTrack.h"			//ƒgƒ‰ƒbƒNî•ñ
+#include "MusicTrack.h"			//ãƒˆãƒ©ãƒƒã‚¯æƒ…å ±
 #include "TrackSet.h"
 #include "BGM.h"
 #include "SE.h"
 #include "Sub.h"
 
-#include "MMLfile.h"		//MMLƒtƒ@ƒCƒ‹
-#include "MusicFile.h"		//SNDƒtƒ@ƒCƒ‹
+#include "MMLfile.h"		//MMLãƒ•ã‚¡ã‚¤ãƒ«
+#include "MusicFile.h"		//SNDãƒ•ã‚¡ã‚¤ãƒ«
 
-// TODO: ƒvƒƒOƒ‰ƒ€‚É•K—v‚È’Ç‰Áƒwƒbƒ_[‚ğ‚±‚±‚ÅQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+// TODO: ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«å¿…è¦ãªè¿½åŠ ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’ã“ã“ã§å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 /*
 
-	¡	to do
-	ENSFƒwƒbƒ_[‚Ì•¶š—ñ@32•¶šˆÈ‰º‚Ì‚Ìˆ—
+	â– 	to do
+	ãƒ»NSFãƒ˜ãƒƒãƒ€ãƒ¼ã®æ–‡å­—åˆ—ã€€32æ–‡å­—ä»¥ä¸‹ã®æ™‚ã®å‡¦ç†
 
 */

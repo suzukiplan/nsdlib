@@ -11,19 +11,19 @@
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class MusicHeader
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 public:
 				bool	bank;
-				bool	op_code;		//option ‚Å code w’è‚³‚ê‚½H
-	unsigned	char	iBGM;			//BGM”
-	unsigned	char	iSE;			//SE”
+				bool	op_code;		//option ã§ code æŒ‡å®šã•ã‚ŒãŸï¼Ÿ
+	unsigned	char	iBGM;			//BGMæ•°
+	unsigned	char	iSE;			//SEæ•°
 	unsigned	int		offsetPCM;
-				int		iExternal;		//Šg’£‰¹Œ¹ƒtƒ‰ƒO
+				int		iExternal;		//æ‹¡å¼µéŸ³æºãƒ•ãƒ©ã‚°
 				string	Label;
 				string	title;
 				string	copyright;
@@ -31,7 +31,7 @@ public:
 				string	segmentSEQ;
 				string	segmentPCM;
 				string	romcode;
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 				MusicHeader(string _code);
 				~MusicHeader(void);

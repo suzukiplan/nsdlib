@@ -12,13 +12,13 @@
 
 /****************************************************************/
 /*																*/
-/*			クラス定義											*/
+/*			繧ｯ繝ｩ繧ｹ螳夂ｾｩ											*/
 /*																*/
 /****************************************************************/
 class mml_general :
 	public MusicEvent
 {
-//メンバー関数
+//繝｡繝ｳ繝舌�ｼ髢｢謨ｰ
 public:
 	mml_general(unsigned char _code, const _CHAR _strName[]=_T("General"));
 	mml_general(unsigned char _code, MMLfile* MML, const _CHAR _strName[]=_T("General"));

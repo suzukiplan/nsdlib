@@ -12,23 +12,23 @@
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class Envelop :
 	public MusicItem
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 private:
-	unsigned	int		m_id;				//ƒGƒ“ƒxƒ[ƒv”Ô†
-				int		Loop_Normal;		//ƒ‹[ƒvˆÊ’ui”­‰¹’†j
-				int		Loop_Release;		//ƒ‹[ƒvˆÊ’uiƒŠƒŠ[ƒX’†j
-				bool	Release;			//ƒŠƒŠ[ƒXƒpƒ^[ƒ“‚ª‚ ‚é‚©‚Ç‚¤‚©
-				int		ptEnvelop;			//ˆ—ƒ|ƒCƒ“ƒ^
+	unsigned	int		m_id;				//ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ç•ªå·
+				int		Loop_Normal;		//ãƒ«ãƒ¼ãƒ—ä½ç½®ï¼ˆç™ºéŸ³ä¸­ï¼‰
+				int		Loop_Release;		//ãƒ«ãƒ¼ãƒ—ä½ç½®ï¼ˆãƒªãƒªãƒ¼ã‚¹ä¸­ï¼‰
+				bool	Release;			//ãƒªãƒªãƒ¼ã‚¹ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒã‚ã‚‹ã‹ã©ã†ã‹
+				int		ptEnvelop;			//å‡¦ç†ãƒã‚¤ãƒ³ã‚¿
 
-//static	const	Command_Info	Command[];	//ƒRƒ}ƒ“ƒh‚Ìî•ñ
+//static	const	Command_Info	Command[];	//ã‚³ãƒãƒ³ãƒ‰ã®æƒ…å ±
 
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 				Envelop(MMLfile* MML, unsigned int _id, const _CHAR _strName[] = _T("Envelope"));
 				~Envelop(void);

@@ -11,12 +11,12 @@
 
 /****************************************************************/
 /*																*/
-/*			\‘¢‘Ì’è‹`											*/
+/*			æ§‹é€ ä½“å®šç¾©											*/
 /*																*/
 /****************************************************************/
 typedef	struct{
 
-	//İ’è”’l
+	//è¨­å®šæ•°å€¤
 	unsigned	int		iVoi;		//
 	unsigned	int		iEvoi;		//
 	unsigned	int		iEvol;		//
@@ -28,7 +28,7 @@ typedef	struct{
 	unsigned	int		iGate_q;	//
 	unsigned	int		iGate_u;	//
 
-	//İ’è‚·‚é‚©‚Ç‚¤‚©idefailt = falsej
+	//è¨­å®šã™ã‚‹ã‹ã©ã†ã‹ï¼ˆdefailt = falseï¼‰
 				bool	fVoi;		//
 				bool	fEvoi;		//
 				bool	fEvol;		//
@@ -37,11 +37,11 @@ typedef	struct{
 				bool	fKey;		//
 				bool	fSweep;		//
 				bool	fSub;		//
-				bool	fSub_opt;	//true‚ÅÅ“K‰»–³Œø
+				bool	fSub_opt;	//trueã§æœ€é©åŒ–ç„¡åŠ¹
 				bool	fGate_q;	//
 				bool	fGate_u;	//
 
-	//ƒGƒ“ƒxƒ[ƒv‚Ìswi—L‚éê‡ truej
+	//ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®swï¼ˆæœ‰ã‚‹å ´åˆ trueï¼‰
 				bool	sw_Evoi;	//
 				bool	sw_Evol;	//
 				bool	sw_Em;		//
@@ -51,35 +51,35 @@ typedef	struct{
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class Patch
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 protected:
 
-		unsigned	int					m_id;			//ƒpƒbƒ`”Ô†
-	map<unsigned	int, patch_scrap*>	m_Patch;		//ƒpƒbƒ`‚Ìî•ñ
+		unsigned	int					m_id;			//ãƒ‘ãƒƒãƒç•ªå·
+	map<unsigned	int, patch_scrap*>	m_Patch;		//ãƒ‘ãƒƒãƒã®æƒ…å ±
 
-		unsigned	int					m_kn;			//ˆ—’†‚Ìƒm[ƒg”Ô†
+		unsigned	int					m_kn;			//å‡¦ç†ä¸­ã®ãƒãƒ¼ãƒˆç•ªå·
 
-		patch_scrap*					m_now_Patch;	//ˆ—’†‚Ìƒpƒbƒ`‚Ìƒ|ƒCƒ“ƒ^
+		patch_scrap*					m_now_Patch;	//å‡¦ç†ä¸­ã®ãƒ‘ãƒƒãƒã®ãƒã‚¤ãƒ³ã‚¿
 
 
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 						Patch(	MMLfile* MML, int _id);		
 						~Patch(void);					
 
-	//Patch ƒIƒuƒWƒFƒNƒg¶¬•”
+	//Patch ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆéƒ¨
 				void	setKey(	MMLfile* MML, int key);
 				void	setN(	MMLfile* MML, int note);
 
 				void	DebugMsg(void);
 
-	//ƒV[ƒPƒ“ƒX‹LqƒuƒƒbƒN‚©‚çŒÄ‚ÔŠÖ”ŒQ
-				void	setNote(int i);		//ƒm[ƒg”Ô†‚ÌƒZƒbƒg
+	//ã‚·ãƒ¼ã‚±ãƒ³ã‚¹è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯ã‹ã‚‰å‘¼ã¶é–¢æ•°ç¾¤
+				void	setNote(int i);		//ãƒãƒ¼ãƒˆç•ªå·ã®ã‚»ãƒƒãƒˆ
 
 	unsigned	int		get_iVoi(void){		return(m_now_Patch->iVoi);};
 	unsigned	int		get_iEvoi(void){	return(m_now_Patch->iEvoi);};

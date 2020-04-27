@@ -11,13 +11,13 @@
 #include "MusicHeader.h"
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//		const		_CHAR	_strName[]	ƒIƒuƒWƒFƒNƒg–¼
+//	â—å¼•æ•°
+//		const		_CHAR	_strName[]	ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
 //		string				_code
-//	œ•Ô’l
-//				–³‚µ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 MusicHeader::MusicHeader(string _code):
 	iBGM(1),
@@ -43,12 +43,12 @@ MusicHeader::MusicHeader(string _code):
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 MusicHeader::~MusicHeader(void)
 {
@@ -88,13 +88,13 @@ void	MusicHeader::Set_OffsetPCM(MMLfile* MML)
 	offsetPCM = MML->GetInt();
 
 	if(bank==true){
-		MML->Warning(_T("#Bankw’è‚ÍA#offsetPCM‚Í–³Œø‚Å‚·B"));
+		MML->Warning(_T("#BankæŒ‡å®šæ™‚ã¯ã€#offsetPCMã¯ç„¡åŠ¹ã§ã™ã€‚"));
 	} else {
 		if((offsetPCM < 0xC000) || (offsetPCM > 0x10000)){
-			MML->Err(_T("$C000 ` $10000i‡™PCM–¢g—pj‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+			MML->Err(_T("$C000 ã€œ $10000ï¼ˆâŠ¿PCMæœªä½¿ç”¨ï¼‰ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 		if((offsetPCM & 0x003F) != 0){
-			MML->Warning(_T("‡™PCM‚Ì”z’uƒAƒhƒŒƒX‚Í64i$40jByte‚ÅƒAƒ‰ƒCƒƒ“ƒg‚µ‚Ü‚·B"));
+			MML->Warning(_T("âŠ¿PCMã®é…ç½®ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯64ï¼ˆ$40ï¼‰Byteã§ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆã—ã¾ã™ã€‚"));
 			offsetPCM &= 0xFFC0;
 			offsetPCM += 0x0040;
 		}
@@ -104,7 +104,7 @@ void	MusicHeader::Set_OffsetPCM(MMLfile* MML)
 void	MusicHeader::Set_RomCode(MMLfile* MML)
 {
 	if(op_code == true){
-		MML->Warning(_T("ƒIƒvƒVƒ‡ƒ“ƒXƒCƒbƒ`‚ÅƒŠƒ“ƒN‚·‚éƒR[ƒh‚ªw’è‚³‚ê‚Ä‚¢‚é‚Ì‚ÅA#codeƒRƒ}ƒ“ƒh‚Í–³‹‚µ‚Ü‚·B"));
+		MML->Warning(_T("ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚¹ã‚¤ãƒƒãƒã§ãƒªãƒ³ã‚¯ã™ã‚‹ã‚³ãƒ¼ãƒ‰ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹ã®ã§ã€#codeã‚³ãƒãƒ³ãƒ‰ã¯ç„¡è¦–ã—ã¾ã™ã€‚"));
 		MML->GetString();
 	} else {
 		romcode = MML->GetString();
@@ -116,7 +116,7 @@ void	MusicHeader::Set_Number_BGM(MMLfile* MML)
 	int	_n = MML->GetInt();
 
 	if((_n > 255) || (_n < 0)){
-		MML->Err(_T("#BGM‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+		MML->Err(_T("#BGMã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 	}
 	iBGM = (unsigned char)_n;
 }
@@ -126,7 +126,7 @@ void	MusicHeader::Set_Number_SE(MMLfile* MML)
 	int	_n = MML->GetInt();
 
 	if((_n > 255) || (_n < 0)){
-		MML->Err(_T("#SE‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+		MML->Err(_T("#SEã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 	}
 	iSE = (unsigned char)_n;
 }
@@ -136,7 +136,7 @@ void	MusicHeader::Set_External(MMLfile* MML)
 	int	_n = MML->GetInt();
 
 	if((_n > 0x3F) || (_n < 0)){
-		MML->Err(_T("#External‚Í$00`#3F‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+		MML->Err(_T("#Externalã¯$00ã€œ#3Fã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 	}
 	iExternal = _n;
 }

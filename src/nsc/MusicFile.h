@@ -11,7 +11,7 @@
 
 /****************************************************************/
 /*																*/
-/*			定数定義											*/
+/*			螳壽焚螳夂ｾｩ											*/
 /*																*/
 /****************************************************************/
 struct	NSF_Header{
@@ -38,13 +38,13 @@ struct	NSF_Header{
 
 /****************************************************************/
 /*																*/
-/*			クラス定義											*/
+/*			繧ｯ繝ｩ繧ｹ螳夂ｾｩ											*/
 /*																*/
 /****************************************************************/
 class MusicFile :
 	public FileOutput, public MusicItem
 {
-//メンバー変数
+//繝｡繝ｳ繝舌�ｼ螟画焚
 public:
 			MusicHeader			Header;		//Header
 
@@ -63,7 +63,7 @@ private:
 					string		dpcm_code;
 	unsigned	int				nsf_size;
 
-//メンバー関数
+//繝｡繝ｳ繝舌�ｼ髢｢謨ｰ
 public:
 	MusicFile(MMLfile* MML, string _code, const _CHAR _strName[]=_T("==== [ Music ] ===="));
 	~MusicFile(void);
@@ -74,10 +74,10 @@ public:
 
 	void	Fix_Address(void);
 
-	//バイナリーを作る
+	//繝舌う繝翫Μ繝ｼ繧剃ｽ懊ｋ
 	void	make_bin(size_t rom_size, int ptOffset);
 
-	//保存フェーズ
+	//菫晏ｭ倥ヵ繧ｧ繝ｼ繧ｺ
 	void	saveNSF(const char*	strFileName);
 	void	saveASM(const char*	strFileName);
 

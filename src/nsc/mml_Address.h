@@ -12,16 +12,16 @@
 
 /****************************************************************/
 /*																*/
-/*			クラス定義											*/
+/*			繧ｯ繝ｩ繧ｹ螳夂ｾｩ											*/
 /*																*/
 /****************************************************************/
 class mml_Address :
 	public MusicEvent
 {
-//メンバー変数
+//繝｡繝ｳ繝舌�ｼ螟画焚
 	unsigned	int		m_id;
 				bool	f_id;		
-//メンバー関数
+//繝｡繝ｳ繝舌�ｼ髢｢謨ｰ
 public:
 	mml_Address(unsigned char _code, const _CHAR _strName[]=_T("Address"));
 	mml_Address(unsigned char _code, unsigned char _data, const _CHAR _strName[]=_T("Address"));

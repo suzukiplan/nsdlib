@@ -12,13 +12,13 @@
 
 /****************************************************************/
 /*																*/
-/*			クラス定義											*/
+/*			繧ｯ繝ｩ繧ｹ螳夂ｾｩ											*/
 /*																*/
 /****************************************************************/
 class mml_poke :
 	public MusicEvent
 {
-//メンバー関数
+//繝｡繝ｳ繝舌�ｼ髢｢謨ｰ
 public:
 	mml_poke(unsigned int _addr , unsigned char _data,  const _CHAR _strName[]=_T("Poke"));
 	~mml_poke(void);

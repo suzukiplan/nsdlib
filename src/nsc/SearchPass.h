@@ -11,28 +11,28 @@
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class SearchPass
 {
 protected:
-	int					m_count;			//“o˜^”—Ê
-	map<int, string>	m_ptcPass;			//ŒŸõƒpƒX‚Ìˆê——i—Dæ‡ˆÊF“o˜^‡j
+	int					m_count;			//ç™»éŒ²æ•°é‡
+	map<int, string>	m_ptcPass;			//æ¤œç´¢ãƒ‘ã‚¹ã®ä¸€è¦§ï¼ˆå„ªå…ˆé †ä½ï¼šç™»éŒ²é †ï¼‰
 
 public:
 						SearchPass(void);
 						~SearchPass(void);
 
-	void				clear();					//“o˜^‚Ì‘SƒNƒŠƒA
-	void				debug();					//ƒfƒoƒbƒO—p
+	void				clear();					//ç™»éŒ²ã®å…¨ã‚¯ãƒªã‚¢
+	void				debug();					//ãƒ‡ãƒãƒƒã‚°ç”¨
 
-	void				add_one(string* _str);		//’Ç‰Ái‚Pdirj
-	void				add(string*	_str);			//’Ç‰Ái";"‚Ì‹æØ‚è‘Î‰j
-	void				add(char*	_str);			//’Ç‰Ái";"‚Ì‹æØ‚è‘Î‰j
+	void				add_one(string* _str);		//è¿½åŠ ï¼ˆï¼‘dirï¼‰
+	void				add(string*	_str);			//è¿½åŠ ï¼ˆ";"ã®åŒºåˆ‡ã‚Šå¯¾å¿œï¼‰
+	void				add(char*	_str);			//è¿½åŠ ï¼ˆ";"ã®åŒºåˆ‡ã‚Šå¯¾å¿œï¼‰
 
-	const char*			get(int id);				//•¶š—ñ‚Ìæ“¾
-	int					count(){return(m_count);};	//“o˜^”—Ê‚Ìæ“¾
+	const char*			get(int id);				//æ–‡å­—åˆ—ã®å–å¾—
+	int					count(){return(m_count);};	//ç™»éŒ²æ•°é‡ã®å–å¾—
 
 
 };

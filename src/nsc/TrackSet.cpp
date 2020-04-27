@@ -11,15 +11,15 @@
 #include "TrackSet.h"
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//		unsigned	int		_id			BGM”Ô†
-//		bool				_sub		‚±‚ÌƒIƒuƒWƒFƒNƒg‚ÍAƒTƒuƒ‹[ƒ`ƒ“H
-//		const		_CHAR	_strName[]	ƒIƒuƒWƒFƒNƒg–¼
-//	œ•Ô’l
-//					–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//		unsigned	int		_id			BGMç•ªå·
+//		bool				_sub		ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ï¼Ÿ
+//		const		_CHAR	_strName[]	ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+//	â—è¿”å€¤
+//					ç„¡ã—
 //==============================================================
 TrackSet::TrackSet(MMLfile* MML, unsigned int _id, bool _sub, bool _se, const _CHAR _strName[]):
 	MusicItem(_id, _strName),
@@ -27,9 +27,9 @@ TrackSet::TrackSet(MMLfile* MML, unsigned int _id, bool _sub, bool _se, const _C
 	m_id(_id)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 
-//	’è”’è‹`
+//	å®šæ•°å®šç¾©
 enum	Command_ID_mml {
 	mml_Track,
 	mml_Scale,
@@ -148,7 +148,7 @@ enum	Command_ID_mml {
 	mml_Bar
 };
 
-//	‚±‚ê‚ç‚ÍAMML\•¶‚Åg‚¦‚éƒRƒ}ƒ“ƒhB
+//	ã“ã‚Œã‚‰ã¯ã€MMLæ§‹æ–‡ã§ä½¿ãˆã‚‹ã‚³ãƒãƒ³ãƒ‰ã€‚
 
 const	static	unsigned	char	RS_UTF8[]	=	{0x5c, 0x00};				//REVERSE SOLIDUS
 const	static	unsigned	char	RS_UTF8W[]	=	{0xEF, 0xBC, 0xBC, 0x00};	//REVERSE SOLIDUS
@@ -157,7 +157,7 @@ const	static	unsigned	char	Yen_UTF8W[]	=	{0xEF, 0xBF, 0xA5, 0x00};	//Yen
 
 const	static	Command_Info	Command[] = {
 		{	"TR",		mml_Track				},
-		{	"ƒgƒ‰ƒbƒN",	mml_Track				},
+		{	"ãƒˆãƒ©ãƒƒã‚¯",	mml_Track				},
 		{	"Scale",	mml_Scale				},
 		{	"scale",	mml_Scale				},
 		{	"Mode",		mml_Scale				},
@@ -172,7 +172,7 @@ const	static	Command_Info	Command[] = {
 		{	"mminor",	mml_MMinor				},
 
 		{	"K",		mml_KeySignature		},
-		{	"’²",		mml_KeySignature		},
+		{	"èª¿",		mml_KeySignature		},
 		{	"SE",		mml_CallSE				},
 		{	"S",		mml_Subroutine			},
 		{	"$$",		mml_MacroSet			},
@@ -192,20 +192,20 @@ const	static	Command_Info	Command[] = {
 		{	":",		mml_Repeat_A_Branch		},
 		{	"]",		mml_Repeat_A_End		},
 
-		{	"‡",		mml_Loop				},
-		{	"bF",		mml_Repeat_B_Start		},
-		{	"",		mml_Repeat_B_Branch		},
-		{	"_",		mml_Repeat_B_Branch		},
-		{	"Fb",		mml_Repeat_B_End		},
-		{	"y",		mml_Repeat_A_Start		},
-		{	"F",		mml_Repeat_A_Branch		},
-		{	"z",		mml_Repeat_A_End		},
+		{	"âˆ",		mml_Loop				},
+		{	"ï½œï¼š",		mml_Repeat_B_Start		},
+		{	"Â¥",		mml_Repeat_B_Branch		},
+		{	"ï¼¼",		mml_Repeat_B_Branch		},
+		{	"ï¼šï½œ",		mml_Repeat_B_End		},
+		{	"ã€",		mml_Repeat_A_Start		},
+		{	"ï¼š",		mml_Repeat_A_Branch		},
+		{	"ã€‘",		mml_Repeat_A_End		},
 
 		{	"t_",		mml_Tempo_Relative,		},
 		{	"t",		mml_Tempo,				},
-		{	"ƒeƒ“ƒ|",	mml_Tempo,				},
-		{	"¨",		mml_Tempo_Up,			},
-		{	"©",		mml_Tempo_Down,			},
+		{	"ãƒ†ãƒ³ãƒ",	mml_Tempo,				},
+		{	"â†’",		mml_Tempo_Up,			},
+		{	"â†",		mml_Tempo_Down,			},
 
 		{	"a",	mml_La					},
 		{	"b",	mml_Si					},
@@ -218,43 +218,43 @@ const	static	Command_Info	Command[] = {
 		{	"w",	mml_Wait				},
 		{	"^",	mml_Tai					},
 
-		{	"‚ç",	mml_La					},
-		{	"‚µ",	mml_Si					},
-		{	"‚Ç",	mml_Do					},
-		{	"‚ê",	mml_Re					},
-		{	"‚İ",	mml_Mi					},
-		{	"‚Ó‚Ÿ",	mml_Fa					},
-		{	"‚Ó",	mml_Fa					},
-		{	"‚»",	mml_Sol					},
-		{	"‚ñ",	mml_Rest				},
-		{	"‚Á",	mml_Rest				},
-		{	"[",	mml_Tai					},
+		{	"ã‚‰",	mml_La					},
+		{	"ã—",	mml_Si					},
+		{	"ã©",	mml_Do					},
+		{	"ã‚Œ",	mml_Re					},
+		{	"ã¿",	mml_Mi					},
+		{	"ãµã",	mml_Fa					},
+		{	"ãµ",	mml_Fa					},
+		{	"ã",	mml_Sol					},
+		{	"ã‚“",	mml_Rest				},
+		{	"ã£",	mml_Rest				},
+		{	"ãƒ¼",	mml_Tai					},
 
-		{	"ƒ‰",	mml_La					},
-		{	"ƒV",	mml_Si					},
-		{	"ƒh",	mml_Do					},
-		{	"ƒŒ",	mml_Re					},
-		{	"ƒ~",	mml_Mi					},
-		{	"ƒtƒ@",	mml_Fa					},
-		{	"ƒt",	mml_Fa					},
-		{	"ƒ\",	mml_Sol					},
-		{	"ƒ“",	mml_Rest				},
-		{	"ƒb",	mml_Rest				},
-		{	"|",	mml_Tai					},
+		{	"ãƒ©",	mml_La					},
+		{	"ã‚·",	mml_Si					},
+		{	"ãƒ‰",	mml_Do					},
+		{	"ãƒ¬",	mml_Re					},
+		{	"ãƒŸ",	mml_Mi					},
+		{	"ãƒ•ã‚¡",	mml_Fa					},
+		{	"ãƒ•",	mml_Fa					},
+		{	"ã‚½",	mml_Sol					},
+		{	"ãƒ³",	mml_Rest				},
+		{	"ãƒƒ",	mml_Rest				},
+		{	"âˆ’",	mml_Tai					},
 
-		{	"ƒC",	mml_La					},
-		{	"ƒ",	mml_Si					},
-		{	"ƒn",	mml_Do					},
-		{	"ƒj",	mml_Re					},
-		{	"ƒz",	mml_Mi					},
-		{	"ƒw",	mml_Fa					},
-		{	"ƒg",	mml_Sol					},
+		{	"ã‚¤",	mml_La					},
+		{	"ãƒ­",	mml_Si					},
+		{	"ãƒ",	mml_Do					},
+		{	"ãƒ‹",	mml_Re					},
+		{	"ãƒ›",	mml_Mi					},
+		{	"ãƒ˜",	mml_Fa					},
+		{	"ãƒˆ",	mml_Sol					},
 
 		{	"l",		mml_Length				},
-		{	"‰¹•„",		mml_Length				},
+		{	"éŸ³ç¬¦",		mml_Length				},
 		{	"Q",		mml_Gate_Q				},
 		{	"q",		mml_Gate_q				},
-		{	"ƒQ[ƒg",	mml_Gate_q				},
+		{	"ã‚²ãƒ¼ãƒˆ",	mml_Gate_q				},
 		{	"u",		mml_Gate_u				},
 
 		{	"ECc",			mml_Echo_C				},
@@ -268,8 +268,8 @@ const	static	Command_Info	Command[] = {
 		{	"EC-",			mml_Echo_Reset			},
 		{	"EC*",			mml_Echo_Off			},
 		{	"EC",			mml_Echo				},
-		{	"ƒGƒR[ƒIƒt",	mml_Echo_Off			},
-		{	"ƒGƒR[",		mml_Echo				},
+		{	"ã‚¨ã‚³ãƒ¼ã‚ªãƒ•",	mml_Echo_Off			},
+		{	"ã‚¨ã‚³ãƒ¼",		mml_Echo				},
 
 		{	"J",			mml_Jump				},
 		{	"j",			mml_Jump_drv			},
@@ -284,10 +284,10 @@ const	static	Command_Info	Command[] = {
 		{	"Em",	mml_Envelop_Frequency	},
 		{	"En",	mml_Envelop_Note		},
 
-		{	"ƒGƒ“ƒxƒ[ƒvƒIƒt",	mml_Envelop_Off_Volume		},
-		{	"ƒGƒ“ƒxƒ[ƒv",		mml_Envelop_Volume			},
-		{	"ƒrƒuƒ‰[ƒgƒIƒt",	mml_Envelop_Off_Frequency	},
-		{	"ƒrƒuƒ‰[ƒg",		mml_Envelop_Frequency		},
+		{	"ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã‚ªãƒ•",	mml_Envelop_Off_Volume		},
+		{	"ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—",		mml_Envelop_Volume			},
+		{	"ãƒ“ãƒ–ãƒ©ãƒ¼ãƒˆã‚ªãƒ•",	mml_Envelop_Off_Frequency	},
+		{	"ãƒ“ãƒ–ãƒ©ãƒ¼ãƒˆ",		mml_Envelop_Frequency		},
 
 		{	"Rm",	mml_Release_mdoe		},
 		{	"R@",	mml_Release_Voice		},
@@ -305,46 +305,46 @@ const	static	Command_Info	Command[] = {
 		{	"@NL",	mml_N163_Load			},
 		{	"@N",	mml_N163				},
 		{	"@",	mml_Voice				},
-		{	"‰¹F",	mml_Voice				},
+		{	"éŸ³è‰²",	mml_Voice				},
 		{	"NC",	mml_N163_Channel		},
 		{	"F",	mml_FME7_frequency		},
 
 		{	"o",	mml_Octave				},
-		{	"‰¹ŠK",	mml_Octave				},
+		{	"éŸ³éš",	mml_Octave				},
 		{	">",	mml_Octave_Up			},
-		{	"ã",	mml_Octave_Up			},
-		{	"ª",	mml_Octave_Up			},
+		{	"ä¸Š",	mml_Octave_Up			},
+		{	"â†‘",	mml_Octave_Up			},
 		{	"<",	mml_Octave_Down			},
-		{	"‰º",	mml_Octave_Down			},
-		{	"«",	mml_Octave_Down			},
+		{	"ä¸‹",	mml_Octave_Down			},
+		{	"â†“",	mml_Octave_Down			},
 		{	"`",	mml_Octave_Up1			},
-		{	"e",	mml_Octave_Up1			},
+		{	"â€˜",	mml_Octave_Up1			},
 		{	"\"",	mml_Octave_Down1		},
-		{	"h",	mml_Octave_Down1		},
+		{	"â€",	mml_Octave_Down1		},
 
 		{	"D%_",			mml_Detune_Register_Relative		},
 		{	"D%",			mml_Detune_Register					},
 		{	"D_",			mml_Detune_Cent_Relative			},
 		{	"D",			mml_Detune_Cent						},
-		{	"ƒfƒBƒ`ƒ…[ƒ“",	mml_Detune_Cent			},
+		{	"ãƒ‡ã‚£ãƒãƒ¥ãƒ¼ãƒ³",	mml_Detune_Cent			},
 		{	"__",			mml_Transpose_Relative	},
 		{	"_",			mml_Transpose			},
 		{	"k_",			mml_KeyShift_Relative	},
 		{	"k",			mml_KeyShift			},
 		{	"TrackKey",		mml_Transpose			},
 		{	"P",			mml_Protament			},
-		{	"ƒ|ƒ‹ƒ^ƒƒ“ƒg",	mml_Protament			},
+		{	"ãƒãƒ«ã‚¿ãƒ¡ãƒ³ãƒˆ",	mml_Protament			},
 		{	"{",			mml_Protament2			},
 		{	"s",			mml_Sweep				},
 
 		{	"v",		mml_Volume				},
-		{	"‰¹—Ê",		mml_Volume				},
+		{	"éŸ³é‡",		mml_Volume				},
 		{	")",		mml_Volume_Up			},
-		{	"‘å‚«‚­",	mml_Volume_Up			},
-		{	"‘å",		mml_Volume_Up			},
+		{	"å¤§ãã",	mml_Volume_Up			},
+		{	"å¤§",		mml_Volume_Up			},
 		{	"(",		mml_Volume_Down			},
-		{	"¬‚³‚­",	mml_Volume_Down			},
-		{	"¬",		mml_Volume_Down			},
+		{	"å°ã•ã",	mml_Volume_Down			},
+		{	"å°",		mml_Volume_Down			},
 
 		{	"yV",	mml_VRC7_Write			},
 		{	"y",	mml_Memory_Write		},
@@ -352,20 +352,20 @@ const	static	Command_Info	Command[] = {
 		{	"#Priority",	mml_Priority	},
 		{	"#priority",	mml_Priority	},
 
-		{	"@",	mml_Bar					},
+		{	"ã€€",	mml_Bar					},
 		{	"|",	mml_Bar					},
-		{	"b",	mml_Bar					}
+		{	"ï½œ",	mml_Bar					}
 };
 
 	unsigned	char	cData;
 				int		i;
 
 	//------------------------------
-	//ƒNƒ‰ƒX‚Ì‰Šúİ’è
-	fSub		= _sub;		//ƒTƒuƒ‹[ƒ`ƒ“‚Ìƒtƒ‰ƒO
+	//ã‚¯ãƒ©ã‚¹ã®åˆæœŸè¨­å®š
+	fSub		= _sub;		//ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®ãƒ•ãƒ©ã‚°
 	fSE			= _se;		//
-	iTrack		= 0;		//ƒRƒ“ƒpƒCƒ‹’†‚Ìƒgƒ‰ƒbƒNiDefault = 0j
-	maxTrack	= 0;		//Å‘åƒgƒ‰ƒbƒN”Ô†
+	iTrack		= 0;		//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ä¸­ã®ãƒˆãƒ©ãƒƒã‚¯ï¼ˆDefault = 0ï¼‰
+	maxTrack	= 0;		//æœ€å¤§ãƒˆãƒ©ãƒƒã‚¯ç•ªå·
 
 	if(fSE == true){
 		Priority	= MML->priority;
@@ -373,22 +373,22 @@ const	static	Command_Info	Command[] = {
 		Priority	= 0;
 	}
 
-	//‚Ü‚¸‚ÍA‚P‚Â‚¾‚¯ƒgƒ‰ƒbƒNi0”Ôj‚ÌƒIƒuƒWƒFƒNƒg‚ğì‚éB
+	//ã¾ãšã¯ã€ï¼‘ã¤ã ã‘ãƒˆãƒ©ãƒƒã‚¯ï¼ˆ0ç•ªï¼‰ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œã‚‹ã€‚
 	nowTrack	= makeTrack(MML, iTrack);
 	nowTrack->SetCompileFlag(true);
 
 
 	//------------------------------
-	//ƒRƒ“ƒpƒCƒ‹
+	//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
 
-	// { ‚ÌŒŸõ
+	// { ã®æ¤œç´¢
 	while(MML->cRead() != '{'){
 		if(MML->eof()){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌŠJn‚ğ¦‚·{‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹ã‚’ç¤ºã™{ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 	}
 
-	// } ‚ª—ˆ‚é‚Ü‚ÅA‹LqƒuƒƒbƒN“à‚ğƒRƒ“ƒpƒCƒ‹‚·‚éB
+	// } ãŒæ¥ã‚‹ã¾ã§ã€è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯å†…ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã€‚
 	while(1){
 
 		cData = MML->GetChar();
@@ -398,21 +398,21 @@ const	static	Command_Info	Command[] = {
 				break;
 			}
 		} else {
-			// } ‚ª—ˆ‚é‘O‚ÉA[EOF]‚ª—ˆ‚½‚çƒGƒ‰[
+			// } ãŒæ¥ã‚‹å‰ã«ã€[EOF]ãŒæ¥ãŸã‚‰ã‚¨ãƒ©ãƒ¼
 			if( MML->eof() ){
-				MML->Err(_T("ƒuƒƒbƒN‚ÌI’[‚ğ¦‚·`}'‚ª‚ ‚è‚Ü‚¹‚ñB"));
+				MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®çµ‚ç«¯ã‚’ç¤ºã™`}'ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"));
 			}
 
-			//‚P‚Â–ß‚é
+			//ï¼‘ã¤æˆ»ã‚‹
 			MML->Back();
 		}
 
-		//ŠeƒRƒ}ƒ“ƒh–ˆ‚Ìˆ—
+		//å„ã‚³ãƒãƒ³ãƒ‰æ¯ã®å‡¦ç†
 		switch(MML->GetCommandID(Command, sizeof(Command)/sizeof(Command_Info))){
 
 			case(mml_Track):
 				if(fSub == true){
-					MML->Warning(_T("SubƒuƒƒbƒN“à‚Å‚Íƒgƒ‰ƒbƒNw’è‚Í‚Å‚«‚Ü‚¹‚ñB–³‹‚µ‚Ü‚·B"));
+					MML->Warning(_T("Subãƒ–ãƒ­ãƒƒã‚¯å†…ã§ã¯ãƒˆãƒ©ãƒƒã‚¯æŒ‡å®šã¯ã§ãã¾ã›ã‚“ã€‚ç„¡è¦–ã—ã¾ã™ã€‚"));
 				} else {
 					TrackProc(MML);
 				}
@@ -460,7 +460,7 @@ const	static	Command_Info	Command[] = {
 
 			case(mml_Loop):
 				if(fSub == true){
-					MML->Warning(_T("SubƒuƒƒbƒN“à‚Å‚Í–³ŒÀƒ‹[ƒv‚Í‚Å‚«‚Ü‚¹‚ñB–³‹‚µ‚Ü‚·B"));
+					MML->Warning(_T("Subãƒ–ãƒ­ãƒƒã‚¯å†…ã§ã¯ç„¡é™ãƒ«ãƒ¼ãƒ—ã¯ã§ãã¾ã›ã‚“ã€‚ç„¡è¦–ã—ã¾ã™ã€‚"));
 				} else {
 					nowTrack->SetLoop();
 				}
@@ -675,7 +675,7 @@ const	static	Command_Info	Command[] = {
 				break;
 
 			case(mml_Envelop_Off_Voice):
-				MML->Err(_T("‰¹FƒGƒ“ƒxƒ[ƒv‚ÍA@ƒRƒ}ƒ“ƒh‚Å–³Œø‚É‚Å‚«‚Ü‚·B"));
+				MML->Err(_T("éŸ³è‰²ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã¯ã€@ã‚³ãƒãƒ³ãƒ‰ã§ç„¡åŠ¹ã«ã§ãã¾ã™ã€‚"));
 				break;
 
 			case(mml_Envelop_Off_Volume):
@@ -805,7 +805,7 @@ const	static	Command_Info	Command[] = {
 			case(mml_Transpose):
 				i = MML->GetInt();
 				if( (i < -128) || (i > 127) ){
-					MML->Err(_T("ˆÚ’²‚Í-127`128‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("ç§»èª¿ã¯-127ã€œ128ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				nowTrack->SetTranspose(i);
 				//SetEvent(new mml_general(nsd_Transpose, MML, _T("Transpose")));
@@ -870,23 +870,23 @@ const	static	Command_Info	Command[] = {
 		}
 	}
 
-	//Local Macro‚Ì‰ğ•ú
+	//Local Macroã®è§£æ”¾
 	MML->DeleteMacro(1);
 
 	if(fSub == true){
-		//ƒTƒuƒ‹[ƒ`ƒ“ƒuƒƒbƒN‚Ìê‡
+		//ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ãƒ–ãƒ­ãƒƒã‚¯ã®å ´åˆ
 		code.resize(0);
 		i = (int)ptcTrack[iTrack]->SetEnd(MML);
 
 	} else {
-		//‚»‚êˆÈŠO‚Ìê‡
-		i = 2 + ((maxTrack + 1) * 2);		//ƒgƒ‰ƒbƒNî•ñ‚ğ‘‚­ƒwƒbƒ_[‚ÌƒTƒCƒY‚ğŒvZB
-		code.resize(i);						//ƒwƒbƒ_—p‚ÉƒR[ƒhƒTƒCƒY‚ğŠm•Û
+		//ãã‚Œä»¥å¤–ã®å ´åˆ
+		i = 2 + ((maxTrack + 1) * 2);		//ãƒˆãƒ©ãƒƒã‚¯æƒ…å ±ã‚’æ›¸ããƒ˜ãƒƒãƒ€ãƒ¼ã®ã‚µã‚¤ã‚ºã‚’è¨ˆç®—ã€‚
+		code.resize(i);						//ãƒ˜ãƒƒãƒ€ç”¨ã«ã‚³ãƒ¼ãƒ‰ã‚µã‚¤ã‚ºã‚’ç¢ºä¿
 
-		code[0] = (unsigned char)maxTrack + 1;				//ƒgƒ‰ƒbƒN”
-		code[1] = Priority;									//Šeíƒtƒ‰ƒO
+		code[0] = (unsigned char)maxTrack + 1;				//ãƒˆãƒ©ãƒƒã‚¯æ•°
+		code[1] = Priority;									//å„ç¨®ãƒ•ãƒ©ã‚°
 
-		//Šeƒgƒ‰ƒbƒN‚ÉI’[‚ğ‘‚¢‚ÄA‹Èƒf[ƒ^‚ÌƒAƒhƒŒƒXî•ñ‚ğì¬
+		//å„ãƒˆãƒ©ãƒƒã‚¯ã«çµ‚ç«¯ã‚’æ›¸ã„ã¦ã€æ›²ãƒ‡ãƒ¼ã‚¿ã®ã‚¢ãƒ‰ãƒ¬ã‚¹æƒ…å ±ã‚’ä½œæˆ
 		iTrack = 0;
 		while(iTrack <= maxTrack){
 			unsigned	int	n	= (int)ptcTrack[iTrack]->SetEnd(MML);
@@ -906,24 +906,24 @@ const	static	Command_Info	Command[] = {
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 TrackSet::~TrackSet(void)
 {
 }
 
 //==============================================================
-//		ƒNƒŠƒA
+//		ã‚¯ãƒªã‚¢
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::clear(int _id)
 {
@@ -932,17 +932,17 @@ void	TrackSet::clear(int _id)
 }
 
 //==============================================================
-//		ƒR[ƒh‚Ìæ“¾
+//		ã‚³ãƒ¼ãƒ‰ã®å–å¾—
 //--------------------------------------------------------------
-//	œˆø”
-//		MusicFile*	MUS		ƒR[ƒh‚ğo—Í‚·‚é‹Èƒf[ƒ^ƒtƒ@ƒCƒ‹EƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MusicFile*	MUS		ã‚³ãƒ¼ãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹æ›²ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::getAsm(MusicFile* MUS)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 	int	i = 0;
 	list<	MusicItem*>::iterator	itItem;
 
@@ -970,14 +970,14 @@ void	TrackSet::getAsm(MusicFile* MUS)
 }
 
 //==============================================================
-//		ƒJƒEƒ“ƒg‚µ‚È‚ª‚çAÅ“K‰»î•ñûW
+//		ã‚«ã‚¦ãƒ³ãƒˆã—ãªãŒã‚‰ã€æœ€é©åŒ–æƒ…å ±åé›†
 //--------------------------------------------------------------
-//	œˆø”
+//	â—å¼•æ•°
 //				MusicFile*	MUS
 //				int			iStart
 //				int			iEnd
-//	œ•Ô’l
-//				–³‚µ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::TickCountPrint(MusicFile* MUS, int iStart, int iEnd)
 {
@@ -993,8 +993,8 @@ void	TrackSet::TickCountPrint(MusicFile* MUS, int iStart, int iEnd)
 	i = iStart;
 	cout << endl <<	"Loop  ";
 	while(i < iEnd){
-		ptcTrack[i]->nsd.init();		//ƒGƒ~ƒ…ƒŒ[ƒ^Eƒpƒ‰ƒ[ƒ^‰Šú‰»
-		ptcTrack[i]->TickCount(MUS);	//ƒGƒ~ƒ…ƒŒ[ƒg
+		ptcTrack[i]->nsd.init();		//ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ»ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åˆæœŸåŒ–
+		ptcTrack[i]->TickCount(MUS);	//ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆ
 		iTick = ptcTrack[i]->GetTickLoop();
 		if(iTick == -1){
 			cout << "| no-loop";
@@ -1015,12 +1015,12 @@ void	TrackSet::TickCountPrint(MusicFile* MUS, int iStart, int iEnd)
 }
 
 //==============================================================
-//		ƒJƒEƒ“ƒg‚µ‚È‚ª‚çAÅ“K‰»î•ñûW
+//		ã‚«ã‚¦ãƒ³ãƒˆã—ãªãŒã‚‰ã€æœ€é©åŒ–æƒ…å ±åé›†
 //--------------------------------------------------------------
-//	œˆø”
+//	â—å¼•æ•°
 //				MusicFile*	MUS
-//	œ•Ô’l
-//				–³‚µ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::TickCount(MusicFile* MUS)
 {
@@ -1041,12 +1041,12 @@ void	TrackSet::TickCount(MusicFile* MUS)
 }
 
 //==============================================================
-//		•s—v‚È’è‹`‚ª‚ ‚é‚©ŒŸõ
+//		ä¸è¦ãªå®šç¾©ãŒã‚ã‚‹ã‹æ¤œç´¢
 //--------------------------------------------------------------
-//	œˆø”
-//		MusicFile*	MUS		‹Èƒf[ƒ^ƒtƒ@ƒCƒ‹EƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MusicFile*	MUS		æ›²ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::OptimizeDefineCheck(MusicFile* MUS)
 {
@@ -1059,12 +1059,12 @@ void	TrackSet::OptimizeDefineCheck(MusicFile* MUS)
 }
 
 //==============================================================
-//		ƒAƒhƒŒƒXî•ñ‚ğŒˆ’è‚·‚éB
+//		ã‚¢ãƒ‰ãƒ¬ã‚¹æƒ…å ±ã‚’æ±ºå®šã™ã‚‹ã€‚
 //--------------------------------------------------------------
-//	œˆø”
-//		MusicFile*	MUS		‹Èƒf[ƒ^ƒtƒ@ƒCƒ‹EƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MusicFile*	MUS		æ›²ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::Fix_Address(MusicFile* MUS)
 {
@@ -1077,23 +1077,23 @@ void	TrackSet::Fix_Address(MusicFile* MUS)
 }
 
 //==============================================================
-//		ƒgƒ‰ƒbƒN
+//		ãƒˆãƒ©ãƒƒã‚¯
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//		–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::TrackChk(MMLfile* MML)
 {
 	int		i = iTrack + 1;
 
 	if(MML->GetMacroNest() > 0){
-		MML->Err(_T("ƒ}ƒNƒ’†‚Åƒgƒ‰ƒbƒN‚Ìw’è‚Í‚Å‚«‚Ü‚¹‚ñB"));
+		MML->Err(_T("ãƒã‚¯ãƒ­ä¸­ã§ãƒˆãƒ©ãƒƒã‚¯ã®æŒ‡å®šã¯ã§ãã¾ã›ã‚“ã€‚"));
 	}
 
 	//------------------
-	//‘±‚«‚Ìƒgƒ‰ƒbƒN‚Ìƒ`ƒFƒbƒN
+	//ç¶šãã®ãƒˆãƒ©ãƒƒã‚¯ã®ãƒã‚§ãƒƒã‚¯
 //	i		= iTrack + 1;
 	iTrack	= 0;
 	while(i <= maxTrack){
@@ -1106,9 +1106,9 @@ void	TrackSet::TrackChk(MMLfile* MML)
 
 	if(iTrack != 0){
 		//------------------
-		//‘±‚«‚Ìƒgƒ‰ƒbƒN‚ª‚ ‚éê‡
+		//ç¶šãã®ãƒˆãƒ©ãƒƒã‚¯ãŒã‚ã‚‹å ´åˆ
 
-		//ƒ|ƒCƒ“ƒ^‚Æs”Ô†‚ğ•œ‹A
+		//ãƒã‚¤ãƒ³ã‚¿ã¨è¡Œç•ªå·ã‚’å¾©å¸°
 		MML->StreamPointerMove(TrackPt);
 		MML->SetLine(TrackLine);
 		nowTrack = getTrack(MML, iTrack);
@@ -1118,12 +1118,12 @@ void	TrackSet::TrackChk(MMLfile* MML)
 }
 
 //==============================================================
-//		ƒgƒ‰ƒbƒN‚Ìˆ—
+//		ãƒˆãƒ©ãƒƒã‚¯ã®å‡¦ç†
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//		–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::TrackProc(MMLfile* MML)
 {
@@ -1131,26 +1131,26 @@ void	TrackSet::TrackProc(MMLfile* MML)
 	unsigned		char	cData;
 
 	//------------------
-	//‘±‚«‚Ìƒgƒ‰ƒbƒN‚Ìƒ`ƒFƒbƒN
+	//ç¶šãã®ãƒˆãƒ©ãƒƒã‚¯ã®ãƒã‚§ãƒƒã‚¯
 
 	TrackChk(MML);
 
 	if(nowTrack == NULL){
 		//------------------
-		//‘±‚«‚Ìƒgƒ‰ƒbƒN‚ª‚È‚¢ê‡
+		//ç¶šãã®ãƒˆãƒ©ãƒƒã‚¯ãŒãªã„å ´åˆ
 
-		//ƒtƒ‰ƒO‚ğ‘S‚ÄƒŠƒZƒbƒg
+		//ãƒ•ãƒ©ã‚°ã‚’å…¨ã¦ãƒªã‚»ãƒƒãƒˆ
 		i = 0;
 		while(i <= maxTrack){
 			ptcTrack[i]->SetCompileFlag(false);
 			i++;
 		}
 		
-		//ƒRƒ“ƒpƒCƒ‹‚·‚éƒgƒ‰ƒbƒN‚ğ—ñ‹“
+		//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ãƒˆãƒ©ãƒƒã‚¯ã‚’åˆ—æŒ™
 		do{
 			iTrack = MML->GetInt() - 1;
 			if( (iTrack <= -1) ){
-				MML->Err(_T("ƒgƒ‰ƒbƒN”Ô†‚Åw’è‚Å‚«‚é”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚Ü‚·B"));
+				MML->Err(_T("ãƒˆãƒ©ãƒƒã‚¯ç•ªå·ã§æŒ‡å®šã§ãã‚‹ç¯„å›²ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚"));
 			}
 			nowTrack = getTrack(MML, iTrack);
 			nowTrack->SetCompileFlag(true);
@@ -1158,11 +1158,11 @@ void	TrackSet::TrackProc(MMLfile* MML)
 		} while(cData == ',');
 		MML->Back();
 
-		//ƒ|ƒCƒ“ƒ^‚Æs”Ô†‚ğ‘Ş”ğ
+		//ãƒã‚¤ãƒ³ã‚¿ã¨è¡Œç•ªå·ã‚’é€€é¿
 		TrackPt		= MML->tellg();
 		TrackLine	= MML->GetLine();
 
-		//Å‰‚Ì
+		//æœ€åˆã®
 		i = 0;
 		while(i <= maxTrack){
 			if(ptcTrack[i]->GetCompileFlag() == true){
@@ -1178,73 +1178,73 @@ void	TrackSet::TrackProc(MMLfile* MML)
 }
 
 //==============================================================
-//		ƒgƒ‰ƒbƒN‚Ìì¬
+//		ãƒˆãƒ©ãƒƒã‚¯ã®ä½œæˆ
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	int	_track		ƒgƒ‰ƒbƒN”Ô†
-//	œ•Ô’l
-//		MusicTrack*					ì‚Á‚½ƒgƒ‰ƒbƒNEƒIƒuƒWƒFƒNƒg‚Ìƒ|ƒCƒ“ƒ^
+//	â—å¼•æ•°
+//		unsigned	int	_track		ãƒˆãƒ©ãƒƒã‚¯ç•ªå·
+//	â—è¿”å€¤
+//		MusicTrack*					ä½œã£ãŸãƒˆãƒ©ãƒƒã‚¯ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒã‚¤ãƒ³ã‚¿
 //==============================================================
 MusicTrack*	TrackSet::makeTrack(MMLfile* MML, int _track)
 {
-	//ƒgƒ‰ƒbƒN‚ÌƒIƒuƒWƒFƒNƒg‚ğ¶¬B
+	//ãƒˆãƒ©ãƒƒã‚¯ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã€‚
 	MusicTrack*	newTrack	= new MusicTrack(MML);
 
-	//¶¬‚µ‚½ƒAƒCƒeƒ€‚Í•Û‘¶
-	ptcItem.push_back(newTrack);		//Šî’êƒNƒ‰ƒX"MusicItem"‘¤‚ÅŠJ•ú‚·‚éB
+	//ç”Ÿæˆã—ãŸã‚¢ã‚¤ãƒ†ãƒ ã¯ä¿å­˜
+	ptcItem.push_back(newTrack);		//åŸºåº•ã‚¯ãƒ©ã‚¹"MusicItem"å´ã§é–‹æ”¾ã™ã‚‹ã€‚
 	ptcTrack[_track] = newTrack;
 
-	if(MML->iReleaseVolume != 2){		//ƒhƒ‰ƒCƒo[‘¤‚ÌƒfƒtƒHƒ‹ƒg‚Í‚Q
+	if(MML->iReleaseVolume != 2){		//ãƒ‰ãƒ©ã‚¤ãƒãƒ¼å´ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ï¼’
 		newTrack->SetEvent(new mml_general(nsd_Release_Volume + (unsigned char)MML->iReleaseVolume, _T("Release Volume")));
 	}
 
-	//ƒ|ƒCƒ“ƒ^‚ğ“n‚·
+	//ãƒã‚¤ãƒ³ã‚¿ã‚’æ¸¡ã™
 	return(newTrack);
 }
 
 //==============================================================
-//		ƒgƒ‰ƒbƒNEƒIƒuƒWƒFƒNƒg‚Ìƒ|ƒCƒ“ƒ^‚ğæ“¾
+//		ãƒˆãƒ©ãƒƒã‚¯ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–å¾—
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	int	_track	ƒgƒ‰ƒbƒN”Ô†
-//	œ•Ô’l
-//		MusicTrack*				ƒgƒ‰ƒbƒNEƒIƒuƒWƒFƒNƒg‚Ìƒ|ƒCƒ“ƒ^
-//	œ•Ô’l
-//		w’è‚³‚ê‚½”Ô†‚Ìƒgƒ‰ƒbƒNEƒIƒuƒWƒFƒNƒg‚Ìƒ|ƒCƒ“ƒ^‚ğæ“¾‚·‚é
-//		–³‚©‚Á‚½ê‡‚ÍV‚½‚Éƒgƒ‰ƒbƒN‚ğì‚Á‚ÄA
-//		ƒgƒ‰ƒbƒN”Ô†‚ªÅ‘å’l‚ğ’´‚¦‚Ä‚¢‚½‚çÅ‘å’l‚ğXV‚·‚éB
+//	â—å¼•æ•°
+//		unsigned	int	_track	ãƒˆãƒ©ãƒƒã‚¯ç•ªå·
+//	â—è¿”å€¤
+//		MusicTrack*				ãƒˆãƒ©ãƒƒã‚¯ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒã‚¤ãƒ³ã‚¿
+//	â—è¿”å€¤
+//		æŒ‡å®šã•ã‚ŒãŸç•ªå·ã®ãƒˆãƒ©ãƒƒã‚¯ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–å¾—ã™ã‚‹
+//		ç„¡ã‹ã£ãŸå ´åˆã¯æ–°ãŸã«ãƒˆãƒ©ãƒƒã‚¯ã‚’ä½œã£ã¦ã€
+//		ãƒˆãƒ©ãƒƒã‚¯ç•ªå·ãŒæœ€å¤§å€¤ã‚’è¶…ãˆã¦ã„ãŸã‚‰æœ€å¤§å€¤ã‚’æ›´æ–°ã™ã‚‹ã€‚
 //==============================================================
 MusicTrack*	TrackSet::getTrack(MMLfile* MML, int _track)
 {
-			int	i			 = maxTrack;	// i = ¡‚ ‚éAÅIƒgƒ‰ƒbƒN‚Ì”Ô†
+			int	i			 = maxTrack;	// i = ä»Šã‚ã‚‹ã€æœ€çµ‚ãƒˆãƒ©ãƒƒã‚¯ã®ç•ªå·
 	MusicTrack*	_getTrack;
 
-	//ÅIƒgƒ‰ƒbƒN”Ô†‚ªw’è’l–¢–‚¾‚Á‚½‚çAŒJ‚è•Ô‚·B
+	//æœ€çµ‚ãƒˆãƒ©ãƒƒã‚¯ç•ªå·ãŒæŒ‡å®šå€¤æœªæº€ã ã£ãŸã‚‰ã€ç¹°ã‚Šè¿”ã™ã€‚
 	while(i < _track){
 		i++;
-		//ƒgƒ‰ƒbƒN‚ª–³‚©‚Á‚½‚çì‚é
+		//ãƒˆãƒ©ãƒƒã‚¯ãŒç„¡ã‹ã£ãŸã‚‰ä½œã‚‹
 		if(ptcTrack.count(i) == 0){
 			_getTrack	= makeTrack(MML, i);
 		} else {
-			_CERR << _T("MusicTrack* TrackSet::getTrack()ŠÖ”‚ÅƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B") << endl;
+			_CERR << _T("MusicTrack* TrackSet::getTrack()é–¢æ•°ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚") << endl;
 			nsc_exit(EXIT_FAILURE);
 		}
 	}
-	maxTrack = i;	//ƒgƒ‰ƒbƒN‚ÌÅ‘å’l‚ğ‹L‰¯B
+	maxTrack = i;	//ãƒˆãƒ©ãƒƒã‚¯ã®æœ€å¤§å€¤ã‚’è¨˜æ†¶ã€‚
 
-	//ƒ|ƒCƒ“ƒ^‚ğæ“¾‚·‚éB
+	//ãƒã‚¤ãƒ³ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚
 	_getTrack = ptcTrack[_track];
 
 	return(_getTrack);
 }
 
 //==============================================================
-//		ƒCƒxƒ“ƒg
+//		ã‚¤ãƒ™ãƒ³ãƒˆ
 //--------------------------------------------------------------
-//	œˆø”
+//	â—å¼•æ•°
 //		MusicItem* _item
-//	œ•Ô’l
-//		–³‚µ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::SetEvent(MusicItem* _item)
 {
@@ -1252,12 +1252,12 @@ void	TrackSet::SetEvent(MusicItem* _item)
 }
 
 //==============================================================
-//			Œø‰Ê‰¹—Dæ“xİ’è
+//			åŠ¹æœéŸ³å„ªå…ˆåº¦è¨­å®š
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::Set_Priority(MMLfile* MML)
 {
@@ -1265,24 +1265,24 @@ void	TrackSet::Set_Priority(MMLfile* MML)
 
 	//se?
 	if(fSE == false){
-		MML->Warning(_T("SEƒuƒƒbƒNˆÈŠO‚Å‚Í—Dæ“xw’è‚Í‚Å‚«‚Ü‚¹‚ñB–³‹‚µ‚Ü‚·B"));
+		MML->Warning(_T("SEãƒ–ãƒ­ãƒƒã‚¯ä»¥å¤–ã§ã¯å„ªå…ˆåº¦æŒ‡å®šã¯ã§ãã¾ã›ã‚“ã€‚ç„¡è¦–ã—ã¾ã™ã€‚"));
 	} else {
 		if( (i <= 3) && (i >=0) ){
 			Priority = (char)i;
 		} else {
-			MML->Err(_T("Œø‰Ê‰¹‚Ì—Dæ“x‚ÍA‚Í0`3‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+			MML->Err(_T("åŠ¹æœéŸ³ã®å„ªå…ˆåº¦ã¯ã€ã¯0ã€œ3ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 	}
 
 }
 
 //==============================================================
-//		ƒWƒƒƒ“ƒv
+//		ã‚¸ãƒ£ãƒ³ãƒ—
 //--------------------------------------------------------------
-//	œˆø”
+//	â—å¼•æ•°
 //		MusicItem* _item
-//	œ•Ô’l
-//		–³‚µ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::SetJumpDrv(MMLfile* MML)
 {
@@ -1296,17 +1296,17 @@ void	TrackSet::SetJumpDrv(MMLfile* MML)
 			SetEvent(new mml_general(nsd_SubCommand, (const char)nsd_sub_Jump_on, _T("Jump On")));
 			break;
 		default:
-			MML->Err(_T("jƒRƒ}ƒ“ƒh‚ªw’è‰Â”\‚È”ÍˆÍ‚ğ’´‚¦‚Ü‚µ‚½B"));
+			MML->Err(_T("jã‚³ãƒãƒ³ãƒ‰ãŒæŒ‡å®šå¯èƒ½ãªç¯„å›²ã‚’è¶…ãˆã¾ã—ãŸã€‚"));
 	}
 }
 
 //==============================================================
-//		ƒeƒ“ƒ|
+//		ãƒ†ãƒ³ãƒ
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//		–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::SetTempo(MMLfile* MML)
 {
@@ -1315,18 +1315,18 @@ void	TrackSet::SetTempo(MMLfile* MML)
 	iTempo = ((iValue * MML->timebase) / 24);
 	
 	if((iTempo<0) || (iTempo>255)){
-		MML->Err(_T("ƒeƒ“ƒ|‚ªw’è‰Â”\‚È”ÍˆÍ‚ğ’´‚¦‚Ü‚µ‚½B"));
+		MML->Err(_T("ãƒ†ãƒ³ãƒãŒæŒ‡å®šå¯èƒ½ãªç¯„å›²ã‚’è¶…ãˆã¾ã—ãŸã€‚"));
 	}
 	SetEvent(new mml_general(nsd_Tempo, (unsigned char)iTempo, _T("Tempo")));
 }
 
 //==============================================================
-//		‘Š‘Îƒeƒ“ƒ|
+//		ç›¸å¯¾ãƒ†ãƒ³ãƒ
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//		–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::SetRelativeTempo(MMLfile* MML)
 {
@@ -1339,12 +1339,12 @@ void	TrackSet::SetRelativeTempo(MMLfile* MML)
 }
 
 //==============================================================
-//		ƒeƒ“ƒ|ƒAƒbƒv
+//		ãƒ†ãƒ³ãƒã‚¢ãƒƒãƒ—
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//		–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::TempoUp()
 {
@@ -1355,12 +1355,12 @@ void	TrackSet::TempoUp()
 }
 
 //==============================================================
-//		ƒeƒ“ƒ|ƒ_ƒEƒ“
+//		ãƒ†ãƒ³ãƒãƒ€ã‚¦ãƒ³
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//		–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::TempoDown()
 {
@@ -1371,12 +1371,12 @@ void	TrackSet::TempoDown()
 }
 
 //==============================================================
-//		ƒAƒhƒŒƒXw’è‚Ì‘‚İ
+//		ã‚¢ãƒ‰ãƒ¬ã‚¹æŒ‡å®šã®æ›¸è¾¼ã¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//		–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::Set_Poke(MMLfile* MML)
 {
@@ -1386,28 +1386,28 @@ void	TrackSet::Set_Poke(MMLfile* MML)
 
 	addr = MML->GetInt();
 	if( (addr < 0x0000) || (addr > 0xFFFF) ){
-		MML->Err(_T("yƒRƒ}ƒ“ƒh‚ÌƒAƒhƒŒƒX‚Í$0000`$FFFF‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("yã‚³ãƒãƒ³ãƒ‰ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯$0000ã€œ$FFFFã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 
 	cData = MML->GetChar();
 	if(cData != ','){
-		MML->Err(_T("yƒRƒ}ƒ“ƒh‚Ìƒpƒ‰ƒ[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB‚Q‚Âw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+		MML->Err(_T("yã‚³ãƒãƒ³ãƒ‰ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚ï¼’ã¤æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 	}
 
 	data = MML->GetInt();
 	if(data > 255){
-		MML->Err(_T("yƒRƒ}ƒ“ƒh‚Ìƒf[ƒ^‚Í$00`$FF‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("yã‚³ãƒãƒ³ãƒ‰ã®ãƒ‡ãƒ¼ã‚¿ã¯$00ã€œ$FFã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 	SetEvent(new mml_poke(addr, (unsigned char)data));
 }
 
 //==============================================================
-//			FDS	ƒLƒƒƒŠƒAü”g”İ’è
+//			FDS	ã‚­ãƒ£ãƒªã‚¢å‘¨æ³¢æ•°è¨­å®š
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::Set_FDS_Frequency(MMLfile* MML)
 {
@@ -1418,17 +1418,17 @@ void	TrackSet::Set_FDS_Frequency(MMLfile* MML)
 		unsigned	char	c1 = (unsigned char)((i >> 8) & 0xFF);
 		SetEvent(new mml_general(nsd_FDS_Frequency,c0,c1,_T("FDS career frequency")));
 	} else {
-		MML->Err(_T("FDS‚ÌƒLƒƒƒŠƒAü”g”‚Í0`4095‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("FDSã®ã‚­ãƒ£ãƒªã‚¢å‘¨æ³¢æ•°ã¯0ã€œ4095ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 }
 
 //==============================================================
 //			FDS	Master volume
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::Set_FDS_Volume(MMLfile* MML)
 {
@@ -1437,17 +1437,17 @@ void	TrackSet::Set_FDS_Volume(MMLfile* MML)
 	if((i<=3 ) && (i>=0)){
 		SetEvent(new mml_general(nsd_FDS_Volume,(unsigned char)i,_T("FDS Master volume")));
 	} else {
-		MML->Err(_T("FDS‚Ìƒ}ƒXƒ^[‰¹—Ê‚Í0`3‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("FDSã®ãƒã‚¹ã‚¿ãƒ¼éŸ³é‡ã¯0ã€œ3ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 }
 
 //==============================================================
-//		VRC7	ƒŒƒWƒXƒ^‘‚«‚İ
+//		VRC7	ãƒ¬ã‚¸ã‚¹ã‚¿æ›¸ãè¾¼ã¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//		–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//		ç„¡ã—
 //==============================================================
 void	TrackSet::Set_VRC7_Write(MMLfile* MML)
 {
@@ -1458,29 +1458,29 @@ void	TrackSet::Set_VRC7_Write(MMLfile* MML)
 
 	_Reg = MML->GetInt();
 	if( (_Reg < 0) || (_Reg > 0x40) ){
-		MML->Err(_T("VRC7ƒŒƒWƒXƒ^‘€ì‚Ì‘æ1ƒpƒ‰ƒ[ƒ^‚Í0`63‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+		MML->Err(_T("VRC7ãƒ¬ã‚¸ã‚¹ã‚¿æ“ä½œã®ç¬¬1ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯0ã€œ63ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 	}
 
 	cData = MML->GetChar();
 	if(cData != ','){
-		MML->Err(_T("yV ƒRƒ}ƒ“ƒh‚Ìƒpƒ‰ƒ[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB‚Q‚Âw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+		MML->Err(_T("yV ã‚³ãƒãƒ³ãƒ‰ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚ï¼’ã¤æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 	}
 
 	_Dat = MML->GetInt();
 	if( (_Dat < 0) || (_Dat > 255) ){
-		MML->Err(_T("VRC7ƒŒƒWƒXƒ^‘€ì‚Ì‘æ2ƒpƒ‰ƒ[ƒ^‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+		MML->Err(_T("VRC7ãƒ¬ã‚¸ã‚¹ã‚¿æ“ä½œã®ç¬¬2ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 	}
 
 	SetEvent(new mml_general(nsc_VRC7_reg,(unsigned char)_Reg,(unsigned char)_Dat, _T("VRC7 Register Write")));
 }
 
 //==============================================================
-//		NC	n163ƒ`ƒƒƒ“ƒlƒ‹”İ’è
+//		NC	n163ãƒãƒ£ãƒ³ãƒãƒ«æ•°è¨­å®š
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::Set_N163_Channel(MMLfile* MML)
 {
@@ -1489,18 +1489,18 @@ void	TrackSet::Set_N163_Channel(MMLfile* MML)
 	if( (i <= 8) && (i >=1) ){
 		SetEvent(new mml_general(nsc_N163_Channel,(unsigned char)(i-1),_T("n163 channel")));
 	} else {
-		MML->Err(_T("n163‚Ìƒ`ƒƒƒ“ƒlƒ‹”‚Í1`8‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+		MML->Err(_T("n163ã®ãƒãƒ£ãƒ³ãƒãƒ«æ•°ã¯1ã€œ8ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 	}
 
 }
 
 //==============================================================
-//			SUNSOFT 5b ƒGƒ“ƒxƒ[ƒvü”g”İ’è
+//			SUNSOFT 5b ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—å‘¨æ³¢æ•°è¨­å®š
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	TrackSet::Set_FME7_Frequency(MMLfile* MML)
 {
@@ -1511,6 +1511,6 @@ void	TrackSet::Set_FME7_Frequency(MMLfile* MML)
 		unsigned	char	c1 = (unsigned char)((i >> 8) & 0xFF);
 		SetEvent(new mml_general(nsc_FME7_frequency,c0,c1,_T("FME7 envelop frequency")));
 	} else {
-		MML->Err(_T("SUNSOFT 5b‚Ìƒn[ƒhƒEƒFƒAƒGƒ“ƒxƒ[ƒvü”g”‚Í0`65535‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("SUNSOFT 5bã®ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—å‘¨æ³¢æ•°ã¯0ã€œ65535ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 }

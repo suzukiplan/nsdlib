@@ -11,19 +11,19 @@
 #include "MusicFile.h"
 
 /****************************************************************/
-/*					ƒOƒ[ƒoƒ‹•Ï”iƒNƒ‰ƒX‚¾‚¯‚ÇEEEj		*/
+/*					ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ï¼ˆã‚¯ãƒ©ã‚¹ã ã‘ã©ãƒ»ãƒ»ãƒ»ï¼‰		*/
 /****************************************************************/
-extern	OPSW*			cOptionSW;	//ƒIƒvƒVƒ‡ƒ“î•ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^•Ï”
+extern	OPSW*			cOptionSW;	//ã‚ªãƒ—ã‚·ãƒ§ãƒ³æƒ…å ±ã¸ã®ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			‚l‚l‚kƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//		string				_code		ƒŠƒ“ƒN‚·‚éƒR[ƒhi*.binj‚Ìƒtƒ@ƒCƒ‹–¼
-//		const		_CHAR	_strName[]	ƒIƒuƒWƒFƒNƒg–¼
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			ï¼­ï¼­ï¼¬ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//		string				_code		ãƒªãƒ³ã‚¯ã™ã‚‹ã‚³ãƒ¼ãƒ‰ï¼ˆ*.binï¼‰ã®ãƒ•ã‚¡ã‚¤ãƒ«å
+//		const		_CHAR	_strName[]	ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 MusicFile::MusicFile(MMLfile* MML, string _code, const _CHAR _strName[]):
 	MusicItem(_strName),
@@ -31,10 +31,10 @@ MusicFile::MusicFile(MMLfile* MML, string _code, const _CHAR _strName[]):
 	Header(_code)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 
 
-//	’è”’è‹`
+//	å®šæ•°å®šç¾©
 enum	Command_ID_MusicFile {
 	//for NSF output
 	id_Title,
@@ -86,33 +86,33 @@ enum	Command_ID_MusicFile {
 	id_Null
 };
 
-//	‚±‚ê‚ç‚ÍAMML\•¶‚Åg‚¦‚éƒRƒ}ƒ“ƒhB
+//	ã“ã‚Œã‚‰ã¯ã€MMLæ§‹æ–‡ã§ä½¿ãˆã‚‹ã‚³ãƒãƒ³ãƒ‰ã€‚
 const	static	Command_Info	Command[] = {
 		//for NSF output
 		{	"#Title",			id_Title		},
 		{	"#title",			id_Title		},
-		{	"‹È–¼",				id_Title		},
+		{	"æ›²å",				id_Title		},
 		{	"#Composer",		id_Composer		},
 		{	"#composer",		id_Composer		},
-		{	"ì‹ÈÒ",			id_Composer		},
-		{	"ì‹È",				id_Composer		},
+		{	"ä½œæ›²è€…",			id_Composer		},
+		{	"ä½œæ›²",				id_Composer		},
 		{	"#Copyright",		id_Copyright	},
 		{	"#copyright",		id_Copyright	},
-		{	"ìÒ",				id_Copyright	},
-		{	"’˜ìŒ Ò",			id_Copyright	},
-		{	"#OffsetPCM",		id_OffsetPCM	},	//Offset Address of ‡™PCM
-		{	"#offsetPCM",		id_OffsetPCM	},	//Offset Address of ‡™PCM
-		{	"#offsetPCM",		id_OffsetPCM	},	//Offset Address of ‡™PCM
+		{	"ä½œè€…",				id_Copyright	},
+		{	"è‘—ä½œæ¨©è€…",			id_Copyright	},
+		{	"#OffsetPCM",		id_OffsetPCM	},	//Offset Address of âŠ¿PCM
+		{	"#offsetPCM",		id_OffsetPCM	},	//Offset Address of âŠ¿PCM
+		{	"#offsetPCM",		id_OffsetPCM	},	//Offset Address of âŠ¿PCM
 		{	"#Code",			id_Code			},
 		{	"#code",			id_Code			},
-		{	"ƒR[ƒh",			id_Code			},
+		{	"ã‚³ãƒ¼ãƒ‰",			id_Code			},
 		{	"#External",		id_External		},
 		{	"#external",		id_External		},
 		{	"#Bank",			id_Bank			},
 		{	"#bank",			id_Bank			},
-		{	"ƒoƒ“ƒN",			id_Bank			},
+		{	"ãƒãƒ³ã‚¯",			id_Bank			},
 		//for ASM output
-		{	"#SegmentPCM",		id_SegmentPCM	},	//Segment name for ‡™PCM
+		{	"#SegmentPCM",		id_SegmentPCM	},	//Segment name for âŠ¿PCM
 		{	"#segmentPCM",		id_SegmentPCM	},
 		{	"#SegmentSEQ",		id_SegmentSEQ	},	//Segment name for Sequence
 		{	"#segmentSEQ",		id_SegmentSEQ	},
@@ -124,7 +124,7 @@ const	static	Command_Info	Command[] = {
 		//General
 		{	"#Include",			id_include		},
 		{	"#include",			id_include		},
-		{	"“Ç‚Ş",				id_include		},
+		{	"èª­ã‚€",				id_include		},
 		{	"#Timebase",		id_timebase		},
 		{	"#timebase",		id_timebase		},
 		{	"#OctaveReverse",	id_OctaveReverse},
@@ -133,10 +133,10 @@ const	static	Command_Info	Command[] = {
 		{	"#qReverse",		id_QReverse		},
 		{	"#BGM",				id_bgm_num		},
 		{	"#bgm",				id_bgm_num		},
-		{	"‰¹Šy”",			id_bgm_num		},
+		{	"éŸ³æ¥½æ•°",			id_bgm_num		},
 		{	"#SE",				id_se_num		},
 		{	"#se",				id_se_num		},
-		{	"Œø‰Ê‰¹”",			id_se_num		},
+		{	"åŠ¹æœéŸ³æ•°",			id_se_num		},
 		{	"#releaseVolume",	id_releaseVolume},
 		{	"#ReleaseVolume",	id_releaseVolume},
 		{	"#repeatMode",		id_repeatMode	},
@@ -169,16 +169,16 @@ const	static	Command_Info	Command[] = {
 		{	"envelope",			id_Envelop		},
 		{	"Envelop",			id_Envelop		},
 		{	"envelop",			id_Envelop		},
-		{	"ƒGƒ“ƒxƒ[ƒv",		id_Envelop		},
-		{	"ƒrƒuƒ‰[ƒg",		id_Vibrato		},
+		{	"ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—",		id_Envelop		},
+		{	"ãƒ“ãƒ–ãƒ©ãƒ¼ãƒˆ",		id_Vibrato		},
 		{	"Sub",				id_Sub			},
 		{	"sub",				id_Sub			},
 		{	"BGM",				id_BGM			},
 		{	"bgm",				id_BGM			},
-		{	"‰¹Šy",				id_BGM			},
+		{	"éŸ³æ¥½",				id_BGM			},
 		{	"SE",				id_SE			},
 		{	"se",				id_SE			},
-		{	"Œø‰Ê‰¹",			id_SE			},
+		{	"åŠ¹æœéŸ³",			id_SE			},
 		{	"Patch",			id_Patch		},
 
 		//for 1 command
@@ -201,7 +201,7 @@ const	static	Command_Info	Command[] = {
 		{	"@N",				id_N163			},
 		{	"@E",				id_Envelop		},
 
-		{	"@",				id_Null			},
+		{	"ã€€",				id_Null			},
 	};
 
 	unsigned	int			i;
@@ -225,18 +225,18 @@ const	static	Command_Info	Command[] = {
 
 	do{
 		
-		//‚P•¶š“Ç‚İ‚İiƒRƒƒ“ƒgƒ`ƒFƒbƒNAincludeƒtƒ@ƒCƒ‹‚ÌI’[ƒ`ƒFƒbƒN‚à‚ ‚èj
+		//ï¼‘æ–‡å­—èª­ã¿è¾¼ã¿ï¼ˆã‚³ãƒ¡ãƒ³ãƒˆãƒã‚§ãƒƒã‚¯ã€includeãƒ•ã‚¡ã‚¤ãƒ«ã®çµ‚ç«¯ãƒã‚§ãƒƒã‚¯ã‚‚ã‚ã‚Šï¼‰
 		cData = MML->GetChar();
 
-		//[EOF]ƒ`ƒFƒbƒN
+		//[EOF]ãƒã‚§ãƒƒã‚¯
 		if( MML->eom() ){
 			break;
 		}
 
-		//‚P‚Â–ß‚é
+		//ï¼‘ã¤æˆ»ã‚‹
 		MML->Back();
 
-		//ƒRƒ}ƒ“ƒh•¶š—ñ‚Ìƒ`ƒFƒbƒN
+		//ã‚³ãƒãƒ³ãƒ‰æ–‡å­—åˆ—ã®ãƒã‚§ãƒƒã‚¯
 		switch(MML->GetCommandID(Command, sizeof(Command)/sizeof(Command_Info))){
 			//for NSF output
 			case(id_Code):
@@ -281,30 +281,30 @@ const	static	Command_Info	Command[] = {
 				Header.Set_Number_SE(MML);
 				break;
 			case(id_timebase):
-				MML->timebase = MML->GetInt();	//‚±‚ê‚ÍAMMLƒtƒ@ƒCƒ‹‚Ì‘®«B
+				MML->timebase = MML->GetInt();	//ã“ã‚Œã¯ã€MMLãƒ•ã‚¡ã‚¤ãƒ«ã®å±æ€§ã€‚
 				break;
 			case(id_OctaveReverse):
-				MML->octave_reverse = true;		//‚±‚ê‚ÍAMMLƒtƒ@ƒCƒ‹‚Ì‘®«B
+				MML->octave_reverse = true;		//ã“ã‚Œã¯ã€MMLãƒ•ã‚¡ã‚¤ãƒ«ã®å±æ€§ã€‚
 				break;
 			case(id_QReverse):
-				MML->q_reverse = true;			//‚±‚ê‚ÍAMMLƒtƒ@ƒCƒ‹‚Ì‘®«B
+				MML->q_reverse = true;			//ã“ã‚Œã¯ã€MMLãƒ•ã‚¡ã‚¤ãƒ«ã®å±æ€§ã€‚
 				break;
 			case(id_releaseVolume):
 				MML->iReleaseVolume	=  MML->GetInt();
 				if((MML->iReleaseVolume<0) || (MML->iReleaseVolume>15)){
-					MML->Err(_T("#ReleaseVolumeƒRƒ}ƒ“ƒh‚ÍA0`15‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("#ReleaseVolumeã‚³ãƒãƒ³ãƒ‰ã¯ã€0ã€œ15ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				break;
 			case(id_repeatMode):
 				MML->iRepeatMode	=  MML->GetInt();
 				if((MML->iRepeatMode<0) || (MML->iRepeatMode>2)){
-					MML->Err(_T("#RepeatModeƒRƒ}ƒ“ƒh‚ÍA0`2‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("#RepeatModeã‚³ãƒãƒ³ãƒ‰ã¯ã€0ã€œ2ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				break;
 			case(id_TieMode):
 				MML->iTieMode	=  MML->GetInt();
 				if((MML->iTieMode<0) || (MML->iTieMode>1)){
-					MML->Err(_T("#TieModeƒRƒ}ƒ“ƒh‚ÍA0`1‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("#TieModeã‚³ãƒãƒ³ãƒ‰ã¯ã€0ã€œ1ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				break;
 			case(id_offset_Ei):
@@ -322,7 +322,7 @@ const	static	Command_Info	Command[] = {
 			case(id_Priority):
 				i = MML->GetInt();
 				if((i<0) || (i>3)){
-					MML->Err(_T("#priorityƒRƒ}ƒ“ƒh‚ÍA0`3‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("#priorityã‚³ãƒãƒ³ãƒ‰ã¯ã€0ã€œ3ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				} else {
 					MML->priority = (unsigned char)i;
 				}
@@ -333,13 +333,13 @@ const	static	Command_Info	Command[] = {
 			case(id_rest):
 				MML->rest = MML->GetInt();
 				if((MML->rest<0) || (MML->rest>3)){
-					MML->Err(_T("#RestƒRƒ}ƒ“ƒh‚ÍA0`3‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("#Restã‚³ãƒãƒ³ãƒ‰ã¯ã€0ã€œ3ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				break;
 			case(id_wait):
 				MML->wait = MML->GetInt();
 				if((MML->rest<0) || (MML->rest>3)){
-					MML->Err(_T("#WaitƒRƒ}ƒ“ƒh‚ÍA0`3‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("#Waitã‚³ãƒãƒ³ãƒ‰ã¯ã€0ã€œ3ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				break;
 			case(id_Macro):
@@ -351,124 +351,124 @@ const	static	Command_Info	Command[] = {
 			//MML
 			case(id_DPCM):
 				if(cDPCMinfo != NULL){
-					MML->Err(_T("DPCMƒuƒƒbƒN‚Í‚P‚Â‚Ü‚Å‚Å‚·B"));
+					MML->Err(_T("DPCMãƒ–ãƒ­ãƒƒã‚¯ã¯ï¼‘ã¤ã¾ã§ã§ã™ã€‚"));
 				}
 				cDPCMinfo = new DPCMinfo(MML, Header.bank);
 				ptcItem.push_back(cDPCMinfo);
-				iSize += cDPCMinfo->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += cDPCMinfo->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_FDSC):
 				i = MML->GetNum();
 
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcFDSC.count(i) != 0){
-					MML->Err(_T("FDSC()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("FDSC()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
 				_fdsc = new FDSC(MML, i);
 				ptcItem.push_back(_fdsc);
 				ptcFDSC[i] = _fdsc;
-				iSize += _fdsc->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _fdsc->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_FDSM):
 				i = MML->GetNum();
 
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcFDSM.count(i) != 0){
-					MML->Err(_T("FDSM()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("FDSM()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
 				_fdsm = new FDSM(MML, i);
 				ptcItem.push_back(_fdsm);
 				ptcFDSM[i] = _fdsm;
-				iSize += _fdsm->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _fdsm->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_VRC7):
 				i = MML->GetNum();
 
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcVRC7.count(i) != 0){
-					MML->Err(_T("VRC7()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("VRC7()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
 				_vrc7 = new VRC7(MML, i);
 				ptcItem.push_back(_vrc7);
 				ptcVRC7[i] = _vrc7;
-				iSize += _vrc7->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _vrc7->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_N163):
 				i = MML->GetNum();
 
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcN163.count(i) != 0){
-					MML->Err(_T("N163()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("N163()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
 				_n163 = new N163(MML, i);
 				ptcItem.push_back(_n163);
 				ptcN163[i] = _n163;
-				iSize += _n163->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _n163->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_Envelop):
 				i = MML->GetNum();
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcEnv.count(i) != 0){
-					MML->Err(_T("Envelope()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("Envelope()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
 				_env = new Envelop(MML, i);
 				ptcItem.push_back(_env);
 				ptcEnv[i] = _env;
-				iSize += _env->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _env->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_Vibrato):
 				MML->offset_Em = 1000000;
 				i = MML->GetNum() + MML->offset_Em;
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcEnv.count(i) != 0){
-					MML->Err(_T("ƒrƒuƒ‰[ƒg()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("ãƒ“ãƒ–ãƒ©ãƒ¼ãƒˆ()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
 				_env = new Envelop(MML, i);
 				ptcItem.push_back(_env);
 				ptcEnv[i] = _env;
-				iSize += _env->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _env->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_Sub):
 				i = MML->GetNum();
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcSub.count(i) != 0){
-					MML->Err(_T("Sub()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("Sub()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
-				//”ÍˆÍƒ`ƒFƒbƒN
+				//ç¯„å›²ãƒã‚§ãƒƒã‚¯
 				_sub = new Sub(MML, i);
 				ptcItem.push_back(_sub);
 				ptcSub[i] = _sub;
-				iSize += _sub->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _sub->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_BGM):
 				i = MML->GetNum();
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcBGM.count(i) != 0){
-					MML->Err(_T("BGM()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("BGM()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
-				//”ÍˆÍƒ`ƒFƒbƒN
+				//ç¯„å›²ãƒã‚§ãƒƒã‚¯
 				if((Header.iBGM <= i) || (i<0)){
-					MML->Err(_T("BGM()ƒuƒƒbƒN‚Åw’è‚Å‚«‚é”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚Ü‚·B\n#BGM‚Ì”’l‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("BGM()ãƒ–ãƒ­ãƒƒã‚¯ã§æŒ‡å®šã§ãã‚‹ç¯„å›²ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚\n#BGMã®æ•°å€¤ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚"));
 				}
 				_bgm = new BGM(MML, i);
 				ptcItem.push_back(_bgm);
 				ptcBGM[i] = _bgm;
-				iSize += _bgm->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _bgm->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_SE):
 				i = MML->GetNum();
-				//d•¡ƒ`ƒFƒbƒN
+				//é‡è¤‡ãƒã‚§ãƒƒã‚¯
 				if(ptcSE.count(i) != 0){
-					MML->Err(_T("SE()ƒuƒƒbƒN‚Å“¯‚¶”Ô†‚ªw’è‚³‚ê‚Ü‚µ‚½B"));
+					MML->Err(_T("SE()ãƒ–ãƒ­ãƒƒã‚¯ã§åŒã˜ç•ªå·ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				}
-				//”ÍˆÍƒ`ƒFƒbƒN
+				//ç¯„å›²ãƒã‚§ãƒƒã‚¯
 				if((Header.iSE <= i) || (i<0)){
-					MML->Err(_T("SE()ƒuƒƒbƒN‚Åw’è‚Å‚«‚é”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚Ü‚·B\n#SE‚Ì”’l‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("SE()ãƒ–ãƒ­ãƒƒã‚¯ã§æŒ‡å®šã§ãã‚‹ç¯„å›²ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚\n#SEã®æ•°å€¤ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚"));
 				}
 				_se = new SE(MML, i);
 				ptcItem.push_back(_se);
 				ptcSE[i] = _se;
-				iSize += _se->getSize();	//BGM‚ÌƒTƒCƒY‚ğXV
+				iSize += _se->getSize();	//BGMã®ã‚µã‚¤ã‚ºã‚’æ›´æ–°
 				break;
 			case(id_Null):
 				break;
@@ -481,13 +481,13 @@ const	static	Command_Info	Command[] = {
 
 	//Check
 	if( Header.iBGM + Header.iSE > 255){
-		Err(_T("BGM‚ÆSE‚Ì”‚ª‡Œv‚Å255‚ğ‰z‚¦‚Ü‚µ‚½B"));
+		Err(_T("BGMã¨SEã®æ•°ãŒåˆè¨ˆã§255ã‚’è¶Šãˆã¾ã—ãŸã€‚"));
 	}
 
 	i = 0;
 	while(i < Header.iBGM){
 		if(ptcBGM.count(i) == 0){
-			Err(_T("BGMƒf[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB"));
+			Err(_T("BGMãƒ‡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 		};
 		i++;
 	}
@@ -495,7 +495,7 @@ const	static	Command_Info	Command[] = {
 	i = 0;
 	while(i < Header.iSE){
 		if(ptcSE.count(i) == 0){
-			Err(_T("SE ƒf[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB"));
+			Err(_T("SE ãƒ‡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 		};
 		i++;
 	}
@@ -503,25 +503,25 @@ const	static	Command_Info	Command[] = {
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 MusicFile::~MusicFile(void)
 {
 }
 
 //==============================================================
-//		g—p‚µ‚È‚¢ƒIƒuƒWƒFƒNƒg‚ÌŒŸõ•íœ
-//		‚µ‚È‚ª‚çATick‚ğƒJƒEƒ“ƒg
+//		ä½¿ç”¨ã—ãªã„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ¤œç´¢ï¼†å‰Šé™¤
+//		ã—ãªãŒã‚‰ã€Tickã‚’ã‚«ã‚¦ãƒ³ãƒˆ
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	MusicFile::TickCount(void)
 {
@@ -536,57 +536,57 @@ void	MusicFile::TickCount(void)
 	unsigned	int			iSE		= 0;
 
 	//----------------------
-	//Tick Count & Å“K‰»‚Ì‚½‚ß‚Ìî•ñûW
+	//Tick Count & æœ€é©åŒ–ã®ãŸã‚ã®æƒ…å ±åé›†
 
 	while(iBGM < Header.iBGM){
 		cout << "---- BGM(" << iBGM << ") ----" <<endl;
-		ptcBGM[iBGM]->TickCount(this);				//ƒJƒEƒ“ƒeƒBƒ“ƒO‚µ‚È‚ª‚çA•s—v‚ÈƒRƒ}ƒ“ƒh‚ª–³‚¢‚©ƒ`ƒFƒbƒN
-		ptcBGM[iBGM]->OptimizeDefineCheck(this);	//g‚Ä‚¢‚é’è‹`‚ğƒ`ƒFƒbƒN
+		ptcBGM[iBGM]->TickCount(this);				//ã‚«ã‚¦ãƒ³ãƒ†ã‚£ãƒ³ã‚°ã—ãªãŒã‚‰ã€ä¸è¦ãªã‚³ãƒãƒ³ãƒ‰ãŒç„¡ã„ã‹ãƒã‚§ãƒƒã‚¯
+		ptcBGM[iBGM]->OptimizeDefineCheck(this);	//ä½¿ã¦ã„ã‚‹å®šç¾©ã‚’ãƒã‚§ãƒƒã‚¯
 		iBGM++;
 	}
 
 	while(iSE < Header.iSE){
 		cout << "---- SE(" << iSE << ") ----" <<endl;
-		ptcSE[iSE]->TickCount(this);				//ƒJƒEƒ“ƒeƒBƒ“ƒO‚µ‚È‚ª‚çA•s—v‚ÈƒRƒ}ƒ“ƒh‚ª–³‚¢‚©ƒ`ƒFƒbƒN
-		ptcSE[iSE]->OptimizeDefineCheck(this);		//g‚Ä‚¢‚é’è‹`‚ğƒ`ƒFƒbƒN
+		ptcSE[iSE]->TickCount(this);				//ã‚«ã‚¦ãƒ³ãƒ†ã‚£ãƒ³ã‚°ã—ãªãŒã‚‰ã€ä¸è¦ãªã‚³ãƒãƒ³ãƒ‰ãŒç„¡ã„ã‹ãƒã‚§ãƒƒã‚¯
+		ptcSE[iSE]->OptimizeDefineCheck(this);		//ä½¿ã¦ã„ã‚‹å®šç¾©ã‚’ãƒã‚§ãƒƒã‚¯
 		iSE++;
 	}
 
 	//----------------------
-	//•s—v‚ÈƒRƒ}ƒ“ƒh‚Ìíœ
+	//ä¸è¦ãªã‚³ãƒãƒ³ãƒ‰ã®å‰Šé™¤
 
-	if(cOptionSW->flag_OptSeq == true){		//ƒRƒ}ƒ“ƒh‚ÌÅ“K‰»‚ª–³Œø‚¾‚Á‚½‚çAÅ“K‰»‚µ‚È‚¢B
+	if(cOptionSW->flag_OptSeq == true){		//ã‚³ãƒãƒ³ãƒ‰ã®æœ€é©åŒ–ãŒç„¡åŠ¹ã ã£ãŸã‚‰ã€æœ€é©åŒ–ã—ãªã„ã€‚
 
-		//	to do	¡¡¡¡¡¡	•s—v‚ÈƒRƒ}ƒ“ƒhEƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚é	¡¡¡¡¡¡
+		//	to do	â– â– â– â– â– â– 	ä¸è¦ãªã‚³ãƒãƒ³ãƒ‰ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹	â– â– â– â– â– â– 
 
 	}
 
 	//----------------------
-	//g‚Á‚Ä‚¢‚È‚¢’è‹`‚Ìíœ
+	//ä½¿ã£ã¦ã„ãªã„å®šç¾©ã®å‰Šé™¤
 
-	if(cOptionSW->flag_OptObj == true){		//’è‹`‚ÌÅ“K‰»‚ª–³Œø‚¾‚Á‚½‚çAÅ“K‰»‚µ‚È‚¢B
+	if(cOptionSW->flag_OptObj == true){		//å®šç¾©ã®æœ€é©åŒ–ãŒç„¡åŠ¹ã ã£ãŸã‚‰ã€æœ€é©åŒ–ã—ãªã„ã€‚
 
-		//ƒTƒuƒ‹[ƒ`ƒ“
+		//ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³
 		if(!ptcSub.empty()){
 			itSub = ptcSub.begin();
 			while(itSub != ptcSub.end()){
 				if(itSub->second->chkUse() == true){
-					//g‚¤ƒTƒuƒ‹[ƒ`ƒ“‚Å‚ ‚ê‚ÎA‚»‚Ì’†‚Åg‚Á‚Ä‚é’è‹`‚ğƒ`ƒFƒbƒN
+					//ä½¿ã†ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã§ã‚ã‚Œã°ã€ãã®ä¸­ã§ä½¿ã£ã¦ã‚‹å®šç¾©ã‚’ãƒã‚§ãƒƒã‚¯
 					itSub->second->OptimizeDefineCheck(this);
 				} else {
-					//g‚í‚È‚¢ƒTƒuƒ‹[ƒ`ƒ“‚Å‚ ‚ê‚ÎAƒIƒuƒWƒFƒNƒgíœB
+					//ä½¿ã‚ãªã„ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã§ã‚ã‚Œã°ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‰Šé™¤ã€‚
 					itSub->second->clear(itSub->first);
 				}
 				itSub++;
 			}
 		}
 
-		//ƒGƒ“ƒxƒ[ƒv
+		//ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—
 		if(!ptcEnv.empty()){
 			itEnv = ptcEnv.begin();
 			while(itEnv != ptcEnv.end()){
 				if(itEnv->second->chkUse() == false){
-					//g‚í‚È‚¢ƒTƒuƒ‹[ƒ`ƒ“‚Å‚ ‚ê‚ÎAƒIƒuƒWƒFƒNƒgíœB
+					//ä½¿ã‚ãªã„ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã§ã‚ã‚Œã°ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‰Šé™¤ã€‚
 					itEnv->second->clear(itEnv->first);
 				}
 				itEnv++;
@@ -598,7 +598,7 @@ void	MusicFile::TickCount(void)
 			itFDSC = ptcFDSC.begin();
 			while(itFDSC != ptcFDSC.end()){
 				if(itFDSC->second->chkUse() == false){
-					//g‚í‚È‚¢ƒTƒuƒ‹[ƒ`ƒ“‚Å‚ ‚ê‚ÎAƒIƒuƒWƒFƒNƒgíœB
+					//ä½¿ã‚ãªã„ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã§ã‚ã‚Œã°ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‰Šé™¤ã€‚
 					itFDSC->second->clear(itFDSC->first);
 				}
 				itFDSC++;
@@ -610,7 +610,7 @@ void	MusicFile::TickCount(void)
 			itFDSM = ptcFDSM.begin();
 			while(itFDSM != ptcFDSM.end()){
 				if(itFDSM->second->chkUse() == false){
-					//g‚í‚È‚¢ƒTƒuƒ‹[ƒ`ƒ“‚Å‚ ‚ê‚ÎAƒIƒuƒWƒFƒNƒgíœB
+					//ä½¿ã‚ãªã„ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã§ã‚ã‚Œã°ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‰Šé™¤ã€‚
 					itFDSM->second->clear(itFDSM->first);
 				}
 				itFDSM++;
@@ -622,7 +622,7 @@ void	MusicFile::TickCount(void)
 			itVRC7 = ptcVRC7.begin();
 			while(itVRC7 != ptcVRC7.end()){
 				if(itVRC7->second->chkUse() == false){
-					//g‚í‚È‚¢ƒTƒuƒ‹[ƒ`ƒ“‚Å‚ ‚ê‚ÎAƒIƒuƒWƒFƒNƒgíœB
+					//ä½¿ã‚ãªã„ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã§ã‚ã‚Œã°ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‰Šé™¤ã€‚
 					itVRC7->second->clear(itVRC7->first);
 				}
 				itVRC7++;
@@ -634,7 +634,7 @@ void	MusicFile::TickCount(void)
 			itN163 = ptcN163.begin();
 			while(itN163 != ptcN163.end()){
 				if(itN163->second->chkUse() == false){
-					//g‚í‚È‚¢ƒTƒuƒ‹[ƒ`ƒ“‚Å‚ ‚ê‚ÎAƒIƒuƒWƒFƒNƒgíœB
+					//ä½¿ã‚ãªã„ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã§ã‚ã‚Œã°ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå‰Šé™¤ã€‚
 					itN163->second->clear(itN163->first);
 				}
 				itN163++;
@@ -644,12 +644,12 @@ void	MusicFile::TickCount(void)
 }
 
 //==============================================================
-//		ƒ¢PCM‚ÌƒIƒtƒZƒbƒgƒAƒhƒŒƒX‚ğŒvZ
+//		Î”PCMã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨ˆç®—
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	int	iMusSize	ƒV[ƒPƒ“ƒX‚ÌƒTƒCƒY
-//	œ•Ô’l
-//		unsigned	int	ƒ¢PCM‚Ì‡ŒvƒTƒCƒY
+//	â—å¼•æ•°
+//		unsigned	int	iMusSize	ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ã‚µã‚¤ã‚º
+//	â—è¿”å€¤
+//		unsigned	int	Î”PCMã®åˆè¨ˆã‚µã‚¤ã‚º
 //==============================================================
 unsigned	int		MusicFile::SetDPCMOffset(unsigned int iMusSize)
 {
@@ -672,12 +672,12 @@ unsigned	int		MusicFile::SetDPCMOffset(unsigned int iMusSize)
 }
 
 //==============================================================
-//		ƒAƒhƒŒƒXî•ñ‚ğŒˆ’è‚·‚éB
+//		ã‚¢ãƒ‰ãƒ¬ã‚¹æƒ…å ±ã‚’æ±ºå®šã™ã‚‹ã€‚
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	MusicFile::Fix_Address(void)
 {
@@ -708,12 +708,12 @@ void	MusicFile::Fix_Address(void)
 
 /*
 //==============================================================
-//		‹ÈƒoƒCƒiƒŠƒCƒ[ƒW‚Ìì¬
+//		æ›²ãƒã‚¤ãƒŠãƒªã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½œæˆ
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	MusicFile::make_binary(void)
 {
@@ -721,12 +721,12 @@ void	MusicFile::make_binary(void)
 }
 */		
 //==============================================================
-//		‚m‚r‚e‚Ìì¬
+//		ï¼®ï¼³ï¼¦ã®ä½œæˆ
 //--------------------------------------------------------------
-//	œˆø”
-//		size_t	rom_size	*.bin‚ÌƒTƒCƒY
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		size_t	rom_size	*.binã®ã‚µã‚¤ã‚º
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	MusicFile::make_bin(size_t rom_size, int ptOffset)
 {
@@ -739,7 +739,7 @@ void	MusicFile::make_bin(size_t rom_size, int ptOffset)
 				size_t		_size	= 4 + (Header.iBGM + Header.iSE)*2;
 
 
-	//‹ÈƒoƒCƒiƒŠ[‚Ìì¬
+	//æ›²ãƒã‚¤ãƒŠãƒªãƒ¼ã®ä½œæˆ
 	_str.clear();
 	_str.resize(_size);
 
@@ -751,7 +751,7 @@ void	MusicFile::make_bin(size_t rom_size, int ptOffset)
 	if(Header.bank == false){
 
 		if(cDPCMinfo != NULL){
-			pt[1]	= (unsigned short)(ptOffset + rom_size - 0x80 + _size + cDPCMinfo->getOffset());	//ƒ¢PCM info ‚ÌƒAƒhƒŒƒX
+			pt[1]	= (unsigned short)(ptOffset + rom_size - 0x80 + _size + cDPCMinfo->getOffset());	//Î”PCM info ã®ã‚¢ãƒ‰ãƒ¬ã‚¹
 		} else {
 			pt[1]	= 0;
 		}
@@ -770,7 +770,7 @@ void	MusicFile::make_bin(size_t rom_size, int ptOffset)
 	} else {
 
 		if(cDPCMinfo != NULL){
-			pt[1] = (unsigned short)(ptOffset + _size + cDPCMinfo->getOffset());	//ƒ¢PCM info ‚ÌƒAƒhƒŒƒX
+			pt[1] = (unsigned short)(ptOffset + _size + cDPCMinfo->getOffset());	//Î”PCM info ã®ã‚¢ãƒ‰ãƒ¬ã‚¹
 		} else {
 			pt[1]	= 0;
 		}
@@ -791,7 +791,7 @@ void	MusicFile::make_bin(size_t rom_size, int ptOffset)
 	getCode(&_str);
 	code = _str;
 
-	//ƒ¢PCM‚Ìì¬
+	//Î”PCMã®ä½œæˆ
 	dpcm_code.clear();
 	if(cDPCMinfo != NULL){
 		cDPCMinfo->getDPCMCode(&dpcm_code);
@@ -800,13 +800,13 @@ void	MusicFile::make_bin(size_t rom_size, int ptOffset)
 }
 
 //==============================================================
-//		‚m‚r‚eŒ`®‚Ö‚Ì•Û‘¶
+//		ï¼®ï¼³ï¼¦å½¢å¼ã¸ã®ä¿å­˜
 //--------------------------------------------------------------
-//	œˆø”
-//		const	char*	strFileName		ƒtƒ@ƒCƒ‹–¼
-//		bool			opt				Å“K‰»ƒtƒ‰ƒO
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		const	char*	strFileName		ãƒ•ã‚¡ã‚¤ãƒ«å
+//		bool			opt				æœ€é©åŒ–ãƒ•ãƒ©ã‚°
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	MusicFile::saveNSF(const char*	strFileName)
 {
@@ -823,14 +823,14 @@ void	MusicFile::saveNSF(const char*	strFileName)
 				bool	dpcm_bank		= false;
 				bool	flag_Optimize	= cOptionSW->flag_Optimize;
 
-	//NSF—pƒR[ƒh‚Ì“]‘—
+	//NSFç”¨ã‚³ãƒ¼ãƒ‰ã®è»¢é€
 	_romcode->fileopen(Header.romcode.c_str(), &(cOptionSW->m_pass_code));
 	bin_size = _romcode->GetSize();
 	_romcode->read(romimg, bin_size);
 	_romcode->close();
 	delete		_romcode;
 
-	//NSFƒwƒbƒ_[‚ÌXV
+	//NSFãƒ˜ãƒƒãƒ€ãƒ¼ã®æ›´æ–°
 	memcpy(&nsf->Title, Header.title.c_str(), 32);
 	memcpy(&nsf->Composer, Header.composer.c_str(), 32);
 	memcpy(&nsf->Copyright, Header.copyright.c_str(), 32);
@@ -846,13 +846,13 @@ void	MusicFile::saveNSF(const char*	strFileName)
 	if((nsf->Bank[0] == 0) && (nsf->Bank[1] == 0) && (nsf->Bank[2] == 0) && (nsf->Bank[3] == 0)){
 
 		//------------------------------
-		//Bank ”ñ‘Î‰bin
+		//Bank éå¯¾å¿œbin
 
-		//ƒV[ƒPƒ“ƒX‚ÌƒoƒCƒiƒŠ‚ğ¶¬
+		//ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ãƒã‚¤ãƒŠãƒªã‚’ç”Ÿæˆ
 		make_bin(bin_size, 0x8000);
 
 		if(Header.bank == true){
-			Err(_T("w’è‚Ì.binƒtƒ@ƒCƒ‹‚ÍA‡™PCM‚Ìƒoƒ“ƒN‚É‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñB\n‡™PCM‚Ìƒoƒ“ƒN‚É‘Î‰‚µ‚½.binƒtƒ@ƒCƒ‹‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+			Err(_T("æŒ‡å®šã®.binãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€âŠ¿PCMã®ãƒãƒ³ã‚¯ã«å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ã€‚\nâŠ¿PCMã®ãƒãƒ³ã‚¯ã«å¯¾å¿œã—ãŸ.binãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 		}
 
 		mus_size = bin_size - 0x80 + code.size();
@@ -861,27 +861,27 @@ void	MusicFile::saveNSF(const char*	strFileName)
 			mus_bank++;
 		}
 
-		//ƒTƒCƒYƒ`ƒFƒbƒN
+		//ã‚µã‚¤ã‚ºãƒã‚§ãƒƒã‚¯
 		_COUT << _T("[CODE & MUSIC]") << endl;
 		_COUT << _T("  Bank = ") << (unsigned int)mus_bank << endl;
 		_COUT << _T("  Size = ") << (unsigned int)mus_size << _T(" [Byte] / ") << Header.offsetPCM - 0x8000 << _T(" [Byte]") << endl;
 
 		if((0x8000 + mus_size) > Header.offsetPCM){
-			Err(_T("ƒR[ƒhEƒV[ƒPƒ“ƒX‚ÌƒTƒCƒY‚ª‹–—e’l‚ğ‰z‚¦‚Ü‚µ‚½B"));
+			Err(_T("ã‚³ãƒ¼ãƒ‰ãƒ»ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ã‚µã‚¤ã‚ºãŒè¨±å®¹å€¤ã‚’è¶Šãˆã¾ã—ãŸã€‚"));
 		}
 
 	} else {
 
 		//------------------------------
-		//Bank‘Î‰binH
+		//Bankå¯¾å¿œbinï¼Ÿ
 
-		unsigned	int	iSizeLimit = 0x10000;	//Šg’£RAM‚Ö‚Ì“]‘——L‚è
+		unsigned	int	iSizeLimit = 0x10000;	//æ‹¡å¼µRAMã¸ã®è»¢é€æœ‰ã‚Š
 
-		//ƒV[ƒPƒ“ƒX‚ÌƒoƒCƒiƒŠ‚ğ¶¬
+		//ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ãƒã‚¤ãƒŠãƒªã‚’ç”Ÿæˆ
 		make_bin(bin_size, 0x0000);
 
 		if(Header.bank == false){
-			Err(_T("w’è‚Ì.binƒtƒ@ƒCƒ‹‚ÍA‡™PCM‚Ìƒoƒ“ƒN‚É‘Î‰‚µ‚Ä‚¢‚Ü‚·B\n#BankƒRƒ}ƒ“ƒh‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+			Err(_T("æŒ‡å®šã®.binãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€âŠ¿PCMã®ãƒãƒ³ã‚¯ã«å¯¾å¿œã—ã¦ã„ã¾ã™ã€‚\n#Bankã‚³ãƒãƒ³ãƒ‰ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 		}
 
 		dpcm_bank = true;
@@ -899,14 +899,14 @@ void	MusicFile::saveNSF(const char*	strFileName)
 		_COUT << _T("  Bank = ") << (unsigned int)mus_bank << endl;
 		_COUT << _T("  Size = ") << (unsigned int)mus_size << _T(" [Byte] / ") << iSizeLimit << _T(" [Byte]") << endl;
 
-		//ƒTƒCƒYƒ`ƒFƒbƒN
+		//ã‚µã‚¤ã‚ºãƒã‚§ãƒƒã‚¯
 		if(mus_size > iSizeLimit){
-			Err(_T("ƒR[ƒhEƒV[ƒPƒ“ƒX‚ÌƒTƒCƒY‚ª‹–—e’l‚ğ‰z‚¦‚Ü‚µ‚½B"));
+			Err(_T("ã‚³ãƒ¼ãƒ‰ãƒ»ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ã‚µã‚¤ã‚ºãŒè¨±å®¹å€¤ã‚’è¶Šãˆã¾ã—ãŸã€‚"));
 		}
 
 	}
 
-	//‡™PCM
+	//âŠ¿PCM
 	_COUT << _T("[DPCM]") << endl;
 
 	pcm_size = dpcm_code.size();
@@ -917,39 +917,39 @@ void	MusicFile::saveNSF(const char*	strFileName)
 
 
 	if(dpcm_bank == false){
-		//‡™PCMƒTƒCƒYƒ`ƒFƒbƒN
+		//âŠ¿PCMã‚µã‚¤ã‚ºãƒã‚§ãƒƒã‚¯
 		_COUT << _T("  Bank = ") << (unsigned int)pcm_bank << endl;
 		_COUT << _T("  Size = ") << (unsigned int)pcm_size << _T(" [Byte] / ") << 0x10000 - Header.offsetPCM << _T(" [Byte]") << endl;
 
 		if(	(Header.offsetPCM + pcm_size) > 0x10000	){
-			Err(_T("‡™PCM‚ÌƒTƒCƒY‚ª‹–—e’l‚ğ‰z‚¦‚Ü‚µ‚½B"));
+			Err(_T("âŠ¿PCMã®ã‚µã‚¤ã‚ºãŒè¨±å®¹å€¤ã‚’è¶Šãˆã¾ã—ãŸã€‚"));
 		}
 
 	} else {
-		//‡™PCMƒTƒCƒYƒ`ƒFƒbƒN
+		//âŠ¿PCMã‚µã‚¤ã‚ºãƒã‚§ãƒƒã‚¯
 		_COUT << _T("  Bank = ") << (unsigned int)pcm_bank << endl;
 		_COUT << _T("  Size = ") << (unsigned int)pcm_size << _T(" [Byte]") << endl;
 
 		i = mus_bank + pcm_bank + 3;
 		if(i > 255){
-			Err(_T("ƒoƒ“ƒN”‚Ì‡Œv‚ª255‚ğ‰z‚¦‚Ü‚µ‚½B"));
+			Err(_T("ãƒãƒ³ã‚¯æ•°ã®åˆè¨ˆãŒ255ã‚’è¶Šãˆã¾ã—ãŸã€‚"));
 		}
 	}
 
 	//----------------------
-	//‚m‚r‚e‘‚«‚İ
+	//ï¼®ï¼³ï¼¦æ›¸ãè¾¼ã¿
 	fileopen(strFileName);
 
 	if(dpcm_bank == false){
 		if(cDPCMinfo == NULL){
-			//‡™PCM‚ğg‚í‚È‚¢ê‡
-			write(romimg, bin_size);			//NSFƒwƒbƒ_[ • ƒR[ƒh‚Ì‘‚«‚İ
-			write(code.c_str(), code.size());	//ƒV[ƒPƒ“ƒX‚Ì‘‚«‚İ
+			//âŠ¿PCMã‚’ä½¿ã‚ãªã„å ´åˆ
+			write(romimg, bin_size);			//NSFãƒ˜ãƒƒãƒ€ãƒ¼ ï¼† ã‚³ãƒ¼ãƒ‰ã®æ›¸ãè¾¼ã¿
+			write(code.c_str(), code.size());	//ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®æ›¸ãè¾¼ã¿
 
 		} else {
-			//‡™PCM‚ğg‚¤ê‡
+			//âŠ¿PCMã‚’ä½¿ã†å ´åˆ
 			if(flag_Optimize == true){
-				//Å“K‰»‚ª—LŒø‚Å‚ ‚ê‚ÎAƒwƒbƒ_[‚Éƒoƒ“ƒNî•ñ‚ğ‘‚­B
+				//æœ€é©åŒ–ãŒæœ‰åŠ¹ã§ã‚ã‚Œã°ã€ãƒ˜ãƒƒãƒ€ãƒ¼ã«ãƒãƒ³ã‚¯æƒ…å ±ã‚’æ›¸ãã€‚
 				i = 0;
 				while(i < mus_bank){
 					nsf->Bank[i] = (unsigned char)i;
@@ -971,9 +971,9 @@ void	MusicFile::saveNSF(const char*	strFileName)
 				}
 			}
 
-			//ƒR[ƒh•ƒV[ƒPƒ“ƒX
-			write(romimg, bin_size);			//NSFƒwƒbƒ_[ • ƒR[ƒh‚Ì‘‚«‚İ
-			write(code.c_str(), code.size());	//ƒV[ƒPƒ“ƒX‚Ì‘‚«‚İ
+			//ã‚³ãƒ¼ãƒ‰ï¼†ã‚·ãƒ¼ã‚±ãƒ³ã‚¹
+			write(romimg, bin_size);			//NSFãƒ˜ãƒƒãƒ€ãƒ¼ ï¼† ã‚³ãƒ¼ãƒ‰ã®æ›¸ãè¾¼ã¿
+			write(code.c_str(), code.size());	//ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®æ›¸ãè¾¼ã¿
 
 			if(flag_Optimize == true){
 				//GAP
@@ -987,8 +987,8 @@ void	MusicFile::saveNSF(const char*	strFileName)
 					put(0);		//0 padding
 					mus_size--;
 				}
-				//ƒ¢PCM
-				write(dpcm_code.c_str(), pcm_size);		//‡™PCM‚Ì‘‚«‚İ
+				//Î”PCM
+				write(dpcm_code.c_str(), pcm_size);		//âŠ¿PCMã®æ›¸ãè¾¼ã¿
 				while(pcm_size < ((unsigned int)pcm_bank<<12)){
 					put(0);		//0 padding
 					pcm_size++;
@@ -999,21 +999,21 @@ void	MusicFile::saveNSF(const char*	strFileName)
 					put(0);		//0 padding
 					mus_size++;
 				}
-				//ƒ¢PCM
-				write(dpcm_code.c_str(), pcm_size);		//‡™PCM‚Ì‘‚«‚İ
+				//Î”PCM
+				write(dpcm_code.c_str(), pcm_size);		//âŠ¿PCMã®æ›¸ãè¾¼ã¿
 			}
 		}
 	} else {
-		//Bank ‘Î‰bin
-		write(&romimg[0x0000], bin_size);	//NSFƒwƒbƒ_[ • ƒR[ƒh‚Ì‘‚«‚İ
-		write(code.c_str(), code.size());	//ƒV[ƒPƒ“ƒX‚Ì‘‚«‚İ
+		//Bank å¯¾å¿œbin
+		write(&romimg[0x0000], bin_size);	//NSFãƒ˜ãƒƒãƒ€ãƒ¼ ï¼† ã‚³ãƒ¼ãƒ‰ã®æ›¸ãè¾¼ã¿
+		write(code.c_str(), code.size());	//ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®æ›¸ãè¾¼ã¿
 		//GAP
 		while(mus_size < ((unsigned int)mus_bank<<12)){
 			put(0);		//0 padding
 			mus_size++;
 		}
 
-		write(dpcm_code.c_str(), pcm_size);		//‡™PCM‚Ì‘‚«‚İ
+		write(dpcm_code.c_str(), pcm_size);		//âŠ¿PCMã®æ›¸ãè¾¼ã¿
 		//GAP
 		while(pcm_size < ((unsigned int)pcm_bank<<12)){
 			put(0);		//0 padding
@@ -1021,7 +1021,7 @@ void	MusicFile::saveNSF(const char*	strFileName)
 		}
 
 		if(flag_Optimize != true){
-			//GAPi•K‚¸A32kByteˆÈã‚É‚·‚éBj
+			//GAPï¼ˆå¿…ãšã€32kByteä»¥ä¸Šã«ã™ã‚‹ã€‚ï¼‰
 			i = (mus_bank + pcm_bank + 3) << 12;
 			while(i < 0x8000){
 				put(0);		//0 padding
@@ -1039,12 +1039,12 @@ void	MusicFile::saveNSF(const char*	strFileName)
 }
 
 //==============================================================
-//		ƒAƒZƒ“ƒuƒŠŒ¾Œêƒ\[ƒX‚Ö‚Ì•Û‘¶
+//		ã‚¢ã‚»ãƒ³ãƒ–ãƒªè¨€èªã‚½ãƒ¼ã‚¹ã¸ã®ä¿å­˜
 //--------------------------------------------------------------
-//	œˆø”
-//		const	char*	strFileName		ƒtƒ@ƒCƒ‹–¼
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		const	char*	strFileName		ãƒ•ã‚¡ã‚¤ãƒ«å
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	MusicFile::saveASM(const char*	strFileName)
 {
@@ -1087,12 +1087,12 @@ void	MusicFile::saveASM(const char*	strFileName)
 }
 
 //==============================================================
-//		ƒGƒ‰[ˆ—
+//		ã‚¨ãƒ©ãƒ¼å‡¦ç†
 //--------------------------------------------------------------
-//	œˆø”
-//		const	_CHAR	msg[]	ƒGƒ‰[ƒƒbƒZ[ƒW
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		const	_CHAR	msg[]	ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	MusicFile::Err(const _CHAR msg[])
 {
@@ -1102,21 +1102,21 @@ void	MusicFile::Err(const _CHAR msg[])
 		_COUT << _T("[ ERROR ] : ") << msg << endl;
 	}
 
-	//ˆÙíI—¹
+	//ç•°å¸¸çµ‚äº†
 	nsc_exit(EXIT_FAILURE);
 }
 
 //==============================================================
-//		ƒ[ƒjƒ“ƒOˆ—
+//		ãƒ¯ãƒ¼ãƒ‹ãƒ³ã‚°å‡¦ç†
 //--------------------------------------------------------------
-//	œˆø”
-//		const	_CHAR	msg[]	ƒ[ƒjƒ“ƒOƒƒbƒZ[ƒW
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		const	_CHAR	msg[]	ãƒ¯ãƒ¼ãƒ‹ãƒ³ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	MusicFile::Warning(const _CHAR msg[])
 {
-	//Œ»İ‚Ìƒtƒ@ƒCƒ‹–¼‚ÆAs”‚ğ•\¦
+	//ç¾åœ¨ã®ãƒ•ã‚¡ã‚¤ãƒ«åã¨ã€è¡Œæ•°ã‚’è¡¨ç¤º
 	if(cOptionSW->fErr == true){
 		_CERR << _T("[WARNING] : ") << msg << endl;
 	} else {

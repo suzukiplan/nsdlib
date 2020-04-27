@@ -12,7 +12,7 @@
 
 /****************************************************************/
 /*																*/
-/*			’è”’è‹`											*/
+/*			å®šæ•°å®šç¾©											*/
 /*																*/
 /****************************************************************/
 typedef	struct{
@@ -33,22 +33,22 @@ typedef struct{
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class DPCMinfo :
 	public MusicItem
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 private:
 	bool				bank;
 	unsigned	char	max_number;
 	unsigned	char	m_id;
 	nsd_dpcm_info		infoDPCM[256];
-	map< string, DPCM*>	ptcDPCM;	//‡™PCM
-//static	const	Command_Info	Command[];	//ƒRƒ}ƒ“ƒh‚Ìî•ñ
+	map< string, DPCM*>	ptcDPCM;	//âŠ¿PCM
+//static	const	Command_Info	Command[];	//ã‚³ãƒžãƒ³ãƒ‰ã®æƒ…å ±
 
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 						DPCMinfo(MMLfile* MML, bool _bank, const _CHAR _strName[] = _T("==== [ DPCMinfo ]===="));
 						~DPCMinfo(void);

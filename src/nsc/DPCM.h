@@ -12,18 +12,18 @@
 
 /****************************************************************/
 /*																*/
-/*			クラス定義											*/
+/*			繧ｯ繝ｩ繧ｹ螳夂ｾｩ											*/
 /*																*/
 /****************************************************************/
 class DPCM :
 	public FileInput, public MusicItem
 {
-//メンバー変数
+//繝｡繝ｳ繝舌�ｼ螟画焚
 private:
 	unsigned	int		m_id;
 	unsigned	char	_DPCM_size;
 
-//メンバー関数
+//繝｡繝ｳ繝舌�ｼ髢｢謨ｰ
 public:
 						DPCM(MMLfile* MML, const char* dmcfile, unsigned int _id, const _CHAR _strName[] = _T("==== [ DPCM ]===="));
 						~DPCM(void);

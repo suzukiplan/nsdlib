@@ -11,27 +11,27 @@
 #include "Patch.h"
 
 /****************************************************************/
-/*					ƒOƒ[ƒoƒ‹•Ï”iƒNƒ‰ƒX‚¾‚¯‚ÇEEEj		*/
+/*					ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ï¼ˆã‚¯ãƒ©ã‚¹ã ã‘ã©ãƒ»ãƒ»ãƒ»ï¼‰		*/
 /****************************************************************/
-extern	OPSW*			cOptionSW;	//ƒIƒvƒVƒ‡ƒ“î•ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^•Ï”
+extern	OPSW*			cOptionSW;	//ã‚ªãƒ—ã‚·ãƒ§ãƒ³æƒ…å ±ã¸ã®ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//					int		_id			ƒpƒbƒ`”Ô†
-//	œ•Ô’l
-//					–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//					int		_id			ãƒ‘ãƒƒãƒç•ªå·
+//	â—è¿”å€¤
+//					ç„¡ã—
 //==============================================================
 Patch::Patch(MMLfile* MML, int _id):
 	m_id(_id)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 
 
-//	’è”’è‹`
+//	å®šæ•°å®šç¾©
 enum	Command_ID_mml {
 	Patch_MacroSet,
 	Patch_Macro,
@@ -71,7 +71,7 @@ enum	Command_ID_mml {
 
 };
 
-//	‚±‚ê‚ç‚ÍAMML\•¶‚Åg‚¦‚éƒRƒ}ƒ“ƒhB
+//	ã“ã‚Œã‚‰ã¯ã€MMLæ§‹æ–‡ã§ä½¿ãˆã‚‹ã‚³ãƒãƒ³ãƒ‰ã€‚
 const	static	Command_Info	Command[] = {
 		{	"$$",	Patch_MacroSet	},
 		{	"$",	Patch_Macro		},
@@ -102,49 +102,49 @@ const	static	Command_Info	Command[] = {
 		{	"a",	Patch_A		},
 		{	"b",	Patch_B		},
 
-		{	"‚Ç#",		Patch_Cis	},
-		{	"‚ê#",		Patch_Dis	},
-		{	"‚Ó‚Ÿ#",	Patch_Fis	},
-		{	"‚Ó#",		Patch_Fis	},
-		{	"‚»#",		Patch_Gis	},
-		{	"‚ç#",		Patch_Ais	},
+		{	"ã©#",		Patch_Cis	},
+		{	"ã‚Œ#",		Patch_Dis	},
+		{	"ãµã#",	Patch_Fis	},
+		{	"ãµ#",		Patch_Fis	},
+		{	"ã#",		Patch_Gis	},
+		{	"ã‚‰#",		Patch_Ais	},
 
-		{	"‚ê-",	Patch_Cis	},
-		{	"‚İ-",	Patch_Dis	},
-		{	"‚»-",	Patch_Fis	},
-		{	"‚ç-",	Patch_Gis	},
-		{	"‚µ-",	Patch_Ais	},
+		{	"ã‚Œ-",	Patch_Cis	},
+		{	"ã¿-",	Patch_Dis	},
+		{	"ã-",	Patch_Fis	},
+		{	"ã‚‰-",	Patch_Gis	},
+		{	"ã—-",	Patch_Ais	},
 
-		{	"‚Ç",	Patch_C		},
-		{	"‚ê",	Patch_D		},
-		{	"‚İ",	Patch_E		},
-		{	"‚Ó‚Ÿ",	Patch_F		},
-		{	"‚Ó",	Patch_F		},
-		{	"‚»",	Patch_G		},
-		{	"‚ç",	Patch_A		},
-		{	"‚µ",	Patch_B		},
+		{	"ã©",	Patch_C		},
+		{	"ã‚Œ",	Patch_D		},
+		{	"ã¿",	Patch_E		},
+		{	"ãµã",	Patch_F		},
+		{	"ãµ",	Patch_F		},
+		{	"ã",	Patch_G		},
+		{	"ã‚‰",	Patch_A		},
+		{	"ã—",	Patch_B		},
 
-		{	"ƒh#",		Patch_Cis	},
-		{	"ƒŒ#",		Patch_Dis	},
-		{	"ƒtƒ@#",	Patch_Fis	},
-		{	"ƒt#",		Patch_Fis	},
-		{	"ƒ\#",		Patch_Gis	},
-		{	"ƒ‰#",		Patch_Ais	},
+		{	"ãƒ‰#",		Patch_Cis	},
+		{	"ãƒ¬#",		Patch_Dis	},
+		{	"ãƒ•ã‚¡#",	Patch_Fis	},
+		{	"ãƒ•#",		Patch_Fis	},
+		{	"ã‚½#",		Patch_Gis	},
+		{	"ãƒ©#",		Patch_Ais	},
 
-		{	"ƒŒ-",	Patch_Cis	},
-		{	"ƒ~-",	Patch_Dis	},
-		{	"ƒ\-",	Patch_Fis	},
-		{	"ƒ‰-",	Patch_Gis	},
-		{	"ƒV-",	Patch_Ais	},
+		{	"ãƒ¬-",	Patch_Cis	},
+		{	"ãƒŸ-",	Patch_Dis	},
+		{	"ã‚½-",	Patch_Fis	},
+		{	"ãƒ©-",	Patch_Gis	},
+		{	"ã‚·-",	Patch_Ais	},
 
-		{	"ƒh",	Patch_C		},
-		{	"ƒŒ",	Patch_D		},
-		{	"ƒ~",	Patch_E		},
-		{	"ƒtƒ@",	Patch_F		},
-		{	"ƒt",	Patch_F		},
-		{	"ƒ\",	Patch_G		},
-		{	"ƒ‰",	Patch_A		},
-		{	"ƒV",	Patch_B		},
+		{	"ãƒ‰",	Patch_C		},
+		{	"ãƒ¬",	Patch_D		},
+		{	"ãƒŸ",	Patch_E		},
+		{	"ãƒ•ã‚¡",	Patch_F		},
+		{	"ãƒ•",	Patch_F		},
+		{	"ã‚½",	Patch_G		},
+		{	"ãƒ©",	Patch_A		},
+		{	"ã‚·",	Patch_B		},
 
 		{	"n",	Patch_Note	},
 
@@ -174,33 +174,33 @@ const	static	Command_Info	Command[] = {
 	unsigned	char	cData;
 
 	//------------------------------
-	//ƒNƒ‰ƒX‚Ì‰Šúİ’è
-	setN(MML, 0);	//ƒm[ƒg”Ô† 0 ‚Ìî•ñ‚Í•K‚¸ì¬‚·‚éB
+	//ã‚¯ãƒ©ã‚¹ã®åˆæœŸè¨­å®š
+	setN(MML, 0);	//ãƒãƒ¼ãƒˆç•ªå· 0 ã®æƒ…å ±ã¯å¿…ãšä½œæˆã™ã‚‹ã€‚
 
 
 	//------------------------------
-	//ƒRƒ“ƒpƒCƒ‹
+	//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
 
-	// { ‚ÌŒŸõ
+	// { ã®æ¤œç´¢
 	while(MML->cRead() != '{'){
 		if(MML->eof()){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌŠJn‚ğ¦‚·{‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹ã‚’ç¤ºã™{ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 	}
 
-	// } ‚ª—ˆ‚é‚Ü‚ÅA‹LqƒuƒƒbƒN“à‚ğƒRƒ“ƒpƒCƒ‹‚·‚éB
+	// } ãŒæ¥ã‚‹ã¾ã§ã€è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯å†…ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã€‚
 	while((cData = MML->GetChar()) != '}'){
 		
-		// } ‚ª—ˆ‚é‘O‚ÉA[EOF]‚ª—ˆ‚½‚çƒGƒ‰[
+		// } ãŒæ¥ã‚‹å‰ã«ã€[EOF]ãŒæ¥ãŸã‚‰ã‚¨ãƒ©ãƒ¼
 		if( MML->eof() ){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌI’[‚ğ¦‚·`}'‚ª‚ ‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®çµ‚ç«¯ã‚’ç¤ºã™`}'ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 
-		//‚P‚Â–ß‚é
+		//ï¼‘ã¤æˆ»ã‚‹
 		MML->Back();
 
 
-		//ŠeƒRƒ}ƒ“ƒh–ˆ‚Ìˆ—
+		//å„ã‚³ãƒãƒ³ãƒ‰æ¯ã®å‡¦ç†
 		switch(MML->GetCommandID(Command, sizeof(Command)/sizeof(Command_Info))){
 
 			case(Patch_Macro):
@@ -265,14 +265,14 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Voice):
 				if(m_now_Patch->fEvoi == true){
-					MML->Err(_T("‰¹FƒGƒ“ƒxƒ[ƒv‚Æ“¯‚É’è‹`‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB"));
+					MML->Err(_T("éŸ³è‰²ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã¨åŒæ™‚ã«å®šç¾©ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"));
 				}
 				if(m_now_Patch->fVoi == true){
-					MML->Err(_T("‰¹F‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("éŸ³è‰²ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				i = MML->GetInt();
 				if( (i<0) || (i>255) ){
-					MML->Err(_T("‰¹F‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("éŸ³è‰²ã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				m_now_Patch->iVoi		= i;
 				m_now_Patch->fVoi		= true;
@@ -280,12 +280,12 @@ const	static	Command_Info	Command[] = {
 				break;
 
 			case(Patch_Off_Evoi):
-				MML->Err(_T("‰¹FƒGƒ“ƒxƒ[ƒv‚ÍA@ƒRƒ}ƒ“ƒh‚Å–³Œø‚É‚Å‚«‚Ü‚·B"));
+				MML->Err(_T("éŸ³è‰²ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã¯ã€@ã‚³ãƒãƒ³ãƒ‰ã§ç„¡åŠ¹ã«ã§ãã¾ã™ã€‚"));
 				break;
 
 			case(Patch_Off_Evol):
 				if(m_now_Patch->fEvol == true){
-					MML->Err(_T("‰¹—ÊƒGƒ“ƒxƒ[ƒv‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("éŸ³é‡ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->fEvol		= true;
 				m_now_Patch->sw_Evol	= false;
@@ -293,7 +293,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Off_Em):
 				if(m_now_Patch->fEm == true){
-					MML->Err(_T("‰¹’öƒGƒ“ƒxƒ[ƒv‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("éŸ³ç¨‹ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->fEm		= true;
 				m_now_Patch->sw_Em		= false;
@@ -301,7 +301,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Off_En):
 				if(m_now_Patch->fEn == true){
-					MML->Err(_T("ƒm[ƒgƒGƒ“ƒxƒ[ƒv‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("ãƒãƒ¼ãƒˆã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->fEn		= true;
 				m_now_Patch->sw_En		= false;
@@ -309,10 +309,10 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Evoi):
 				if(m_now_Patch->fEvoi == true){
-					MML->Err(_T("‰¹FƒGƒ“ƒxƒ[ƒv‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("éŸ³è‰²ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				if(m_now_Patch->fVoi == true){
-					MML->Err(_T("‰¹F‚Æ“¯‚É’è‹`‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB"));
+					MML->Err(_T("éŸ³è‰²ã¨åŒæ™‚ã«å®šç¾©ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"));
 				}
 				m_now_Patch->iEvoi		= MML->GetInt();
 				m_now_Patch->fEvoi		= true;
@@ -321,7 +321,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Evol):
 				if(m_now_Patch->fEvol == true){
-					MML->Err(_T("‰¹—ÊƒGƒ“ƒxƒ[ƒv‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("éŸ³é‡ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->iEvol		= MML->GetInt();
 				m_now_Patch->fEvol		= true;
@@ -330,7 +330,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Em):
 				if(m_now_Patch->fEm == true){
-					MML->Err(_T("‰¹’öƒGƒ“ƒxƒ[ƒv‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("éŸ³ç¨‹ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->iEm		= MML->GetInt();
 				m_now_Patch->fEm		= true;
@@ -339,7 +339,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_En):
 				if(m_now_Patch->fEn == true){
-					MML->Err(_T("ƒm[ƒgƒGƒ“ƒxƒ[ƒv‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("ãƒãƒ¼ãƒˆã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->iEn		= MML->GetInt();
 				m_now_Patch->fEn		= true;
@@ -348,7 +348,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Gate_q):
 				if(m_now_Patch->fGate_q == true){
-					MML->Err(_T("qƒRƒ}ƒ“ƒh‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("qã‚³ãƒãƒ³ãƒ‰ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->iGate_q	= MML->GetInt();
 				m_now_Patch->fGate_q	= true;
@@ -356,7 +356,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Gate_u):
 				if(m_now_Patch->fGate_u == true){
-					MML->Err(_T("uƒRƒ}ƒ“ƒh‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("uã‚³ãƒãƒ³ãƒ‰ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				cData = MML->GetChar();
 				if(cData == '0'){
@@ -371,7 +371,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_KeyShift):
 				if(m_now_Patch->fKey == true){
-					MML->Err(_T("ˆÚ’²‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("ç§»èª¿ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->iKey		= MML->GetInt();
 				m_now_Patch->fKey		= true;
@@ -379,7 +379,7 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Sweep):
 				if(m_now_Patch->fSweep == true){
-					MML->Err(_T("sƒRƒ}ƒ“ƒh‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("sã‚³ãƒãƒ³ãƒ‰ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				} else {
 					int		iSpeed;
 					int		iDepth;
@@ -389,17 +389,17 @@ const	static	Command_Info	Command[] = {
 					cData	= MML->GetChar();
 					if(cData != ','){
 						if( (iSpeed < 0) || (iSpeed > 255) ){
-							MML->Err(_T("sƒRƒ}ƒ“ƒh‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+							MML->Err(_T("sã‚³ãƒãƒ³ãƒ‰ã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 						}
 						MML->Back();
 						c = (unsigned char)iSpeed;
 					} else {
 						if( (iSpeed < 0) || (iSpeed > 15) ){
-							MML->Err(_T("sƒRƒ}ƒ“ƒh‚Ì‘æ1ƒpƒ‰ƒ[ƒ^‚Í0`15‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+							MML->Err(_T("sã‚³ãƒãƒ³ãƒ‰ã®ç¬¬1ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯0ã€œ15ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 						}
 						iDepth = MML->GetInt();
 						if( (iDepth < 0) || (iDepth > 15) ){
-							MML->Err(_T("sƒRƒ}ƒ“ƒh‚Ì‘æ2ƒpƒ‰ƒ[ƒ^‚Í0`15‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+							MML->Err(_T("sã‚³ãƒãƒ³ãƒ‰ã®ç¬¬2ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯0ã€œ15ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 						}
 						c = (unsigned char)(((iSpeed & 0x0F) << 4) | (iDepth & 0x0F));
 					}
@@ -410,17 +410,17 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_n163set):
 				if(m_now_Patch->fVoi == true){
-					MML->Err(_T("@ƒRƒ}ƒ“ƒh‚ªŠù‚Éw’è‚³‚ê‚Ä‚¢‚Ü‚·B"));
+					MML->Err(_T("@ã‚³ãƒãƒ³ãƒ‰ãŒæ—¢ã«æŒ‡å®šã•ã‚Œã¦ã„ã¾ã™ã€‚"));
 				}
 				if(m_now_Patch->fEvoi == true){
-					MML->Err(_T("E@ƒRƒ}ƒ“ƒh‚ªŠù‚Éw’è‚³‚ê‚Ä‚¢‚Ü‚·B"));
+					MML->Err(_T("E@ã‚³ãƒãƒ³ãƒ‰ãŒæ—¢ã«æŒ‡å®šã•ã‚Œã¦ã„ã¾ã™ã€‚"));
 				}
 				i = MML->GetInt();
 				if((i<0) || (i>252)){
-					MML->Err(_T("n16x‚Ì”gŒ`ŠJn“_‚Í0`252‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("n16xã®æ³¢å½¢é–‹å§‹ç‚¹ã¯0ã€œ252ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				if((i % 4) != 0){
-					MML->Err(_T("n16x‚Ì”gŒ`ŠJn“_‚Í4‚Ì”{”‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+					MML->Err(_T("n16xã®æ³¢å½¢é–‹å§‹ç‚¹ã¯4ã®å€æ•°ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 				}
 				m_now_Patch->iVoi		= i/4;
 				m_now_Patch->fVoi		= true;
@@ -428,14 +428,14 @@ const	static	Command_Info	Command[] = {
 				cData = MML->GetChar();
 				if(cData == ','){
 					if(m_now_Patch->fSweep == true){
-						MML->Err(_T("sƒRƒ}ƒ“ƒh‚ªŠù‚Éw’è‚³‚ê‚Ä‚¢‚Ü‚·B"));
+						MML->Err(_T("sã‚³ãƒãƒ³ãƒ‰ãŒæ—¢ã«æŒ‡å®šã•ã‚Œã¦ã„ã¾ã™ã€‚"));
 					}
 					i = MML->GetInt();
 					if((i<4) || (i>256)){
-						MML->Err(_T("n16x‚ÌƒTƒ“ƒvƒ‹’·‚Í4`256‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+						MML->Err(_T("n16xã®ã‚µãƒ³ãƒ—ãƒ«é•·ã¯4ã€œ256ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 					}
 					if((i % 4) != 0){
-						MML->Err(_T("n16x‚ÌƒTƒ“ƒvƒ‹’·‚Í4‚Ì”{”‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+						MML->Err(_T("n16xã®ã‚µãƒ³ãƒ—ãƒ«é•·ã¯4ã®å€æ•°ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 					}
 					m_now_Patch->iSweep		= (unsigned char)(64 - (i/4));
 					m_now_Patch->fSweep		= true;
@@ -446,13 +446,13 @@ const	static	Command_Info	Command[] = {
 
 			case(Patch_Sub):
 				if(m_now_Patch->fSub == true){
-					MML->Err(_T("ƒTƒuƒ‹[ƒ`ƒ“‚Ì‚Qd’è‹`‚Å‚·B"));
+					MML->Err(_T("ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®ï¼’é‡å®šç¾©ã§ã™ã€‚"));
 				}
 				m_now_Patch->iSub		= MML->GetInt();
 				m_now_Patch->fSub		= true;
 
 				cData = MML->GetChar();
-				if(cData == ','){	//Å“K‰»–³Œøƒtƒ‰ƒO
+				if(cData == ','){	//æœ€é©åŒ–ç„¡åŠ¹ãƒ•ãƒ©ã‚°
 					i = MML->GetInt();
 					switch(i){
 						case(0):
@@ -462,7 +462,7 @@ const	static	Command_Info	Command[] = {
 							m_now_Patch->fSub_opt=true;
 							break;
 						default:
-							MML->Err(_T("ƒTƒuƒ‹[ƒ`ƒ“‚ÌÅ“K‰»ƒtƒ‰ƒO‚Í0`1‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+							MML->Err(_T("ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®æœ€é©åŒ–ãƒ•ãƒ©ã‚°ã¯0ã€œ1ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 							break;
 					}
 				} else {
@@ -477,27 +477,27 @@ const	static	Command_Info	Command[] = {
 		}
 	}
 
-	//Local Macro‚Ì‰ğ•ú
+	//Local Macroã®è§£æ”¾
 	MML->DeleteMacro(1);
 
-	//Debug message@i‚¤‚´‚¢’öo—Í‚·‚é‚Ì‚Å’ˆÓBj
+	//Debug messageã€€ï¼ˆã†ã–ã„ç¨‹å‡ºåŠ›ã™ã‚‹ã®ã§æ³¨æ„ã€‚ï¼‰
 	if(cOptionSW->cDebug & 0x01){
 		DebugMsg();
 	}
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 Patch::~Patch(void)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 	map<unsigned int, patch_scrap*>::iterator	itPatch;
 	
 	//----------------------
@@ -513,17 +513,17 @@ Patch::~Patch(void)
 }
 
 //==============================================================
-//		ƒfƒoƒbƒO—p
+//		ãƒ‡ãƒãƒƒã‚°ç”¨
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	Patch::DebugMsg(void)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 	map<unsigned int, patch_scrap*>::iterator	itPatch;
 	
 	//----------------------
@@ -575,13 +575,13 @@ void	Patch::DebugMsg(void)
 }
 
 //==============================================================
-//		İ’è
+//		è¨­å®š
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//			int	key		ƒL[”Ô†i0:C / 1:Cis / ...j
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//			int	key		ã‚­ãƒ¼ç•ªå·ï¼ˆ0:C / 1:Cis / ...ï¼‰
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	Patch::setKey(MMLfile* MML, int key)
 {
@@ -589,29 +589,29 @@ void	Patch::setKey(MMLfile* MML, int key)
 }
 
 //==============================================================
-//		İ’è
+//		è¨­å®š
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*		MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//				int		note	ƒm[ƒg”Ô†
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*		MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//				int		note	ãƒãƒ¼ãƒˆç•ªå·
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	Patch::setN(MMLfile* MML, int note)
 {
 
 	if((note<0) || (note>255)){
-		MML->Err(_T("‰¹ŠK‚Ì”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚Ü‚·B"));
+		MML->Err(_T("éŸ³éšã®ç¯„å›²ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚"));
 	}
 
-	//ƒpƒbƒ`‚Ìİ’è
+	//ãƒ‘ãƒƒãƒã®è¨­å®š
 	m_kn = note;
 
 	if(m_Patch.count(m_kn) != 0){
-		//Šù‘¶ƒpƒbƒ`‚Ìƒ[ƒh
+		//æ—¢å­˜ãƒ‘ãƒƒãƒã®ãƒ­ãƒ¼ãƒ‰
 		m_now_Patch =	m_Patch[m_kn];
 	} else {
-		//ƒpƒbƒ`‚ÌV‹Kì¬
+		//ãƒ‘ãƒƒãƒã®æ–°è¦ä½œæˆ
 		m_now_Patch			= new	patch_scrap;
 		m_Patch[m_kn]		= m_now_Patch;
 
@@ -638,9 +638,9 @@ void	Patch::setN(MMLfile* MML, int note)
 //==============================================================
 //		
 //--------------------------------------------------------------
-//	œˆø”
-//				int		note	ƒm[ƒg”Ô†
-//	œ•Ô’l
+//	â—å¼•æ•°
+//				int		note	ãƒãƒ¼ãƒˆç•ªå·
+//	â—è¿”å€¤
 //				
 //==============================================================
 void	Patch::setNote(int i)

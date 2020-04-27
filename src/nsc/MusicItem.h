@@ -10,29 +10,29 @@
 #pragma once
 
 /****************************************************************/
-/*			ƒvƒƒgƒ^ƒCƒv										*/
+/*			ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—										*/
 /****************************************************************/
 class	MusicFile;
 
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class MusicItem
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 protected:
-	const		_CHAR*		strName;		//ƒIƒuƒWƒFƒNƒg‚Ì–¼Ì
-	list<MusicItem*>		ptcItem;		//\‘¢‰»
+	const		_CHAR*		strName;		//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åç§°
+	list<MusicItem*>		ptcItem;		//æ§‹é€ åŒ–
 				string		code;
 				size_t		iSize;
-	unsigned	int			iOffset;		//SNDƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
-				bool		f_Optimize;		//Å“K‰»ƒtƒ‰ƒO
+	unsigned	int			iOffset;		//SNDãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿
+				bool		f_Optimize;		//æœ€é©åŒ–ãƒ•ãƒ©ã‚°
 
 
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 	MusicItem(const _CHAR _strName[]=_T(""));
 	MusicItem(int _id, const _CHAR _strName[]=_T(""));
@@ -49,6 +49,6 @@ public:
 	virtual		void	setCode(string* _str);
 	virtual		void	getAsm(MusicFile* MUS);
 
-				void	setUse(void){f_Optimize = true;};	//Å“K‰»F•s‰Â
-				bool	chkUse(void){return(f_Optimize);};	//Å“K‰»ƒtƒ‰ƒO‚Ìæ“¾
+				void	setUse(void){f_Optimize = true;};	//æœ€é©åŒ–ï¼šä¸å¯
+				bool	chkUse(void){return(f_Optimize);};	//æœ€é©åŒ–ãƒ•ãƒ©ã‚°ã®å–å¾—
 };

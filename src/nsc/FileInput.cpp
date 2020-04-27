@@ -11,17 +11,17 @@
 #include "FileInput.h"
 
 /****************************************************************/
-/*					ƒOƒ[ƒoƒ‹•Ï”iƒNƒ‰ƒX‚¾‚¯‚ÇEEEj		*/
+/*					ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ï¼ˆã‚¯ãƒ©ã‚¹ã ã‘ã©ãƒ»ãƒ»ãƒ»ï¼‰		*/
 /****************************************************************/
-extern	OPSW*			cOptionSW;	//ƒIƒvƒVƒ‡ƒ“î•ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^•Ï”
+extern	OPSW*			cOptionSW;	//ã‚ªãƒ—ã‚·ãƒ§ãƒ³æƒ…å ±ã¸ã®ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 FileInput::FileInput(void):
 	readData(0),
@@ -30,24 +30,24 @@ FileInput::FileInput(void):
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 FileInput::~FileInput(void)
 {
 }
 
 //--------------------------------
-//ƒtƒ@ƒCƒ‹‚ğŠJ‚­@ƒGƒ‰[ˆ—•t‚«
+//ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã€€ã‚¨ãƒ©ãƒ¼å‡¦ç†ä»˜ã
 //--------------------------------
 void	FileInput::fileopen(const char*	_strFileName){
 
-	errno = 0;	//ƒOƒ[ƒoƒ‹•Ï” errno ‚ğ‚O‚É‰Šú‰»
-	clear();	//ƒtƒ‰ƒO‚ÌƒNƒŠƒA
+	errno = 0;	//ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•° errno ã‚’ï¼ã«åˆæœŸåŒ–
+	clear();	//ãƒ•ãƒ©ã‚°ã®ã‚¯ãƒªã‚¢
 
 	open(_strFileName,ios_base::in | ios_base::binary);
 	if(good()==false){
@@ -58,15 +58,15 @@ void	FileInput::fileopen(const char*	_strFileName){
 };
 
 //--------------------------------
-//ƒtƒ@ƒCƒ‹‚ğŠJ‚­@ƒGƒ‰[ˆ—•t‚«
+//ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã€€ã‚¨ãƒ©ãƒ¼å‡¦ç†ä»˜ã
 //--------------------------------
 void	FileInput::fileopen(const char*	_strFileName,SearchPass* _pass)
 {
 	bool	success	= false;
 
-	//æ‚¸‚ÍA‚»‚Ì‚Ü‚Ü
-	errno = 0;	//ƒOƒ[ƒoƒ‹•Ï” errno ‚ğ‚O‚É‰Šú‰»
-	clear();	//ƒtƒ‰ƒO‚ÌƒNƒŠƒA
+	//å…ˆãšã¯ã€ãã®ã¾ã¾
+	errno = 0;	//ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•° errno ã‚’ï¼ã«åˆæœŸåŒ–
+	clear();	//ãƒ•ãƒ©ã‚°ã®ã‚¯ãƒªã‚¢
 	open(_strFileName,ios_base::in | ios_base::binary);
 	if(cOptionSW->flag_SearchPass){
 		perror(_strFileName);
@@ -76,25 +76,25 @@ void	FileInput::fileopen(const char*	_strFileName,SearchPass* _pass)
 		success = true;
 	} else {
 
-		//ŒŸõƒpƒX
+		//æ¤œç´¢ãƒ‘ã‚¹
 		int		i		= 0;
 		int		iSize	= _pass->count();
 		string	name;
 		string	workName= string(_strFileName);
 		int		loc		= workName.rfind('/');
 
-		//w’è‚Ìƒtƒ@ƒCƒ‹‚ÉƒpƒX‚ª‘‚©‚ê‚Ä‚¢‚½‚çAÁ‚·B
+		//æŒ‡å®šã®ãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒ‘ã‚¹ãŒæ›¸ã‹ã‚Œã¦ã„ãŸã‚‰ã€æ¶ˆã™ã€‚
 		if(loc != string::npos){
-			workName.erase(0, loc);		//ƒtƒ@ƒCƒ‹–¼‚Ì‚İ
+			workName.erase(0, loc);		//ãƒ•ã‚¡ã‚¤ãƒ«åã®ã¿
 		}
 
 		while(i < iSize){
 
 #ifdef _WIN32
-			//Windows‚Ìê‡‚ÍA‘Š‘ÎƒpƒX‚àŠÜ‚ß‚ÄŒŸõ‚·‚éiUNIXŒn‚Í•s‰Âj
-			//w’è‚ÌŒŸõƒpƒX‚ğŠî€‚Æ‚µ‚½‘Š‘ÎƒpƒX‚àŒŸõ‚·‚éB
-			errno = 0;	//ƒOƒ[ƒoƒ‹•Ï” errno ‚ğ‚O‚É‰Šú‰»
-			clear();	//ƒtƒ‰ƒO‚ÌƒNƒŠƒA
+			//Windowsã®å ´åˆã¯ã€ç›¸å¯¾ãƒ‘ã‚¹ã‚‚å«ã‚ã¦æ¤œç´¢ã™ã‚‹ï¼ˆUNIXç³»ã¯ä¸å¯ï¼‰
+			//æŒ‡å®šã®æ¤œç´¢ãƒ‘ã‚¹ã‚’åŸºæº–ã¨ã—ãŸç›¸å¯¾ãƒ‘ã‚¹ã‚‚æ¤œç´¢ã™ã‚‹ã€‚
+			errno = 0;	//ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•° errno ã‚’ï¼ã«åˆæœŸåŒ–
+			clear();	//ãƒ•ãƒ©ã‚°ã®ã‚¯ãƒªã‚¢
 
 			name.assign(_pass->get(i));
 			name.append(_strFileName);
@@ -107,10 +107,10 @@ void	FileInput::fileopen(const char*	_strFileName,SearchPass* _pass)
 				break;
 			};
 #endif
-			//WINDOWS, UNIXŒn‹¤’Ê
-			//ŒŸõƒpƒX{ƒtƒ@ƒCƒ‹–¼‚Ì‚İ‚ÅŒŸõB
-			errno = 0;	//ƒOƒ[ƒoƒ‹•Ï” errno ‚ğ‚O‚É‰Šú‰»
-			clear();	//ƒtƒ‰ƒO‚ÌƒNƒŠƒA
+			//WINDOWS, UNIXç³»å…±é€š
+			//æ¤œç´¢ãƒ‘ã‚¹ï¼‹ãƒ•ã‚¡ã‚¤ãƒ«åã®ã¿ã§æ¤œç´¢ã€‚
+			errno = 0;	//ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•° errno ã‚’ï¼ã«åˆæœŸåŒ–
+			clear();	//ãƒ•ãƒ©ã‚°ã®ã‚¯ãƒªã‚¢
 
 			name.assign(_pass->get(i));
 			name.append(workName);
@@ -129,7 +129,7 @@ void	FileInput::fileopen(const char*	_strFileName,SearchPass* _pass)
 	};
 
 	if(success == false){
-		_CERR << _T("‘S‚Ä‚ÌŒŸõƒpƒX‚ÅAƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B") << endl;
+		_CERR << _T("å…¨ã¦ã®æ¤œç´¢ãƒ‘ã‚¹ã§ã€ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚") << endl;
 		if(cOptionSW->flag_SearchPass == false){
 			perror(_strFileName);
 		}
@@ -138,14 +138,14 @@ void	FileInput::fileopen(const char*	_strFileName,SearchPass* _pass)
 }
 
 //--------------------------------
-//‘Š‘ÎƒV[ƒN
+//ç›¸å¯¾ã‚·ãƒ¼ã‚¯
 //--------------------------------
 void	FileInput::StreamPointerAdd(long iSize){
 	seekg((long)iSize,ios::cur);
 };
 
 //--------------------------------
-//â‘ÎƒV[ƒN
+//çµ¶å¯¾ã‚·ãƒ¼ã‚¯
 //--------------------------------
 void	FileInput::StreamPointerMove(long iSize){
 		seekg((long)iSize,ios::beg);
@@ -158,12 +158,12 @@ void	FileInput::Back(void)
 		iLine--;
 	}
 
-	//XV
+	//æ›´æ–°
 	read((char*)&readData, sizeof(unsigned char));
 	StreamPointerAdd(-1);
 }
 //--------------------------------
-//1Byte“Ç‚İ‚İ
+//1Byteèª­ã¿è¾¼ã¿
 //--------------------------------
 unsigned	char	FileInput::cRead()
 {
@@ -175,7 +175,7 @@ unsigned	char	FileInput::cRead()
 	return(readData);
 };
 //--------------------------------
-//ƒTƒCƒY
+//ã‚µã‚¤ã‚º
 //--------------------------------
 unsigned	int	FileInput::GetSize(){
 

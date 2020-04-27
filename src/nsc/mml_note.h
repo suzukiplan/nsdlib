@@ -12,13 +12,13 @@
 
 /****************************************************************/
 /*																*/
-/*			クラス定義											*/
+/*			繧ｯ繝ｩ繧ｹ螳夂ｾｩ											*/
 /*																*/
 /****************************************************************/
 class mml_note :
 	public MusicEvent
 {
-//メンバー関数
+//繝｡繝ｳ繝舌�ｼ髢｢謨ｰ
 public:
 	mml_note(int _code, int length, int gatetime, bool slur, const _CHAR _strName[]=_T("Note"));
 	~mml_note(void);

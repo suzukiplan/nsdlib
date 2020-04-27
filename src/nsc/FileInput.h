@@ -13,12 +13,12 @@ class FileInput :
 	public ifstream
 {
 protected:
-//メンバー変数
+//繝｡繝ｳ繝舌�ｼ螟画焚
 				string		strFilename;
-	unsigned	int			iLine;		//現在のライン
+	unsigned	int			iLine;		//迴ｾ蝨ｨ縺ｮ繝ｩ繧､繝ｳ
 	unsigned	char		readData;
 
-//メンバー関数
+//繝｡繝ｳ繝舌�ｼ髢｢謨ｰ
 public:
 					FileInput(void);
 					~FileInput(void);

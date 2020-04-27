@@ -11,30 +11,30 @@
 #include "FDSM.h"
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//		unsigned	int		_id			FDSM”Ô†
-//		const		_CHAR	_strName[]	ƒIƒuƒWƒFƒNƒg–¼
-//	œ•Ô’l
-//					–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//		unsigned	int		_id			FDSMç•ªå·
+//		const		_CHAR	_strName[]	ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+//	â—è¿”å€¤
+//					ç„¡ã—
 //==============================================================
 FDSM::FDSM(MMLfile* MML, unsigned int _id, const _CHAR _strName[]):
 	MusicItem(_id, _strName),
 	m_id(_id)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 
 
-//	’è”’è‹`
+//	å®šæ•°å®šç¾©
 enum	Command_ID_mml {
 	FDSM_Num,
 	FDSM_Commma
 };
 
-//	‚±‚ê‚ç‚ÍAMML\•¶‚ÅŽg‚¦‚éƒRƒ}ƒ“ƒhB
+//	ã“ã‚Œã‚‰ã¯ã€MMLæ§‹æ–‡ã§ä½¿ãˆã‚‹ã‚³ãƒžãƒ³ãƒ‰ã€‚
 const	static	Command_Info	Command[] = {
 		{	"%",	FDSM_Num	},
 		{	"$",	FDSM_Num	},
@@ -57,41 +57,41 @@ const	static	Command_Info	Command[] = {
 				string	WAVE;
 
 	//------------------------------
-	//ƒNƒ‰ƒX‚Ì‰ŠúÝ’è
+	//ã‚¯ãƒ©ã‚¹ã®åˆæœŸè¨­å®š
 	WAVE.clear();
 
 	//------------------------------
-	//ƒRƒ“ƒpƒCƒ‹
+	//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
 
-	// { ‚ÌŒŸõ
+	// { ã®æ¤œç´¢
 	while(MML->cRead() != '{'){
 		if(MML->eof()){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌŠJŽn‚ðŽ¦‚·{‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹ã‚’ç¤ºã™{ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 	}
 
 	code.resize(0);
 
-	// } ‚ª—ˆ‚é‚Ü‚ÅA‹LqƒuƒƒbƒN“à‚ðƒRƒ“ƒpƒCƒ‹‚·‚éB
+	// } ãŒæ¥ã‚‹ã¾ã§ã€è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯å†…ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã€‚
 	while((cData = MML->GetChar()) != '}'){
 		
-		// } ‚ª—ˆ‚é‘O‚ÉA[EOF]‚ª—ˆ‚½‚çƒGƒ‰[
+		// } ãŒæ¥ã‚‹å‰ã«ã€[EOF]ãŒæ¥ãŸã‚‰ã‚¨ãƒ©ãƒ¼
 		if( MML->eof() ){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌI’[‚ðŽ¦‚·`}'‚ª‚ ‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®çµ‚ç«¯ã‚’ç¤ºã™`}'ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 
-		//‚P‚Â–ß‚é
+		//ï¼‘ã¤æˆ»ã‚‹
 		MML->Back();
 
 
-		//ŠeƒRƒ}ƒ“ƒh–ˆ‚Ìˆ—
+		//å„ã‚³ãƒžãƒ³ãƒ‰æ¯Žã®å‡¦ç†
 		switch(MML->GetCommandID(Command, sizeof(Command)/sizeof(Command_Info))){
 
 			case(FDSM_Num):
 				MML->Back();
 				i = MML->GetInt();
 				if( (i<0) || (i>7)){
-					MML->Err(_T("FDSM‚Ì”gŒ`ƒpƒ^[ƒ“‚Í0`7‚Ì”ÍˆÍ‚ÅŽw’è‚µ‚Ä‰º‚³‚¢B"));
+					MML->Err(_T("FDSMã®æ³¢å½¢ãƒ‘ã‚¿ãƒ¼ãƒ³ã¯0ã€œ7ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 				}
 				WAVE.append((char)1, (char)i & 0x07);
 				ptFDSM++;
@@ -107,10 +107,10 @@ const	static	Command_Info	Command[] = {
 		}
 	}
 	if(ptFDSM < 32){
-		MML->Err(_T("”gŒ`ƒpƒ^[ƒ“‚Í32ŒÂ‚Ì”Žš‚ð‹Lq‚µ‚Ä‚­‚¾‚³‚¢B32ŒÂ‚É–ž‚½‚È‚¢‚Å‚·B"));
+		MML->Err(_T("æ³¢å½¢ãƒ‘ã‚¿ãƒ¼ãƒ³ã¯32å€‹ã®æ•°å­—ã‚’è¨˜è¿°ã—ã¦ãã ã•ã„ã€‚32å€‹ã«æº€ãŸãªã„ã§ã™ã€‚"));
 	}
 	if(ptFDSM > 32){
-		MML->Err(_T("”gŒ`ƒpƒ^[ƒ“‚Í32ŒÂ‚Ì”Žš‚ð‹Lq‚µ‚Ä‚­‚¾‚³‚¢B32ŒÂ‚ð’´‚¦‚Ä‚¢‚Ü‚·B"));
+		MML->Err(_T("æ³¢å½¢ãƒ‘ã‚¿ãƒ¼ãƒ³ã¯32å€‹ã®æ•°å­—ã‚’è¨˜è¿°ã—ã¦ãã ã•ã„ã€‚32å€‹ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚"));
 	}
 	i = 0;
 	while(ptFDSM>0){
@@ -124,23 +124,23 @@ const	static	Command_Info	Command[] = {
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 FDSM::~FDSM(void)
 {
 }
 //==============================================================
-//		ƒR[ƒh‚ÌŽæ“¾
+//		ã‚³ãƒ¼ãƒ‰ã®å–å¾—
 //--------------------------------------------------------------
-//	œˆø”
-//		MusicFile*	MUS		ƒR[ƒh‚ðo—Í‚·‚é‹Èƒf[ƒ^ƒtƒ@ƒCƒ‹EƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MusicFile*	MUS		ã‚³ãƒ¼ãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹æ›²ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	FDSM::getAsm(MusicFile* MUS)
 {

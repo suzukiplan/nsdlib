@@ -12,27 +12,27 @@
 
 
 #ifdef _WIN32
-// WINDOWS‚Ì‚İA'/'‚É‘Î‰‚·‚éB
+// WINDOWSã®ã¿ã€'/'ã«å¯¾å¿œã™ã‚‹ã€‚
 #define OPTCHK (argv[iCount][0]=='/')||(argv[iCount][0]=='-')
 #else
-// unixŒn‚Å‚ÍƒXƒ‰ƒbƒVƒ…‚ÍƒfƒBƒŒƒNƒgƒŠ‚Ì‹æØ‚è‚Ég‚í‚ê‚éˆ×A¸”s‚·‚é–‚ª‚ ‚é
+// unixç³»ã§ã¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã¯ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®åŒºåˆ‡ã‚Šã«ä½¿ã‚ã‚Œã‚‹ç‚ºã€å¤±æ•—ã™ã‚‹äº‹ãŒã‚ã‚‹
 #define OPTCHK (argv[iCount][0]=='-')
 #endif
 
 //==============================================================
-//		ƒIƒvƒVƒ‡ƒ“ˆ—
+//		ã‚ªãƒ—ã‚·ãƒ§ãƒ³å‡¦ç†
 //--------------------------------------------------------------
-//	œˆø”
-//			int		argc	ƒIƒvƒVƒ‡ƒ“•¶š—ñ‚Ì”
-//			_TCHAR*	argv[]	ƒIƒvƒVƒ‡ƒ“•¶š—ñ
-//	œ•Ô’l
-//			–³‚µ
-//	œ”õl
-//			ƒIƒvƒVƒ‡ƒ“‚Éƒtƒ@ƒCƒ‹–¼‚ªw’è‚³‚ê‚È‚¢ê‡‚ÍAƒwƒ‹ƒv•\¦‚µ‚ÄI—¹
+//	â—å¼•æ•°
+//			int		argc	ã‚ªãƒ—ã‚·ãƒ§ãƒ³æ–‡å­—åˆ—ã®æ•°
+//			_TCHAR*	argv[]	ã‚ªãƒ—ã‚·ãƒ§ãƒ³æ–‡å­—åˆ—
+//	â—è¿”å€¤
+//			ç„¡ã—
+//	â—å‚™è€ƒ
+//			ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ãƒ•ã‚¡ã‚¤ãƒ«åãŒæŒ‡å®šã•ã‚Œãªã„å ´åˆã¯ã€ãƒ˜ãƒ«ãƒ—è¡¨ç¤ºã—ã¦çµ‚äº†
 //==============================================================
 OPSW::OPSW(int argc, char* argv[]):
-	//‰Šú‰»İ’è
-	fHelp(0),		//ƒwƒ‹ƒv‚ÍAƒfƒtƒHƒ‹ƒg‚Í•\¦‚µ‚È‚¢B
+	//åˆæœŸåŒ–è¨­å®š
+	fHelp(0),		//ãƒ˜ãƒ«ãƒ—ã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯è¡¨ç¤ºã—ãªã„ã€‚
 	saveNSF(false),
 	saveASM(false),
 	flag_Optimize(false),
@@ -44,42 +44,42 @@ OPSW::OPSW(int argc, char* argv[]):
 {
 
 	//----------------------------------
-	//¡Local •Ï”
+	//â– Local å¤‰æ•°
 	
-	int		iCount;				//while‚ÌƒJƒEƒ“ƒg—p
-	int		iResult;			//”Ä—p
+	int		iCount;				//whileã®ã‚«ã‚¦ãƒ³ãƒˆç”¨
+	int		iResult;			//æ±ç”¨
 
-	//Optionˆ——p
-	int		iOptionChk;			//ƒIƒvƒVƒ‡ƒ“ƒ`ƒFƒbƒN—p@ƒ|ƒCƒ“ƒ^
-	char	cOption;			//ƒIƒvƒVƒ‡ƒ“ƒ`ƒFƒbƒN—p@•¶š
-	char	iFlagFilnameExt;	//Šg’£q‚ ‚Á‚½‚©‚Ìƒtƒ‰ƒO
+	//Optionå‡¦ç†ç”¨
+	int		iOptionChk;			//ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãƒã‚§ãƒƒã‚¯ç”¨ã€€ãƒã‚¤ãƒ³ã‚¿
+	char	cOption;			//ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãƒã‚§ãƒƒã‚¯ç”¨ã€€æ–‡å­—
+	char	iFlagFilnameExt;	//æ‹¡å¼µå­ã‚ã£ãŸã‹ã®ãƒ•ãƒ©ã‚°
 
-	//ŒŸõƒpƒX
+	//æ¤œç´¢ãƒ‘ã‚¹
 	string	str_code	= "";
 	string	str_dmc		= "";
 	string	str_inc		= "";
 
 	//----------------------------------
-	//¡ƒIƒvƒVƒ‡ƒ“ˆ—
-	iCount=1;	//ƒRƒ}ƒ“ƒh–¼‚Í”ò‚Î‚·
+	//â– ã‚ªãƒ—ã‚·ãƒ§ãƒ³å‡¦ç†
+	iCount=1;	//ã‚³ãƒãƒ³ãƒ‰åã¯é£›ã°ã™
 	while(iCount!=argc)
 	{
 		//--------------
-		//ƒIƒvƒVƒ‡ƒ“ƒXƒCƒbƒ`‚ÉƒnƒCƒtƒ“(orƒXƒ‰ƒbƒVƒ…)‚ª‚ ‚é‚©Šm”F
+		//ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚¹ã‚¤ãƒƒãƒã«ãƒã‚¤ãƒ•ãƒ³(orã‚¹ãƒ©ãƒƒã‚·ãƒ¥)ãŒã‚ã‚‹ã‹ç¢ºèª
 		if(OPTCHK){
 
 			//--------------
-			//ŸOption Switch	iƒXƒ‰ƒbƒVƒ…‚ª‚ ‚Á‚½ê‡‚Ìˆ—j
+			//â—†Option Switch	ï¼ˆã‚¹ãƒ©ãƒƒã‚·ãƒ¥ãŒã‚ã£ãŸå ´åˆã®å‡¦ç†ï¼‰
 			switch(argv[iCount][1]){
 				//--------
-				//Help•\¦
+				//Helpè¡¨ç¤º
 				case 'h' :
 				case 'H' :
 				case '?' :
 					fHelp=1;
 					break;
 				//--------
-				//ƒAƒZƒ“ƒuƒŠŒ¾Œê‚Ö
+				//ã‚¢ã‚»ãƒ³ãƒ–ãƒªè¨€èªã¸
 				case 'o' :
 				case 'O' :
 					{
@@ -117,19 +117,19 @@ OPSW::OPSW(int argc, char* argv[]):
 						break;
 					}
 				//--------
-				//ƒAƒZƒ“ƒuƒŠŒ¾Œê‚Ö
+				//ã‚¢ã‚»ãƒ³ãƒ–ãƒªè¨€èªã¸
 				case 'a' :
 				case 'A' :
 					saveASM = true;
 					break;
 				//--------
-				//‚m‚r‚e‚Ö
+				//ï¼®ï¼³ï¼¦ã¸
 				case 'n' :
 				case 'N' :
 					saveNSF = true;
 					break;
 				//--------
-				//•W€ƒGƒ‰[o—Í‚Ö
+				//æ¨™æº–ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ã¸
 				case 'e' :
 				case 'E' :
 					fErr = true;
@@ -147,7 +147,7 @@ OPSW::OPSW(int argc, char* argv[]):
 					flag_SearchPass = true;
 					break;
 				//--------
-				//Debug‚Ìw’è
+				//Debugã®æŒ‡å®š
 				case 'D' :
 					//0x01:	Class Object Creat
 					//0x02:	Address settlement
@@ -163,12 +163,12 @@ OPSW::OPSW(int argc, char* argv[]):
 					};
 					break;
 				//--------
-				//Debug‚Ìw’è
+				//Debugã®æŒ‡å®š
 				case 'l' :
 				case 'L' :
-					//Šù‚Éw’è‚³‚ê‚Ä‚¢‚éH
+					//æ—¢ã«æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ï¼Ÿ
 					if(strCodeName.empty()){
-						iFlagFilnameExt=0;		//Šg’£q‚Ì—L–³@Reset
+						iFlagFilnameExt=0;		//æ‹¡å¼µå­ã®æœ‰ç„¡ã€€Reset
 						iOptionChk=0;
 						while((cOption=argv[iCount][iOptionChk+2])!=0)
 						{
@@ -180,48 +180,48 @@ OPSW::OPSW(int argc, char* argv[]):
 							strCodeName+=".bin";
 						};
 					} else {
-						opError(_T("-l Code ƒtƒ@ƒCƒ‹‚ª2‰ñˆÈãw’è‚³‚ê‚Ü‚µ‚½B"));
+						opError(_T("-l Code ãƒ•ã‚¡ã‚¤ãƒ«ãŒ2å›ä»¥ä¸ŠæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 						break;
 					};
 					break;
 				//--------
-				//ROMƒR[ƒh‚ÌŒŸõƒpƒX
+				//ROMã‚³ãƒ¼ãƒ‰ã®æ¤œç´¢ãƒ‘ã‚¹
 				case 'c' :
 				case 'C' :
 					str_code += &argv[iCount][2];
 					str_code.append(1, _PATH_SPLIT);
 					break;
 				//--------
-				//‡™PCM‚ÌŒŸõƒpƒX
+				//âŠ¿PCMã®æ¤œç´¢ãƒ‘ã‚¹
 				case 'p' :
 				case 'P' :
 					str_dmc += &argv[iCount][2];
 					str_dmc.append(1, _PATH_SPLIT);
 					break;
 				//--------
-				//ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹‚ÌŒŸõƒpƒX
+				//ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã®æ¤œç´¢ãƒ‘ã‚¹
 				case 'i' :
 				case 'I' :
 					str_inc += &argv[iCount][2];
 					str_inc.append(1, _PATH_SPLIT);
 					break;
 				//--------
-				//ƒtƒ@ƒCƒ‹‚Ìw’è
+				//ãƒ•ã‚¡ã‚¤ãƒ«ã®æŒ‡å®š
 				case 'f' :
 				case 'F' :
-					//æ‚ÉAƒtƒ@ƒCƒ‹–¼‚ª‘‚¢‚Ä‚ ‚é‚©ƒ`ƒFƒbƒNB
+					//å…ˆã«ã€ãƒ•ã‚¡ã‚¤ãƒ«åãŒæ›¸ã„ã¦ã‚ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã€‚
 					if(argv[iCount][3]==0){
-						opError(_T("/F ƒtƒ@ƒCƒ‹–¼‚ª‘‚¢‚Ä‚ ‚è‚Ü‚¹‚ñB"));
+						opError(_T("/F ãƒ•ã‚¡ã‚¤ãƒ«åãŒæ›¸ã„ã¦ã‚ã‚Šã¾ã›ã‚“ã€‚"));
 						break;
 					};
 					switch(argv[iCount][2]){
 					//--------
-					//MMLƒtƒ@ƒCƒ‹‚Ìw’è
+					//MMLãƒ•ã‚¡ã‚¤ãƒ«ã®æŒ‡å®š
 					case 'A' :
 					case 'a' :
-						//Šù‚Éw’è‚³‚ê‚Ä‚¢‚éH
+						//æ—¢ã«æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ï¼Ÿ
 						if(strASMname.empty()){
-							iFlagFilnameExt=0;		//Šg’£q‚Ì—L–³@Reset
+							iFlagFilnameExt=0;		//æ‹¡å¼µå­ã®æœ‰ç„¡ã€€Reset
 							iOptionChk=0;
 							while((cOption=argv[iCount][iOptionChk+3])!=0)
 							{
@@ -233,15 +233,15 @@ OPSW::OPSW(int argc, char* argv[]):
 								strASMname+=".s";
 							};
 						} else {
-							opError(_T("-fa ASM ƒtƒ@ƒCƒ‹‚ª2‰ñˆÈãw’è‚³‚ê‚Ü‚µ‚½B"));
+							opError(_T("-fa ASM ãƒ•ã‚¡ã‚¤ãƒ«ãŒ2å›ä»¥ä¸ŠæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 							break;
 						};
 						break;
 					case 'N' :
 					case 'n' :
-						//Šù‚Éw’è‚³‚ê‚Ä‚¢‚éH
+						//æ—¢ã«æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ï¼Ÿ
 						if(strNSFname.empty()){
-							iFlagFilnameExt=0;		//Šg’£q‚Ì—L–³@Reset
+							iFlagFilnameExt=0;		//æ‹¡å¼µå­ã®æœ‰ç„¡ã€€Reset
 							iOptionChk=0;
 							while((cOption=argv[iCount][iOptionChk+3])!=0)
 							{
@@ -253,7 +253,7 @@ OPSW::OPSW(int argc, char* argv[]):
 								strNSFname+=".nsf";
 							};
 						} else {
-							opError(_T("-fn NSF ƒtƒ@ƒCƒ‹‚ª2‰ñˆÈãw’è‚³‚ê‚Ü‚µ‚½B"));
+							opError(_T("-fn NSF ãƒ•ã‚¡ã‚¤ãƒ«ãŒ2å›ä»¥ä¸ŠæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 							break;
 						};
 						break;
@@ -263,7 +263,7 @@ OPSW::OPSW(int argc, char* argv[]):
 					};
 				break;
 				//--------
-				//ƒfƒtƒHƒ‹ƒg
+				//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
 				default :
 					opError(_T(""));
 					break;
@@ -272,10 +272,10 @@ OPSW::OPSW(int argc, char* argv[]):
 		} else{
 
 			//--------------
-			//Ÿƒtƒ@ƒCƒ‹–¼	iƒXƒ‰ƒbƒVƒ…‚ª–³‚©‚Á‚½ê‡‚Ìˆ—j
-			//Šù‚Éw’è‚³‚ê‚Ä‚¢‚éH
+			//â—†ãƒ•ã‚¡ã‚¤ãƒ«å	ï¼ˆã‚¹ãƒ©ãƒƒã‚·ãƒ¥ãŒç„¡ã‹ã£ãŸå ´åˆã®å‡¦ç†ï¼‰
+			//æ—¢ã«æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ï¼Ÿ
 			if(strMMLname.empty()){
-				iFlagFilnameExt=0;		//Šg’£q‚Ì—L–³@Reset
+				iFlagFilnameExt=0;		//æ‹¡å¼µå­ã®æœ‰ç„¡ã€€Reset
 				iOptionChk=0;		
 				while((cOption=argv[iCount][iOptionChk])!=0)
 				{
@@ -287,23 +287,23 @@ OPSW::OPSW(int argc, char* argv[]):
 					strMMLname+=".mml";
 				};
 			} else {
-				opError(_T("MMLƒtƒ@ƒCƒ‹‚ª2‰ñˆÈãw’è‚³‚ê‚Ü‚µ‚½B"));
+				opError(_T("MMLãƒ•ã‚¡ã‚¤ãƒ«ãŒ2å›ä»¥ä¸ŠæŒ‡å®šã•ã‚Œã¾ã—ãŸã€‚"));
 				break;
 			};
 
 		};
 
 		//--------------
-		//ŸŸ‚ÌƒIƒvƒVƒ‡ƒ“
+		//â—†æ¬¡ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³
 		iCount++;
 	};
 
 	//----------------------------------
-	//ŸƒIƒvƒVƒ‡ƒ“‚Åw’è‚³‚ê‚½–‚ğˆ—‚·‚éB
+	//â—†ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§æŒ‡å®šã•ã‚ŒãŸäº‹ã‚’å‡¦ç†ã™ã‚‹ã€‚
 
 	//--------------
-	//ƒwƒ‹ƒv•\¦
-	//ƒtƒ@ƒCƒ‹–¼‚ª‘‚©‚ê‚È‚©‚Á‚½ê‡‚àAƒwƒ‹ƒv‚ğ•\¦‚·‚éB
+	//ãƒ˜ãƒ«ãƒ—è¡¨ç¤º
+	//ãƒ•ã‚¡ã‚¤ãƒ«åãŒæ›¸ã‹ã‚Œãªã‹ã£ãŸå ´åˆã‚‚ã€ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
 	if((fHelp==1)||(strMMLname.empty())){print_help();};
 
 	if(strASMname.empty()){
@@ -327,9 +327,9 @@ OPSW::OPSW(int argc, char* argv[]):
 	};
 
 	//----------------------------------
-	//ŸŒŸõƒpƒX‚Ìİ’è
+	//â—†æ¤œç´¢ãƒ‘ã‚¹ã®è¨­å®š
 
-	//MML‚ÌƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾
+	//MMLã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—
 	iCount	= 0;
 	iResult	= 0;
 	while(iCount < strMMLname.size()){
@@ -339,8 +339,8 @@ OPSW::OPSW(int argc, char* argv[]):
 		iCount++;
 	}
 
-	//—Dæ‡ˆÊ‚P@ƒJƒŒƒ“ƒgƒpƒX
-	//—Dæ‡ˆÊ‚Q@MMLƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚éƒpƒX
+	//å„ªå…ˆé †ä½ï¼‘ã€€ã‚«ãƒ¬ãƒ³ãƒˆãƒ‘ã‚¹
+	//å„ªå…ˆé †ä½ï¼’ã€€MMLãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã™ã‚‹ãƒ‘ã‚¹
 	if(iResult > 0){
 		string	str_mmldir = "";
 		iCount	= 0;
@@ -353,11 +353,11 @@ OPSW::OPSW(int argc, char* argv[]):
 		m_pass_inc.add(&str_mmldir);
 	}
 
-	//—Dæ‡ˆÊ‚R@ŠÂ‹«•Ï”‚Åw’è‚ÌƒpƒX
+	//å„ªå…ˆé †ä½ï¼“ã€€ç’°å¢ƒå¤‰æ•°ã§æŒ‡å®šã®ãƒ‘ã‚¹
 	m_pass_code.add(getenv("PATH"));
 	m_pass_dmc.add(getenv("DMC_INCLUDE"));
 
-	//—Dæ‡ˆÊ‚S@ƒIƒvƒVƒ‡ƒ“‚Åw’è‚ÌƒpƒX
+	//å„ªå…ˆé †ä½ï¼”ã€€ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§æŒ‡å®šã®ãƒ‘ã‚¹
 	m_pass_code.add(&str_code);
 	m_pass_dmc.add(&str_dmc);
 	m_pass_inc.add(&str_inc);
@@ -365,12 +365,12 @@ OPSW::OPSW(int argc, char* argv[]):
 
 
 	//----------------------------------
-	//Ÿ
+	//â—†
 
-	//	to do	‚»‚Ì‘¼‚ÌƒIƒvƒVƒ‡ƒ“‚ğ’Ç‰Á‚µ‚½‚Æ‚«‚ÍA‚±‚Ì•Ó‚É’Ç‹L‚·‚éB
+	//	to do	ãã®ä»–ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ ã—ãŸã¨ãã¯ã€ã“ã®è¾ºã«è¿½è¨˜ã™ã‚‹ã€‚
 
 	//----------
-	//Debug—p •\¦
+	//Debugç”¨ è¡¨ç¤º
 //	cout << "MML = " << strMMLname << endl;
 //	cout << "NSF = " << strNSFname << endl;
 //	cout << "BIN = " << strBINname << endl;
@@ -390,12 +390,12 @@ OPSW::OPSW(int argc, char* argv[]):
 
 };
 //==============================================================
-//		ƒwƒ‹ƒvƒƒbƒZ[ƒW
+//		ãƒ˜ãƒ«ãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 //--------------------------------------------------------------
-//	œˆø”
-//			‚È‚µ
-//	œ•Ô’l
-//			–³‚µ
+//	â—å¼•æ•°
+//			ãªã—
+//	â—è¿”å€¤
+//			ç„¡ã—
 //==============================================================
 void	OPSW::print_help(){
 
@@ -423,31 +423,31 @@ void	OPSW::print_help(){
 
 };
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒg
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ãƒˆ
 //--------------------------------------------------------------
-//	œˆø”
-//			‚È‚µ
-//	œ•Ô’l
-//			–³‚µ
+//	â—å¼•æ•°
+//			ãªã—
+//	â—è¿”å€¤
+//			ç„¡ã—
 //==============================================================
 OPSW::~OPSW(){
 
 
 };
 //==============================================================
-//		ƒGƒ‰[ˆ—	iƒvƒƒZƒX‚àI—¹‚·‚éj
+//		ã‚¨ãƒ©ãƒ¼å‡¦ç†	ï¼ˆãƒ—ãƒ­ã‚»ã‚¹ã‚‚çµ‚äº†ã™ã‚‹ï¼‰
 //--------------------------------------------------------------
-//	œˆø”
-//			const	_CHAR	*stErrMsg	ƒGƒ‰[ƒƒbƒZ[ƒW
-//	œ•Ô’l
-//			–³‚µ
+//	â—å¼•æ•°
+//			const	_CHAR	*stErrMsg	ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+//	â—è¿”å€¤
+//			ç„¡ã—
 //==============================================================
 void OPSW::opError(const _CHAR *stErrMsg){
 
 	if(fErr == true){
-		_CERR << _T("ƒIƒvƒVƒ‡ƒ“‚ª•s³‚Å‚·BF") << stErrMsg << endl;
+		_CERR << _T("ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒä¸æ­£ã§ã™ã€‚ï¼š") << stErrMsg << endl;
 	} else {
-		_COUT << _T("ƒIƒvƒVƒ‡ƒ“‚ª•s³‚Å‚·BF") << stErrMsg << endl;
+		_COUT << _T("ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒä¸æ­£ã§ã™ã€‚ï¼š") << stErrMsg << endl;
 	}
 	nsc_exit(EXIT_FAILURE);
 

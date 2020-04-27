@@ -11,21 +11,21 @@
 #include "VRC7.h"
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//		unsigned	int		_id			VRC7‰¹F”Ô†
-//		const		_CHAR	_strName[]	ƒIƒuƒWƒFƒNƒg–¼
-//	œ•Ô’l
-//					–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//		unsigned	int		_id			VRC7éŸ³è‰²ç•ªå·
+//		const		_CHAR	_strName[]	ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+//	â—è¿”å€¤
+//					ç„¡ã—
 //==============================================================
 VRC7::VRC7(MMLfile* MML, unsigned int _id, const _CHAR _strName[]):
 	MusicItem(_id, _strName),
 	m_id(_id)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 				int		i;
 				bool	_mset	= false;
 	unsigned	char	_mode	= 0;
@@ -33,7 +33,7 @@ VRC7::VRC7(MMLfile* MML, unsigned int _id, const _CHAR _strName[]):
 	unsigned	char	_opll[24];
 	unsigned	char	cData;
 
-//	’è”’è‹`
+//	å®šæ•°å®šç¾©
 enum	Command_ID_mml {
 	VRC7_Normal,
 	VRC7_Resister,
@@ -41,7 +41,7 @@ enum	Command_ID_mml {
 	VRC7_Comma
 };
 
-//	‚±‚ê‚ç‚ÍAMML\•¶‚ÅŽg‚¦‚éƒRƒ}ƒ“ƒhB
+//	ã“ã‚Œã‚‰ã¯ã€MMLæ§‹æ–‡ã§ä½¿ãˆã‚‹ã‚³ãƒžãƒ³ãƒ‰ã€‚
 const	static	Command_Info	Command[] = {
 		{	"@R",	VRC7_Resister	},
 		{	"@",	VRC7_Normal		},
@@ -62,40 +62,40 @@ const	static	Command_Info	Command[] = {
 
 
 	//------------------------------
-	//ƒNƒ‰ƒX‚Ì‰ŠúÝ’è
+	//ã‚¯ãƒ©ã‚¹ã®åˆæœŸè¨­å®š
 
 	iSize = 8;
 	code.resize(iSize);
 
 	//------------------------------
-	//ƒRƒ“ƒpƒCƒ‹
+	//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
 
-	// { ‚ÌŒŸõ
+	// { ã®æ¤œç´¢
 	while(MML->cRead() != '{'){
 		if(MML->eof()){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌŠJŽn‚ðŽ¦‚·{‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹ã‚’ç¤ºã™{ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 	}
 
 
-	// } ‚ª—ˆ‚é‚Ü‚ÅA‹LqƒuƒƒbƒN“à‚ðƒRƒ“ƒpƒCƒ‹‚·‚éB
+	// } ãŒæ¥ã‚‹ã¾ã§ã€è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯å†…ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã€‚
 	while((cData = MML->GetChar()) != '}'){
 		
-		// } ‚ª—ˆ‚é‘O‚ÉA[EOF]‚ª—ˆ‚½‚çƒGƒ‰[
+		// } ãŒæ¥ã‚‹å‰ã«ã€[EOF]ãŒæ¥ãŸã‚‰ã‚¨ãƒ©ãƒ¼
 		if( MML->eof() ){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌI’[‚ðŽ¦‚·`}'‚ª‚ ‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®çµ‚ç«¯ã‚’ç¤ºã™`}'ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 
-		//‚P‚Â–ß‚é
+		//ï¼‘ã¤æˆ»ã‚‹
 		MML->Back();
 
 
-		//ŠeƒRƒ}ƒ“ƒh–ˆ‚Ìˆ—
+		//å„ã‚³ãƒžãƒ³ãƒ‰æ¯Žã®å‡¦ç†
 		switch(MML->GetCommandID(Command, sizeof(Command)/sizeof(Command_Info))){
 
 			case(VRC7_Normal):
 				if(_mset == true){
-					MML->Err(_T("@, @RƒRƒ}ƒ“ƒh‚Í‚P‰ñ‚¾‚¯Žw’è‚µ‚Ä‰º‚³‚¢B"));
+					MML->Err(_T("@, @Rã‚³ãƒžãƒ³ãƒ‰ã¯ï¼‘å›žã ã‘æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 				}
 				_mset = true;
 				_mode = 0;
@@ -103,7 +103,7 @@ const	static	Command_Info	Command[] = {
 
 			case(VRC7_Resister):
 				if(_mset == true){
-					MML->Err(_T("@, @RƒRƒ}ƒ“ƒh‚Í‚P‰ñ‚¾‚¯Žw’è‚µ‚Ä‰º‚³‚¢B"));
+					MML->Err(_T("@, @Rã‚³ãƒžãƒ³ãƒ‰ã¯ï¼‘å›žã ã‘æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 				}
 				_mset = true;
 				_mode = 1;
@@ -111,22 +111,22 @@ const	static	Command_Info	Command[] = {
 
 			case(VRC7_Num):
 				if(_mset == false){
-					MML->Err(_T("æ‚¸‚Í@, @RƒRƒ}ƒ“ƒh‚ð‹Lq‚µ‚Ä‰º‚³‚¢B"));
+					MML->Err(_T("å…ˆãšã¯@, @Rã‚³ãƒžãƒ³ãƒ‰ã‚’è¨˜è¿°ã—ã¦ä¸‹ã•ã„ã€‚"));
 				}
 				MML->Back();
 				i = MML->GetInt();
 				if( (i<0) || (i>255) ){
-					MML->Err(_T("0`255‚Ì”ÍˆÍ‚ÅŽw’è‚µ‚Ä‰º‚³‚¢B"));
+					MML->Err(_T("0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 				}
 
 				if(_mode == 0){
 					if(_pt >= 24){
-						MML->Err(_T("VRC7(ƒpƒ‰ƒ[ƒ^ƒx[ƒX)‚Ìˆø”‚ª24ŒÂ‚ð’´‚¦‚Ü‚µ‚½B"));
+						MML->Err(_T("VRC7(ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹)ã®å¼•æ•°ãŒ24å€‹ã‚’è¶…ãˆã¾ã—ãŸã€‚"));
 					}
 					_opll[_pt] = (unsigned char)i;
 				} else {
 					if(_pt >= 8){
-						MML->Err(_T("VRC7(ƒŒƒWƒXƒ^ƒx[ƒX)‚Ìˆø”‚ª8ŒÂ‚ð’´‚¦‚Ü‚µ‚½B"));
+						MML->Err(_T("VRC7(ãƒ¬ã‚¸ã‚¹ã‚¿ãƒ™ãƒ¼ã‚¹)ã®å¼•æ•°ãŒ8å€‹ã‚’è¶…ãˆã¾ã—ãŸã€‚"));
 					}
 					code[_pt] = (unsigned char)i;
 				}
@@ -144,7 +144,7 @@ const	static	Command_Info	Command[] = {
 
 	if(_mode == 0){
 		if(_pt < 24){
-			MML->Err(_T("VRC7(ƒpƒ‰ƒ[ƒ^ƒx[ƒX)‚Ìˆø”‚ª24ŒÂ‚É–ž‚½‚È‚¢‚Å‚·B"));
+			MML->Err(_T("VRC7(ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹)ã®å¼•æ•°ãŒ24å€‹ã«æº€ãŸãªã„ã§ã™ã€‚"));
 		}
 
 		//TL FB
@@ -164,29 +164,29 @@ const	static	Command_Info	Command[] = {
 		code[7] = ((_opll[15] & 0x0F) << 4) |  (_opll[16] & 0x0F);
 	} else {
 		if(_pt < 8){
-			MML->Err(_T("VRC7(ƒŒƒWƒXƒ^ƒx[ƒX)‚Ìˆø”‚ª8ŒÂ‚É–ž‚½‚È‚¢‚Å‚·B"));
+			MML->Err(_T("VRC7(ãƒ¬ã‚¸ã‚¹ã‚¿ãƒ™ãƒ¼ã‚¹)ã®å¼•æ•°ãŒ8å€‹ã«æº€ãŸãªã„ã§ã™ã€‚"));
 		}
 	}
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 VRC7::~VRC7(void)
 {
 }
 //==============================================================
-//		ƒR[ƒh‚ÌŽæ“¾
+//		ã‚³ãƒ¼ãƒ‰ã®å–å¾—
 //--------------------------------------------------------------
-//	œˆø”
-//		MusicFile*	MUS		ƒR[ƒh‚ðo—Í‚·‚é‹Èƒf[ƒ^ƒtƒ@ƒCƒ‹EƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MusicFile*	MUS		ã‚³ãƒ¼ãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹æ›²ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	VRC7::getAsm(MusicFile* MUS)
 {

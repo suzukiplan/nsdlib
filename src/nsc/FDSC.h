@@ -12,19 +12,19 @@
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class FDSC :
 	public MusicItem
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 private:
 	unsigned	int		m_id;
 
-//static	const	Command_Info	Command[];	//ƒRƒ}ƒ“ƒh‚Ìî•ñ
+//static	const	Command_Info	Command[];	//ã‚³ãƒžãƒ³ãƒ‰ã®æƒ…å ±
 
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 				FDSC(MMLfile* MML, unsigned int _id, const _CHAR _strName[] = _T("FDSC"));
 				~FDSC(void);

@@ -11,23 +11,23 @@
 #include "DPCMinfo.h"
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//		const		_CHAR	_strName[]	‚±‚ÌƒIƒuƒWƒFƒNƒg‚Ì–¼‘O
-//	œ•Ô’l
-//					–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//		const		_CHAR	_strName[]	ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åå‰
+//	â—è¿”å€¤
+//					ç„¡ã—
 //==============================================================
 DPCMinfo::DPCMinfo(MMLfile* MML, bool _bank, const _CHAR _strName[]):
 	MusicItem(_strName)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 
 	bank = _bank;
 
-//	’è”’è‹`
+//	å®šæ•°å®šç¾©
 enum	Command_ID_mml {
 	DPCM_C,
 	DPCM_Cis,
@@ -44,7 +44,7 @@ enum	Command_ID_mml {
 	DPCM_Note
 };
 
-//	‚±‚ê‚ç‚ÍAMML\•¶‚Åg‚¦‚éƒRƒ}ƒ“ƒhB
+//	ã“ã‚Œã‚‰ã¯ã€MMLæ§‹æ–‡ã§ä½¿ãˆã‚‹ã‚³ãƒãƒ³ãƒ‰ã€‚
 const	static	Command_Info	Command[] = {
 		{	"c#",	DPCM_Cis	},
 		{	"d#",	DPCM_Dis	},
@@ -72,49 +72,49 @@ const	static	Command_Info	Command[] = {
 		{	"a",	DPCM_A		},
 		{	"b",	DPCM_B		},
 
-		{	"‚Ç#",		DPCM_Cis	},
-		{	"‚ê#",		DPCM_Dis	},
-		{	"‚Ó‚Ÿ#",	DPCM_Fis	},
-		{	"‚Ó#",		DPCM_Fis	},
-		{	"‚»#",		DPCM_Gis	},
-		{	"‚ç#",		DPCM_Ais	},
+		{	"ã©#",		DPCM_Cis	},
+		{	"ã‚Œ#",		DPCM_Dis	},
+		{	"ãµã#",	DPCM_Fis	},
+		{	"ãµ#",		DPCM_Fis	},
+		{	"ã#",		DPCM_Gis	},
+		{	"ã‚‰#",		DPCM_Ais	},
 
-		{	"‚ê-",	DPCM_Cis	},
-		{	"‚İ-",	DPCM_Dis	},
-		{	"‚»-",	DPCM_Fis	},
-		{	"‚ç-",	DPCM_Gis	},
-		{	"‚µ-",	DPCM_Ais	},
+		{	"ã‚Œ-",	DPCM_Cis	},
+		{	"ã¿-",	DPCM_Dis	},
+		{	"ã-",	DPCM_Fis	},
+		{	"ã‚‰-",	DPCM_Gis	},
+		{	"ã—-",	DPCM_Ais	},
 
-		{	"‚Ç",	DPCM_C		},
-		{	"‚ê",	DPCM_D		},
-		{	"‚İ",	DPCM_E		},
-		{	"‚Ó‚Ÿ",	DPCM_F		},
-		{	"‚Ó",	DPCM_F		},
-		{	"‚»",	DPCM_G		},
-		{	"‚ç",	DPCM_A		},
-		{	"‚µ",	DPCM_B		},
+		{	"ã©",	DPCM_C		},
+		{	"ã‚Œ",	DPCM_D		},
+		{	"ã¿",	DPCM_E		},
+		{	"ãµã",	DPCM_F		},
+		{	"ãµ",	DPCM_F		},
+		{	"ã",	DPCM_G		},
+		{	"ã‚‰",	DPCM_A		},
+		{	"ã—",	DPCM_B		},
 
-		{	"ƒh#",		DPCM_Cis	},
-		{	"ƒŒ#",		DPCM_Dis	},
-		{	"ƒtƒ@#",	DPCM_Fis	},
-		{	"ƒt#",		DPCM_Fis	},
-		{	"ƒ\#",		DPCM_Gis	},
-		{	"ƒ‰#",		DPCM_Ais	},
+		{	"ãƒ‰#",		DPCM_Cis	},
+		{	"ãƒ¬#",		DPCM_Dis	},
+		{	"ãƒ•ã‚¡#",	DPCM_Fis	},
+		{	"ãƒ•#",		DPCM_Fis	},
+		{	"ã‚½#",		DPCM_Gis	},
+		{	"ãƒ©#",		DPCM_Ais	},
 
-		{	"ƒŒ-",	DPCM_Cis	},
-		{	"ƒ~-",	DPCM_Dis	},
-		{	"ƒ\-",	DPCM_Fis	},
-		{	"ƒ‰-",	DPCM_Gis	},
-		{	"ƒV-",	DPCM_Ais	},
+		{	"ãƒ¬-",	DPCM_Cis	},
+		{	"ãƒŸ-",	DPCM_Dis	},
+		{	"ã‚½-",	DPCM_Fis	},
+		{	"ãƒ©-",	DPCM_Gis	},
+		{	"ã‚·-",	DPCM_Ais	},
 
-		{	"ƒh",	DPCM_C		},
-		{	"ƒŒ",	DPCM_D		},
-		{	"ƒ~",	DPCM_E		},
-		{	"ƒtƒ@",	DPCM_F		},
-		{	"ƒt",	DPCM_F		},
-		{	"ƒ\",	DPCM_G		},
-		{	"ƒ‰",	DPCM_A		},
-		{	"ƒV",	DPCM_B		},
+		{	"ãƒ‰",	DPCM_C		},
+		{	"ãƒ¬",	DPCM_D		},
+		{	"ãƒŸ",	DPCM_E		},
+		{	"ãƒ•ã‚¡",	DPCM_F		},
+		{	"ãƒ•",	DPCM_F		},
+		{	"ã‚½",	DPCM_G		},
+		{	"ãƒ©",	DPCM_A		},
+		{	"ã‚·",	DPCM_B		},
 
 		{	"n",	DPCM_Note	}
 
@@ -123,33 +123,33 @@ const	static	Command_Info	Command[] = {
 	unsigned	char	cData;
 
 	//------------------------------
-	//ƒNƒ‰ƒX‚Ì‰Šúİ’è
+	//ã‚¯ãƒ©ã‚¹ã®åˆæœŸè¨­å®š
 	max_number	= 0;
 	m_id		= 0;
 
 	//------------------------------
-	//ƒRƒ“ƒpƒCƒ‹
+	//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
 
-	// { ‚ÌŒŸõ
+	// { ã®æ¤œç´¢
 	while(MML->cRead() != '{'){
 		if(MML->eof()){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌŠJn‚ğ¦‚·{‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹ã‚’ç¤ºã™{ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 	}
 
-	// } ‚ª—ˆ‚é‚Ü‚ÅA‹LqƒuƒƒbƒN“à‚ğƒRƒ“ƒpƒCƒ‹‚·‚éB
+	// } ãŒæ¥ã‚‹ã¾ã§ã€è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯å†…ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã€‚
 	while((cData = MML->GetChar()) != '}'){
 		
-		// } ‚ª—ˆ‚é‘O‚ÉA[EOF]‚ª—ˆ‚½‚çƒGƒ‰[
+		// } ãŒæ¥ã‚‹å‰ã«ã€[EOF]ãŒæ¥ãŸã‚‰ã‚¨ãƒ©ãƒ¼
 		if( MML->eof() ){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌI’[‚ğ¦‚·`}'‚ª‚ ‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®çµ‚ç«¯ã‚’ç¤ºã™`}'ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 
-		//‚P‚Â–ß‚é
+		//ï¼‘ã¤æˆ»ã‚‹
 		MML->Back();
 
 
-		//ŠeƒRƒ}ƒ“ƒh–ˆ‚Ìˆ—
+		//å„ã‚³ãƒãƒ³ãƒ‰æ¯ã®å‡¦ç†
 		switch(MML->GetCommandID(Command, sizeof(Command)/sizeof(Command_Info))){
 
 			case(DPCM_C):
@@ -211,7 +211,7 @@ const	static	Command_Info	Command[] = {
 		}
 	}
 
-	//‚±‚±‚ÅŠm•Û‚µ‚Ä‚¨‚­B
+	//ã“ã“ã§ç¢ºä¿ã—ã¦ãŠãã€‚
 	if(bank == true){
 		iSize = (max_number+1)*6;
 	} else {
@@ -221,19 +221,19 @@ const	static	Command_Info	Command[] = {
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 DPCMinfo::~DPCMinfo(void)
 {
-	//‡™PCM‚ÍA‚±‚±‚Å”jŠü‚·‚éB
+	//âŠ¿PCMã¯ã€ã“ã“ã§ç ´æ£„ã™ã‚‹ã€‚
 
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 	map<string, DPCM*>::iterator	itItem;
 
 	//----------------------
@@ -248,13 +248,13 @@ DPCMinfo::~DPCMinfo(void)
 	}
 }
 //==============================================================
-//		İ’è
+//		è¨­å®š
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//			int	key		ƒL[”Ô†i0:C / 1:Cis / ...j
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//			int	key		ã‚­ãƒ¼ç•ªå·ï¼ˆ0:C / 1:Cis / ...ï¼‰
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	DPCMinfo::setKey(MMLfile* MML, int key)
 {
@@ -262,13 +262,13 @@ void	DPCMinfo::setKey(MMLfile* MML, int key)
 }
 
 //==============================================================
-//		İ’è
+//		è¨­å®š
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*		MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//				int		note	ƒm[ƒg”Ô†
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*		MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//				int		note	ãƒãƒ¼ãƒˆç•ªå·
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	DPCMinfo::setNote(MMLfile* MML, int note)
 {
@@ -282,22 +282,22 @@ void	DPCMinfo::setNote(MMLfile* MML, int note)
 	DPCM*		_DPCM;
 
 	if((note<0) || (note>255)){
-		MML->Err(_T("‰¹ŠK‚Ì”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚Ü‚·B"));
+		MML->Err(_T("éŸ³éšã®ç¯„å›²ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚"));
 	}
 
 	if(max_number < note){
 		max_number = (unsigned char)note;
 	}
 
-	//ƒtƒ@ƒCƒ‹–¼
+	//ãƒ•ã‚¡ã‚¤ãƒ«å
 	cData = MML->GetChar();
 	if(cData != ','){
-		MML->Err(_T("‡™PCM’è‹`‚Ìƒpƒ‰ƒ[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB"));
+		MML->Err(_T("âŠ¿PCMå®šç¾©ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 	}
 
 	infoDPCM[note].file = MML->GetString();
 	if(ptcDPCM.count(infoDPCM[note].file) == 0){
-		//V‚µ‚¢ƒtƒ@ƒCƒ‹‚¾‚Á‚½‚çADPCMƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB
+		//æ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«ã ã£ãŸã‚‰ã€DPCMã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚
 		_DPCM = new DPCM(MML, infoDPCM[note].file.c_str(), m_id);
 		ptcDPCM[infoDPCM[note].file] = _DPCM;
 		m_id++;
@@ -305,37 +305,37 @@ void	DPCMinfo::setNote(MMLfile* MML, int note)
 		_DPCM = ptcDPCM[infoDPCM[note].file];
 	}
 
-	//Ä¶ü”g”
+	//å†ç”Ÿå‘¨æ³¢æ•°
 	cData = MML->GetChar();
 	if(cData != ','){
-		MML->Err(_T("‡™PCM’è‹`‚Ìƒpƒ‰ƒ[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB"));
+		MML->Err(_T("âŠ¿PCMå®šç¾©ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 	}
 	play_frequency = MML->GetInt();
 	if((play_frequency<0) || (play_frequency>15)){
-		MML->Err(_T("‡™PCM‚Ìü”g”‚Í0`15‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("âŠ¿PCMã®å‘¨æ³¢æ•°ã¯0ã€œ15ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 
-	//ƒ‚[ƒh
+	//ãƒ¢ãƒ¼ãƒ‰
 	cData = MML->GetChar();
 	if(cData != ','){
-		MML->Err(_T("‡™PCM’è‹`‚Ìƒpƒ‰ƒ[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB"));
+		MML->Err(_T("âŠ¿PCMå®šç¾©ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 	}
 
 	mode = MML->GetInt();
 	if((mode<0) || (mode>2)){
-		MML->Err(_T("‡™PCM‚Ìƒ‚[ƒh‚Í0`2‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("âŠ¿PCMã®ãƒ¢ãƒ¼ãƒ‰ã¯0ã€œ2ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 	if((mode==2) && (bank==false)){
-		MML->Err(_T("‡™PCM‚Ìƒ‚[ƒh2(IRQ)‚ÍA#BankƒRƒ}ƒ“ƒh‚Ìw’è‚ª•K—v‚Å‚·B"));
+		MML->Err(_T("âŠ¿PCMã®ãƒ¢ãƒ¼ãƒ‰2(IRQ)ã¯ã€#Bankã‚³ãƒãƒ³ãƒ‰ã®æŒ‡å®šãŒå¿…è¦ã§ã™ã€‚"));
 	}
 	infoDPCM[note].ctrl = (unsigned char)(mode<<6) + (unsigned char)play_frequency;
 
-	//‰Šú’l
+	//åˆæœŸå€¤
 	cData = MML->GetChar();
 	if(cData == ','){
 		start_volume = MML->GetInt();	
 		if((start_volume<-1) || (start_volume>127)){
-			MML->Err(_T("‡™PCM‚Ì‰Šú’l‚Í-1`127‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+			MML->Err(_T("âŠ¿PCMã®åˆæœŸå€¤ã¯-1ã€œ127ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 		infoDPCM[note].DA = (unsigned char)start_volume;
 	} else {
@@ -343,18 +343,18 @@ void	DPCMinfo::setNote(MMLfile* MML, int note)
 		infoDPCM[note].DA = 0;
 	}
 
-	//Ÿ‚Ìƒm[ƒg
+	//æ¬¡ã®ãƒãƒ¼ãƒˆ
 	if(mode == 2){
 		cData = MML->GetChar();
 		if(cData == ','){
 			next = MML->GetInt();	
 			if((next<-1) || (next>255)){
-				MML->Err(_T("Ÿ‚Ìƒm[ƒg”Ô†‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+				MML->Err(_T("æ¬¡ã®ãƒãƒ¼ãƒˆç•ªå·ã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 			}
 			infoDPCM[note].next = (unsigned char)next;
 		} else {
 			if(mode == 2){
-				MML->Err(_T("ƒ‚[ƒh2(IRQ)‚Ì‚Í•K‚¸Ÿ‚É”­‰¹‚·‚éƒm[ƒg”Ô†‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+				MML->Err(_T("ãƒ¢ãƒ¼ãƒ‰2(IRQ)ã®æ™‚ã¯å¿…ãšæ¬¡ã«ç™ºéŸ³ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 			}
 			MML->Back();
 			infoDPCM[note].next = 0;
@@ -366,16 +366,16 @@ void	DPCMinfo::setNote(MMLfile* MML, int note)
 	cData = MML->GetChar();
 	if(cData == ','){
 		if(mode != 2){
-			MML->Err(_T("ƒ‚[ƒh2(IRQ)ˆÈŠO‚Ìƒ‚[ƒh‚Å‚Í•s—v‚Å‚·B"));
+			MML->Err(_T("ãƒ¢ãƒ¼ãƒ‰2(IRQ)ä»¥å¤–ã®ãƒ¢ãƒ¼ãƒ‰ã§ã¯ä¸è¦ã§ã™ã€‚"));
 		}
 		next = MML->GetInt();	
 		if((next<-1) || (next>255)){
-			MML->Err(_T("Ÿ‚Ìƒm[ƒg”Ô†‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+			MML->Err(_T("æ¬¡ã®ãƒãƒ¼ãƒˆç•ªå·ã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 		infoDPCM[note].next = (unsigned char)next;
 	} else {
 		if(mode == 2){
-			MML->Err(_T("ƒ‚[ƒh2(IRQ)‚Ì‚Í•K‚¸Ÿ‚É”­‰¹‚·‚éƒm[ƒg”Ô†‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B"));
+			MML->Err(_T("ãƒ¢ãƒ¼ãƒ‰2(IRQ)ã®æ™‚ã¯å¿…ãšæ¬¡ã«ç™ºéŸ³ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚"));
 		}
 		MML->Back();
 		infoDPCM[note].next = 0;
@@ -387,7 +387,7 @@ void	DPCMinfo::setNote(MMLfile* MML, int note)
 	if(cData == ','){
 		start_offset = MML->GetInt();	
 		if((start_offset<0) || (start_offset>255)){
-			MML->Err(_T("‡™PCM‚Ì”­‰¹ŠJnƒIƒtƒZƒbƒg‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+			MML->Err(_T("âŠ¿PCMã®ç™ºéŸ³é–‹å§‹ã‚ªãƒ•ã‚»ãƒƒãƒˆã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 		infoDPCM[note].offset = (unsigned char)start_offset;
 	} else {
@@ -400,7 +400,7 @@ void	DPCMinfo::setNote(MMLfile* MML, int note)
 	if(cData == ','){
 		size_offset = MML->GetInt();	
 		if((size_offset<0) || (size_offset>255)){
-			MML->Err(_T("‡™PCM‚Ì”­‰¹ƒTƒCƒY‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+			MML->Err(_T("âŠ¿PCMã®ç™ºéŸ³ã‚µã‚¤ã‚ºã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 		}
 		infoDPCM[note].size = (unsigned char)size_offset;
 	} else {
@@ -411,16 +411,16 @@ void	DPCMinfo::setNote(MMLfile* MML, int note)
 }
 
 //==============================================================
-//		ƒ¢PCMinfo\‘¢‘Ì‚Ì¶¬i”z’uƒAƒhƒŒƒX‚Ì‰ğŒˆj
+//		Î”PCMinfoæ§‹é€ ä½“ã®ç”Ÿæˆï¼ˆé…ç½®ã‚¢ãƒ‰ãƒ¬ã‚¹ã®è§£æ±ºï¼‰
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	int		_offset		ƒ¢PCM”z’uƒAƒhƒŒƒX
-//		unsigned	char	_MusBank	ƒV[ƒPƒ“ƒX‚Ìƒoƒ“ƒN”
-//	œ•Ô’l
-//		unsigned	int					ƒ¢PCM”z’uI—¹ƒAƒhƒŒƒX
-//	œˆ—
-//		ƒR[ƒh‚ğæ“¾‚µ‚È‚ª‚çAŠeƒ¢PCM‚ÌƒoƒCƒiƒŠ‚ğ“¾‚éB
-//		i“¾‚½ƒR[ƒh‚ÍANSFo—Í‚Ì‚µ‚©g‚í‚È‚¢‚ªBBBj
+//	â—å¼•æ•°
+//		unsigned	int		_offset		Î”PCMé…ç½®ã‚¢ãƒ‰ãƒ¬ã‚¹
+//		unsigned	char	_MusBank	ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ãƒãƒ³ã‚¯æ•°
+//	â—è¿”å€¤
+//		unsigned	int					Î”PCMé…ç½®çµ‚äº†ã‚¢ãƒ‰ãƒ¬ã‚¹
+//	â—å‡¦ç†
+//		ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã—ãªãŒã‚‰ã€å„Î”PCMã®ãƒã‚¤ãƒŠãƒªã‚’å¾—ã‚‹ã€‚
+//		ï¼ˆå¾—ãŸã‚³ãƒ¼ãƒ‰ã¯ã€NSFå‡ºåŠ›ã®æ™‚ã—ã‹ä½¿ã‚ãªã„ãŒã€‚ã€‚ã€‚ï¼‰
 //==============================================================
 unsigned	int	DPCMinfo::setDPCMoffset(unsigned	int _offset, unsigned char _MusBank)
 {
@@ -430,7 +430,7 @@ unsigned	int	DPCMinfo::setDPCMoffset(unsigned	int _offset, unsigned char _MusBan
 
 	unsigned	int	i=0;
 
-	//‡™PCM‚Ì”z’uƒAƒhƒŒƒX‚ğ‰ğŒˆB‚µ‚È‚ª‚çNSFo—Í—p‚Ì‡™PCMÀ‘Ì‚ğì¬B
+	//âŠ¿PCMã®é…ç½®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è§£æ±ºã€‚ã—ãªãŒã‚‰NSFå‡ºåŠ›ç”¨ã®âŠ¿PCMå®Ÿä½“ã‚’ä½œæˆã€‚
 	if(m_id > 0){
 		//DPCM
 		if(!ptcDPCM.empty()){
@@ -445,7 +445,7 @@ unsigned	int	DPCMinfo::setDPCMoffset(unsigned	int _offset, unsigned char _MusBan
 		}
 	}
 
-	//ƒ¢PCMinfo\‘¢‘Ì‚Ì¶¬
+	//Î”PCMinfoæ§‹é€ ä½“ã®ç”Ÿæˆ
 	if(bank == false){
 		while(i <= max_number){
 			if(infoDPCM[i].file.empty()){
@@ -506,15 +506,15 @@ unsigned	int	DPCMinfo::setDPCMoffset(unsigned	int _offset, unsigned char _MusBan
 }
 
 //==============================================================
-//		ƒR[ƒh‚Ìæ“¾
+//		ã‚³ãƒ¼ãƒ‰ã®å–å¾—
 //--------------------------------------------------------------
-//	œˆø”
-//		string*		_str		ƒR[ƒh‚ğ“ü‚ê‚éstring‚Ìƒ|ƒCƒ“ƒ^
-//	œ•Ô’l
-//		–³‚µ
-//	œˆ—
-//		ƒR[ƒh‚ğæ“¾‚µ‚È‚ª‚çAŠeƒ¢PCM‚ÌƒoƒCƒiƒŠ‚ğ“¾‚éB
-//		i“¾‚½ƒR[ƒh‚ÍANSFo—Í‚Ì‚µ‚©g‚í‚È‚¢‚ªBBBj
+//	â—å¼•æ•°
+//		string*		_str		ã‚³ãƒ¼ãƒ‰ã‚’å…¥ã‚Œã‚‹stringã®ãƒã‚¤ãƒ³ã‚¿
+//	â—è¿”å€¤
+//		ç„¡ã—
+//	â—å‡¦ç†
+//		ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã—ãªãŒã‚‰ã€å„Î”PCMã®ãƒã‚¤ãƒŠãƒªã‚’å¾—ã‚‹ã€‚
+//		ï¼ˆå¾—ãŸã‚³ãƒ¼ãƒ‰ã¯ã€NSFå‡ºåŠ›ã®æ™‚ã—ã‹ä½¿ã‚ãªã„ãŒã€‚ã€‚ã€‚ï¼‰
 //==============================================================
 void	DPCMinfo::getDPCMCode(string* _str)
 {
@@ -539,12 +539,12 @@ void	DPCMinfo::getDPCMCode(string* _str)
 	}
 }
 //==============================================================
-//		ƒR[ƒh‚Ìæ“¾
+//		ã‚³ãƒ¼ãƒ‰ã®å–å¾—
 //--------------------------------------------------------------
-//	œˆø”
-//		MusicFile*	MUS		ƒR[ƒh‚ğo—Í‚·‚é‹Èƒf[ƒ^ƒtƒ@ƒCƒ‹EƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MusicFile*	MUS		ã‚³ãƒ¼ãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹æ›²ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	DPCMinfo::getAsm(MusicFile* MUS)
 {

@@ -33,36 +33,36 @@
 
 ***************************************************************************/
 
-// nsc.cpp : ƒRƒ“ƒ\[ƒ‹ ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒGƒ“ƒgƒŠ ƒ|ƒCƒ“ƒg‚ð’è‹`‚µ‚Ü‚·B
+// nsc.cpp : ã‚³ãƒ³ã‚½ãƒ¼ãƒ« ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¨ãƒ³ãƒˆãƒª ãƒã‚¤ãƒ³ãƒˆã‚’å®šç¾©ã—ã¾ã™ã€‚
 //
 
 #include "StdAfx.h"
 
 /****************************************************************/
-/*					ƒOƒ[ƒoƒ‹									*/
+/*					ã‚°ãƒ­ãƒ¼ãƒãƒ«									*/
 /****************************************************************/
-		OPSW*			cOptionSW = NULL;	//‚Ç‚Á‚©‚ç‚Å‚àƒAƒNƒZƒX‚·‚éB
+		OPSW*			cOptionSW = NULL;	//ã©ã£ã‹ã‚‰ã§ã‚‚ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã€‚
 
 //==============================================================
-//		ƒGƒ‰[
+//		ã‚¨ãƒ©ãƒ¼
 //--------------------------------------------------------------
-//	œˆø”
-//		int			ƒGƒ‰[ƒR[ƒh
-//	œ•Ô’l
-//					–³‚µ
+//	â—å¼•æ•°
+//		int			ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+//	â—è¿”å€¤
+//					ç„¡ã—
 //==============================================================
 void nsc_exit(int no)
 {
 	throw no;
 }
 //==============================================================
-//		ƒƒCƒ“ŠÖ”
+//		ãƒ¡ã‚¤ãƒ³é–¢æ•°
 //--------------------------------------------------------------
-//	œˆø”
-//		int		argc	ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”	
-//		_TCHAR*	argv[]	ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”
-//	œ•Ô’l
-//		int			ƒGƒ‰[ƒR[ƒh
+//	â—å¼•æ•°
+//		int		argc	ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°	
+//		_TCHAR*	argv[]	ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°
+//	â—è¿”å€¤
+//		int			ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
 //==============================================================
 int	main(int argc, char* argv[])
 {
@@ -81,7 +81,7 @@ int	main(int argc, char* argv[])
 #endif
 
 
-//		locale::global(std::locale(""));	//g++ ‚¾‚ÆAƒ‰ƒ“ƒ^ƒCƒ€ ƒGƒ‰[‚É‚È‚éB
+//		locale::global(std::locale(""));	//g++ ã ã¨ã€ãƒ©ãƒ³ã‚¿ã‚¤ãƒ  ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ã€‚
 
 
 		//==================================
@@ -91,8 +91,8 @@ int	main(int argc, char* argv[])
 
 
 		//==================================
-		//ƒNƒ‰ƒX‚Ìì¬
-		cOptionSW	= new OPSW(argc,argv);							//ƒIƒvƒVƒ‡ƒ“ˆ—
+		//ã‚¯ãƒ©ã‚¹ã®ä½œæˆ
+		cOptionSW	= new OPSW(argc,argv);							//ã‚ªãƒ—ã‚·ãƒ§ãƒ³å‡¦ç†
 		_COUT << _T("------------------------------------------------------------") << endl;
 		_COUT << _T("*Object creating process") << endl;
 
@@ -115,18 +115,18 @@ int	main(int argc, char* argv[])
 
 
 		//==================================
-		//ƒAƒhƒŒƒX‚Ì‰ðŒˆ
+		//ã‚¢ãƒ‰ãƒ¬ã‚¹ã®è§£æ±º
 		_COUT << _T("------------------------------------------------------------") << endl;
 		_COUT << _T("*Address settlement process") << endl;
 
-		//ƒAƒhƒŒƒX‚ÌŒvŽZ • ƒTƒCƒY‚Ìo—Í
+		//ã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¨ˆç®— ï¼† ã‚µã‚¤ã‚ºã®å‡ºåŠ›
 		i = cSND->SetOffset(0);
 		cout << "  Music Size = " << setfill(' ')  << setw(5) << i << " [Byte]" << endl;
 
 		i = cSND->SetDPCMOffset(i);
 		cout << "  DPCM Size  = " << setfill(' ')  << setw(5) << i << " [Byte]" << endl;
 
-		//ƒAƒhƒŒƒX‚ðˆø”‚É‚à‚ÂƒIƒyƒR[ƒh‚ÌƒAƒhƒŒƒX‰ðŒˆ
+		//ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å¼•æ•°ã«ã‚‚ã¤ã‚ªãƒšã‚³ãƒ¼ãƒ‰ã®ã‚¢ãƒ‰ãƒ¬ã‚¹è§£æ±º
 		cSND->Fix_Address();
 
 		_COUT << endl;
@@ -134,7 +134,7 @@ int	main(int argc, char* argv[])
 
 
 		//==================================
-		//•Û‘¶
+		//ä¿å­˜
 		if((cOptionSW->saveNSF == true) || ((cOptionSW->saveNSF == false)&&(cOptionSW->saveASM == false))){
 			cSND->saveNSF(cOptionSW->strNSFname.c_str());
 		}
@@ -157,7 +157,7 @@ int	main(int argc, char* argv[])
 	}
 
 	//==================================
-	//ƒNƒ‰ƒX‚Ìíœ
+	//ã‚¯ãƒ©ã‚¹ã®å‰Šé™¤
 	if (cSND)
 		delete	cSND;
 	if (cMML)

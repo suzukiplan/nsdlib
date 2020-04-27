@@ -11,7 +11,7 @@
 
 /****************************************************************/
 /*																*/
-/*			\‘¢‘Ì’è‹`											*/
+/*			æ§‹é€ ä½“å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class NSD_WORK{
@@ -56,7 +56,7 @@ public:
 			~NSD_WORK(void){};
 
 	void	init(void){
-		//‰¹Œ¹ƒhƒ‰ƒCƒo‰Šú’l‚ğİ’è
+		//éŸ³æºãƒ‰ãƒ©ã‚¤ãƒåˆæœŸå€¤ã‚’è¨­å®š
 		gatemode		= -1;
 		length			= 24;
 		gate_q			= 0;
@@ -110,38 +110,38 @@ public:
 };
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class MusicTrack :
 	public MusicItem
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 public:
 	//----------------------------------
-	//‰¹Œ¹ƒhƒ‰ƒCƒo@ƒVƒ~ƒ…ƒŒ[ƒg—pWORK
+	//éŸ³æºãƒ‰ãƒ©ã‚¤ãƒã€€ã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆç”¨WORK
 	NSD_WORK	nsd;
 
 private:
 	//----------------------------------
-	//Tick ƒJƒEƒ“ƒg—p
+	//Tick ã‚«ã‚¦ãƒ³ãƒˆç”¨
 				int		iTickTotal;
 				int		iTickLoop;
 
 	//----------------------------------
-	//ƒRƒ“ƒpƒCƒ‹§Œä
-	unsigned	int		offset_now;				//Œ»İ‚ÌƒIƒtƒZƒbƒg
-				bool	compile_flag;			//Œ»İƒRƒ“ƒpƒCƒ‹’†H
+	//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«åˆ¶å¾¡
+	unsigned	int		offset_now;				//ç¾åœ¨ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+				bool	compile_flag;			//ç¾åœ¨ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ä¸­ï¼Ÿ
 
 				bool	jump_flag;				// J
 
 	//----------------------------------
-	//‰¹’·
+	//éŸ³é•·
 	//			int		DefaultLength;			//l
 				int		opt_DefaultLength;
 	
 	//----------------------------------
-	//ƒNƒIƒ“ƒ^ƒCƒY
+	//ã‚¯ã‚ªãƒ³ã‚¿ã‚¤ã‚º
 				int		QMax;					//QMax
 				int		gatetime_q;				//q
 				int		gatetime_Q;				//Q
@@ -149,66 +149,66 @@ private:
 				int		opt_gatetime_u;			//
 
 	//----------------------------------
-	//‰¹—Ê
-//				char	volume;					//Œ»İ‚Ì‰¹—Ê
+	//éŸ³é‡
+//				char	volume;					//ç¾åœ¨ã®éŸ³é‡
 				int		opt_volume;
 
 	//----------------------------------
-	//ƒIƒNƒ^[ƒu
-//				char	octave;					//Œ»İ‚ÌƒIƒNƒ^[ƒu
-//				char	octave1;				//ˆêŸ“I‚È‘Š‘ÎƒIƒNƒ^[ƒu@ŒvZ—p
+	//ã‚ªã‚¯ã‚¿ãƒ¼ãƒ–
+//				char	octave;					//ç¾åœ¨ã®ã‚ªã‚¯ã‚¿ãƒ¼ãƒ–
+//				char	octave1;				//ä¸€æ¬¡çš„ãªç›¸å¯¾ã‚ªã‚¯ã‚¿ãƒ¼ãƒ–ã€€è¨ˆç®—ç”¨
 				int		opt_octave;
 
 	//----------------------------------
-	//ƒm[ƒg
+	//ãƒãƒ¼ãƒˆ
 	mml_note*			_old_note;
 
 	//----------------------------------
-	//’²†§Œä—p
-				char	KeySignature[8];		//’²†(c,d,e,f,g,a,b,r)
-				char	nowKey;					//Œ»İ‚Ì’²
-				char	nowScale;				//Œ»İ‚ÌƒXƒP[ƒ‹iƒ‚[ƒhj
+	//èª¿å·åˆ¶å¾¡ç”¨
+				char	KeySignature[8];		//èª¿å·(c,d,e,f,g,a,b,r)
+				char	nowKey;					//ç¾åœ¨ã®èª¿
+				char	nowScale;				//ç¾åœ¨ã®ã‚¹ã‚±ãƒ¼ãƒ«ï¼ˆãƒ¢ãƒ¼ãƒ‰ï¼‰
 				
 	//----------------------------------
-	//ˆÚ’²
+	//ç§»èª¿
 				int		iKeyShift;				//k
 				
 //				int		iTranspose;				//_
 
 	//----------------------------------
-	//‹^—ƒGƒR[
-				bool	echo_already;			//Šù‚É¶¬‚µ‚½‚©H
-				bool	echo_vol_ret;			//ƒGƒR[‚Ì‰¹—Ê‚ğŒ³‚É–ß‚µ‚½‚©H
+	//ç–‘ä¼¼ã‚¨ã‚³ãƒ¼
+				bool	echo_already;			//æ—¢ã«ç”Ÿæˆã—ãŸã‹ï¼Ÿ
+				bool	echo_vol_ret;			//ã‚¨ã‚³ãƒ¼ã®éŸ³é‡ã‚’å…ƒã«æˆ»ã—ãŸã‹ï¼Ÿ
 
-				bool	echo_flag;				//‹^—ƒGƒR[ ƒtƒ‰ƒO
-				bool	echo_slur;				//‹^—ƒGƒR[ ƒXƒ‰[‚Å‚Â‚È‚°‚éH
-				int		echo_length;			//‹^—ƒGƒR[ ’·‚³
-	unsigned	char	echo_volume;			//‹^—ƒGƒR[ ‰¹—Ê
-	unsigned	char	echo_value;				//‹^—ƒGƒR[ ‰½‘OH
-				char	oldNote[256];			//‹^—ƒGƒR[—pƒŠƒ“ƒOƒoƒbƒtƒ@
-	unsigned	char	pt_oldNote;				//‹^—ƒGƒR[—pƒŠƒ“ƒOƒoƒbƒtƒ@@ƒ|ƒCƒ“ƒ^
+				bool	echo_flag;				//ç–‘ä¼¼ã‚¨ã‚³ãƒ¼ ãƒ•ãƒ©ã‚°
+				bool	echo_slur;				//ç–‘ä¼¼ã‚¨ã‚³ãƒ¼ ã‚¹ãƒ©ãƒ¼ã§ã¤ãªã’ã‚‹ï¼Ÿ
+				int		echo_length;			//ç–‘ä¼¼ã‚¨ã‚³ãƒ¼ é•·ã•
+	unsigned	char	echo_volume;			//ç–‘ä¼¼ã‚¨ã‚³ãƒ¼ éŸ³é‡
+	unsigned	char	echo_value;				//ç–‘ä¼¼ã‚¨ã‚³ãƒ¼ ä½•å‰ï¼Ÿ
+				char	oldNote[256];			//ç–‘ä¼¼ã‚¨ã‚³ãƒ¼ç”¨ãƒªãƒ³ã‚°ãƒãƒƒãƒ•ã‚¡
+	unsigned	char	pt_oldNote;				//ç–‘ä¼¼ã‚¨ã‚³ãƒ¼ç”¨ãƒªãƒ³ã‚°ãƒãƒƒãƒ•ã‚¡ã€€ãƒã‚¤ãƒ³ã‚¿
 
 	//----------------------------------
-	//ƒpƒbƒ`
-				bool	f_Patch;				//ƒpƒbƒ`ˆ—’†H
+	//ãƒ‘ãƒƒãƒ
+				bool	f_Patch;				//ãƒ‘ãƒƒãƒå‡¦ç†ä¸­ï¼Ÿ
 	unsigned	int		i_Patch;
 
-	//Œ»İ‚Ìó‘Ôiİ’è”’lj
+	//ç¾åœ¨ã®çŠ¶æ…‹ï¼ˆè¨­å®šæ•°å€¤ï¼‰
 //	unsigned	int		iVoi;			//
 //	unsigned	int		iEvoi;			//
 //	unsigned	int		iEvol;			//
 //	unsigned	int		iEm;			//
 //	unsigned	int		iEn;			//
 	unsigned	char	iSweep;			//
-	unsigned	int		iSub;			//ƒTƒuƒ‹[ƒ`ƒ“—p
+	unsigned	int		iSub;			//ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ç”¨
 
-	//Œ»İ‚Ìó‘ÔiƒGƒ“ƒxƒ[ƒv‚Ìswj
+	//ç¾åœ¨ã®çŠ¶æ…‹ï¼ˆã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®swï¼‰
 				bool	sw_Evoi;		//
 				bool	sw_Evol;		//
 				bool	sw_Em;			//
 				bool	sw_En;			//
 
-	//İ’è‚·‚é‚©‚Ç‚¤‚©idefailt = falsej
+	//è¨­å®šã™ã‚‹ã‹ã©ã†ã‹ï¼ˆdefailt = falseï¼‰
 				bool	f_opt_Voi;		//
 				bool	f_opt_Evoi;		//
 				bool	f_opt_Evol;		//
@@ -216,28 +216,28 @@ private:
 				bool	f_opt_En;		//
 				bool	f_opt_Key;		//
 				bool	f_opt_Sweep;	//
-				bool	f_opt_Sub;		//ƒTƒuƒ‹[ƒ`ƒ“iƒpƒbƒ`—pj
+				bool	f_opt_Sub;		//ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ï¼ˆãƒ‘ãƒƒãƒç”¨ï¼‰
 
 	//----------------------------------
-	//–³ŒÀƒ‹[ƒv
-				bool	loop_flag;				// L ƒRƒ}ƒ“ƒhoŒ»‚µ‚½‚©H
-	unsigned	int		offset_loop;			// L ƒRƒ}ƒ“ƒh‚ÌƒIƒtƒZƒbƒg
+	//ç„¡é™ãƒ«ãƒ¼ãƒ—
+				bool	loop_flag;				// L ã‚³ãƒãƒ³ãƒ‰å‡ºç¾ã—ãŸã‹ï¼Ÿ
+	unsigned	int		offset_loop;			// L ã‚³ãƒãƒ³ãƒ‰ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 
 	//----------------------------------
-	//ƒŠƒs[ƒgŠÖŒW
+	//ãƒªãƒ”ãƒ¼ãƒˆé–¢ä¿‚
 	mml_Address*		_old_repeatA_Branch;
 	mml_repeat*			_old_repeat;
 
-	unsigned	int		offset_repeat_a_s;		//‘O‰ñ‚Ì [  ƒRƒ}ƒ“ƒh‚ÌƒIƒtƒZƒbƒg
-	unsigned	int		offset_repeat_a_b;		//‘O‰ñ‚Ì :  ƒRƒ}ƒ“ƒh‚ÌƒIƒtƒZƒbƒg
-	unsigned	int		offset_repeat_b_s;		//‘O‰ñ‚Ì |: ƒRƒ}ƒ“ƒh‚ÌƒIƒtƒZƒbƒg
-	unsigned	int		offset_repeat_b_b;		//‘O‰ñ‚Ì \  ƒRƒ}ƒ“ƒh‚ÌƒIƒtƒZƒbƒg
+	unsigned	int		offset_repeat_a_s;		//å‰å›ã® [  ã‚³ãƒãƒ³ãƒ‰ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	unsigned	int		offset_repeat_a_b;		//å‰å›ã® :  ã‚³ãƒãƒ³ãƒ‰ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	unsigned	int		offset_repeat_b_s;		//å‰å›ã® |: ã‚³ãƒãƒ³ãƒ‰ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	unsigned	int		offset_repeat_b_b;		//å‰å›ã® \  ã‚³ãƒãƒ³ãƒ‰ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 				int		count_repeat_a;
 
-			vector<	int			>			repeat_type;		//‚Ç‚ÌƒŠƒs[ƒg‚ğg‚Á‚Ä‚¢‚é‚©H
+			vector<	int			>			repeat_type;		//ã©ã®ãƒªãƒ”ãƒ¼ãƒˆã‚’ä½¿ã£ã¦ã„ã‚‹ã‹ï¼Ÿ
 			vector<	int			>::iterator	it_repeat_type;
 
-			unsigned	int					sp_repeat_c;		//ƒŠƒs[ƒg(C)‚ÌƒXƒ^ƒbƒNƒ|ƒCƒ“ƒ^
+			unsigned	int					sp_repeat_c;		//ãƒªãƒ”ãƒ¼ãƒˆ(C)ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒã‚¤ãƒ³ã‚¿
 	list<	unsigned	int				>	st_ct_repeat_c;
 	list<	list<	MusicItem*>::iterator>	st_it_repeat_c_s;
 	list<	list<	MusicItem*>::iterator>	st_it_repeat_c_b;
@@ -248,17 +248,17 @@ private:
 	list<	list<	MusicItem*>::iterator>::iterator	it_it_repeat_c_e;
 
 	//----------------------------------
-	//ƒIƒuƒWƒFƒNƒg
+	//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	vector<	mml_Address*	>	ptcFDSC;		//FDS Carrer
 	vector<	mml_Address*	>	ptcFDSM;		//FDS Modlator
 	vector<	mml_Address*	>	ptcOPLL;		//VRC7, OPLL
 	vector<	mml_Address*	>	ptcWave;		//N163
-	vector<	mml_Address*	>	ptcSE;			//Œø‰Ê‰¹ƒRƒ}ƒ“ƒhˆê——
-	vector<	mml_Address*	>	ptcSub;			//ƒTƒuƒ‹[ƒ`ƒ“ƒRƒ}ƒ“ƒhˆê——
-	vector<	mml_Address*	>	ptcEnv;			//ƒGƒ“ƒxƒ[ƒvƒRƒ}ƒ“ƒhˆê——
+	vector<	mml_Address*	>	ptcSE;			//åŠ¹æœéŸ³ã‚³ãƒãƒ³ãƒ‰ä¸€è¦§
+	vector<	mml_Address*	>	ptcSub;			//ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã‚³ãƒãƒ³ãƒ‰ä¸€è¦§
+	vector<	mml_Address*	>	ptcEnv;			//ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã‚³ãƒãƒ³ãƒ‰ä¸€è¦§
 
 
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 			MusicTrack(MMLfile* MML, const _CHAR _strName[] = _T("==== [ Music Track ]===="));
 			~MusicTrack(void);
@@ -270,18 +270,18 @@ public:
 
 				void	OptimizeDefineCheck(MusicFile* MUS);
 				void	Fix_Address(MusicFile* MUS);
-				void	SetEvent(MusicItem* _item);		//ƒCƒxƒ“ƒg‚Ì’Ç‰Á
+				void	SetEvent(MusicItem* _item);		//ã‚¤ãƒ™ãƒ³ãƒˆã®è¿½åŠ 
 
-				//‚±‚Ìƒgƒ‰ƒbƒN‚ğƒRƒ“ƒpƒCƒ‹‚·‚é‚©‚Ç‚¤‚©
+				//ã“ã®ãƒˆãƒ©ãƒƒã‚¯ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã‹ã©ã†ã‹
 				bool	GetCompileFlag(void){return(compile_flag);};
 				void	SetCompileFlag(bool _flag){compile_flag = _flag;};
 
 				//----------------------------------
-				//‚±‚Ìƒgƒ‰ƒbƒN‚É‚¾‚¯Œø‚­‚l‚l‚kƒRƒ}ƒ“ƒh
-				size_t	SetEnd(MMLfile* MML);			//‹LqƒuƒƒbƒNI—¹
-				void	SetLoop();						//–³ŒÀƒ‹[ƒv
+				//ã“ã®ãƒˆãƒ©ãƒƒã‚¯ã«ã ã‘åŠ¹ãï¼­ï¼­ï¼¬ã‚³ãƒãƒ³ãƒ‰
+				size_t	SetEnd(MMLfile* MML);			//è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯çµ‚äº†
+				void	SetLoop();						//ç„¡é™ãƒ«ãƒ¼ãƒ—
 
-				void	SetJump(MMLfile* MML);			//ƒWƒƒƒ“ƒv
+				void	SetJump(MMLfile* MML);			//ã‚¸ãƒ£ãƒ³ãƒ—
 
 				void	SetRepeat_Start(MMLfile* MML);
 				void	SetRepeat_End(MMLfile* MML);
@@ -343,7 +343,7 @@ public:
 				void	SetHMinor(MMLfile* MML);
 				void	SetMMinor(MMLfile* MML);
 				void	SetScale(MMLfile* MML);
-				void	SetKeySignature(MMLfile* MML);	//’²†‚Ìİ’è
+				void	SetKeySignature(MMLfile* MML);	//èª¿å·ã®è¨­å®š
 
 				void	SetEcho(void);
 				void	SetEcho(MMLfile* MML);

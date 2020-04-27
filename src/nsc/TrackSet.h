@@ -12,29 +12,29 @@
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class TrackSet :
 	public MusicItem
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 protected:
 	unsigned	int				m_id;		//ID
 				int				iTempo;
 
 protected:
-//static	const	Command_Info	Command[];	//ƒRƒ}ƒ“ƒh‚Ìî•ñ
-	map<int,	MusicTrack*	>	ptcTrack;	//ƒgƒ‰ƒbƒNEƒIƒuƒWƒFƒNƒg‚Ìƒ|ƒCƒ“ƒ^
-				MusicTrack*		nowTrack;	//ƒRƒ“ƒpƒCƒ‹’†‚Ìƒgƒ‰ƒbƒN
-				int				iTrack;		//ƒRƒ“ƒpƒCƒ‹’†‚Ìƒgƒ‰ƒbƒN”Ô†
-				int				maxTrack;	//ƒgƒ‰ƒbƒN”Ô†‚ÌÅ‘å’l
-				bool			fSub;		//ƒTƒuƒ‹[ƒ`ƒ“‹LqƒuƒƒbƒN‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
-				bool			fSE;		//SE‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+//static	const	Command_Info	Command[];	//ã‚³ãƒãƒ³ãƒ‰ã®æƒ…å ±
+	map<int,	MusicTrack*	>	ptcTrack;	//ãƒˆãƒ©ãƒƒã‚¯ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒã‚¤ãƒ³ã‚¿
+				MusicTrack*		nowTrack;	//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ä¸­ã®ãƒˆãƒ©ãƒƒã‚¯
+				int				iTrack;		//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ä¸­ã®ãƒˆãƒ©ãƒƒã‚¯ç•ªå·
+				int				maxTrack;	//ãƒˆãƒ©ãƒƒã‚¯ç•ªå·ã®æœ€å¤§å€¤
+				bool			fSub;		//ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
+				bool			fSE;		//SEã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
 	unsigned	int				TrackPt;	//
 	unsigned	int				TrackLine;	//
-	unsigned	char			Priority;	//Œø‰Ê‰¹—Dæ‡ˆÊ
-//ƒƒ“ƒo[ŠÖ”
+	unsigned	char			Priority;	//åŠ¹æœéŸ³å„ªå…ˆé †ä½
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 				TrackSet(MMLfile* MML, unsigned int _id, bool _sub, bool _se, const _CHAR _strName[] = _T("==== [ Track Set ]===="));
 				~TrackSet(void);
@@ -52,29 +52,29 @@ public:
 	MusicTrack*	makeTrack(MMLfile* MML, int _track);
 	MusicTrack*	getTrack(MMLfile* MML, int _track);
 
-		void	SetEvent(MusicItem* _item);		//ƒCƒxƒ“ƒg‚Ì’Ç‰Á
+		void	SetEvent(MusicItem* _item);		//ã‚¤ãƒ™ãƒ³ãƒˆã®è¿½åŠ 
 
 		//----------------------------------
-		//‹È‘S‘Ì‚ÉŒø‚­‚l‚l‚kƒRƒ}ƒ“ƒh
+		//æ›²å…¨ä½“ã«åŠ¹ãï¼­ï¼­ï¼¬ã‚³ãƒãƒ³ãƒ‰
 
-		//Œø‰Ê‰¹‚Ì—Dæ‡ˆÊ
+		//åŠ¹æœéŸ³ã®å„ªå…ˆé †ä½
 		void	Set_Priority(MMLfile* MML);
 
-		//‘‘—‚è
+		//æ—©é€ã‚Š
 		void	SetJumpDrv(MMLfile* MML);
 
-		//ƒeƒ“ƒ|‘€ì
+		//ãƒ†ãƒ³ãƒæ“ä½œ
 		void	SetTempo(MMLfile* MML);
 		void	SetRelativeTempo(MMLfile* MML);
 		void	TempoUp();
 		void	TempoDown();
 
-		//ƒŒƒWƒXƒ^‘€ì
-		void	Set_Poke(MMLfile* MML);				//ƒƒ‚ƒŠ‘‚«‚İ
-		void	Set_VRC7_Write(MMLfile* MML);		//VRC7	ƒŒƒWƒXƒ^‘‚«‚İ
+		//ãƒ¬ã‚¸ã‚¹ã‚¿æ“ä½œ
+		void	Set_Poke(MMLfile* MML);				//ãƒ¡ãƒ¢ãƒªæ›¸ãè¾¼ã¿
+		void	Set_VRC7_Write(MMLfile* MML);		//VRC7	ãƒ¬ã‚¸ã‚¹ã‚¿æ›¸ãè¾¼ã¿
 
-		void	Set_FDS_Frequency(MMLfile* MML);	//FDS	ƒ‚ƒWƒ…ƒŒ[ƒ^ü”g”
-		void	Set_FDS_Volume(MMLfile* MML);		//FDS	ƒ}ƒXƒ^[‰¹—Ê
-		void	Set_N163_Channel(MMLfile* MML);		//N16x	ƒ`ƒƒƒ“ƒlƒ‹”
-		void	Set_FME7_Frequency(MMLfile* MML);	//SN5B	ƒGƒ“ƒxƒ[ƒvü”g”
+		void	Set_FDS_Frequency(MMLfile* MML);	//FDS	ãƒ¢ã‚¸ãƒ¥ãƒ¬ãƒ¼ã‚¿å‘¨æ³¢æ•°
+		void	Set_FDS_Volume(MMLfile* MML);		//FDS	ãƒã‚¹ã‚¿ãƒ¼éŸ³é‡
+		void	Set_N163_Channel(MMLfile* MML);		//N16x	ãƒãƒ£ãƒ³ãƒãƒ«æ•°
+		void	Set_FME7_Frequency(MMLfile* MML);	//SN5B	ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—å‘¨æ³¢æ•°
 };

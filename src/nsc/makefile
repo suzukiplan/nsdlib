@@ -1,5 +1,5 @@
-#//	gcc—p‚Ìmakefile‚Å‚·B
-#//	‚»‚Ì‘¼‚ÌƒRƒ“ƒpƒCƒ‰‚ðŽg—p‚·‚éê‡‚ÍA‚»‚ê‚É‡‚í‚¹‚Ä‘‚«Š·‚¦‚Ä‚­‚¾‚³‚¢B
+#//	gccç”¨ã®makefileã§ã™ã€‚
+#//	ãã®ä»–ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ãã‚Œã«åˆã‚ã›ã¦æ›¸ãæ›ãˆã¦ãã ã•ã„ã€‚
 
 CC			= gcc
 CXX			= g++

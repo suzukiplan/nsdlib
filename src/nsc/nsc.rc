@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// “ú–{Œê resources
+// æ—¥æœ¬èª resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
 #ifdef _WIN32
@@ -78,12 +78,12 @@ BEGIN
     BEGIN
         BLOCK "000004b0"
         BEGIN
-            VALUE "FileDescription", "nsc ƒAƒvƒŠƒP[ƒVƒ‡ƒ“"
+            VALUE "FileDescription", "nsc ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³"
             VALUE "FileVersion", "0, 1, 0, 0"
             VALUE "InternalName", "nsc"
             VALUE "LegalCopyright", "Copyright (C) 2012"
             VALUE "OriginalFilename", "nsc.exe"
-            VALUE "ProductName", " nsc ƒAƒvƒŠƒP[ƒVƒ‡ƒ“"
+            VALUE "ProductName", " nsc ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³"
             VALUE "ProductVersion", "0, 1, 0, 0"
         END
         BLOCK "041104b0"
@@ -103,7 +103,7 @@ BEGIN
     END
 END
 
-#endif    // “ú–{Œê resources
+#endif    // æ—¥æœ¬èª resources
 /////////////////////////////////////////////////////////////////////////////
 
 

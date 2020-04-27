@@ -11,7 +11,7 @@
 
 /****************************************************************/
 /*																*/
-/*			’è”’è‹`											*/
+/*			å®šæ•°å®šç¾©											*/
 /*																*/
 /****************************************************************/
 struct	Macro_Stack {
@@ -21,27 +21,27 @@ struct	Macro_Stack {
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class MMLfile	// :
 //	public FileInput
 {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 private:
-	vector	<	FileInput*	>		ptcFiles;			//MMLƒtƒ@ƒCƒ‹
-				FileInput*			nowFile;			//Œ»İ‚Ìƒtƒ@ƒCƒ‹
-	unsigned	int					iFiles;				//Œ»İ‚Ìƒtƒ@ƒCƒ‹No.
+	vector	<	FileInput*	>		ptcFiles;			//MMLãƒ•ã‚¡ã‚¤ãƒ«
+				FileInput*			nowFile;			//ç¾åœ¨ã®ãƒ•ã‚¡ã‚¤ãƒ«
+	unsigned	int					iFiles;				//ç¾åœ¨ã®ãƒ•ã‚¡ã‚¤ãƒ«No.
 
-	map		< string,		string>	ptcMac;				//Macro•¶š—ñ‚Ì•Û‘¶
-	map		< string,		int>	lv_Mac;				//Macro‚ÌŠK‘w
+	map		< string,		string>	ptcMac;				//Macroæ–‡å­—åˆ—ã®ä¿å­˜
+	map		< string,		int>	lv_Mac;				//Macroã®éšå±¤
 
-	vector	<	Macro_Stack	>		s_macro;			//ƒlƒXƒg’†‚Ìƒ}ƒNƒ–¼ƒXƒ^ƒbƒN
+	vector	<	Macro_Stack	>		s_macro;			//ãƒã‚¹ãƒˆä¸­ã®ãƒã‚¯ãƒ­åã‚¹ã‚¿ãƒƒã‚¯
 				Macro_Stack			nowMacro;
-				int					p_macro;			//‰½ƒlƒXƒg–ÚH
+				int					p_macro;			//ä½•ãƒã‚¹ãƒˆç›®ï¼Ÿ
 
-				bool				f_macro;			//ƒ}ƒNƒˆ—‚ğI‚¦‚½‚É—§‚Âƒtƒ‰ƒO
-				bool				f_2to1;				//ƒ}ƒ‹ƒ`ƒoƒCƒg•¶š‚ğ•ÏŠ·‚µ‚½H
+				bool				f_macro;			//ãƒã‚¯ãƒ­å‡¦ç†ã‚’çµ‚ãˆãŸæ™‚ã«ç«‹ã¤ãƒ•ãƒ©ã‚°
+				bool				f_2to1;				//ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—ã‚’å¤‰æ›ã—ãŸï¼Ÿ
 public:
 	map		<unsigned int,	Patch*>	ptcPatch;			//Patch
 
@@ -55,20 +55,20 @@ public:
 				int					timebase;			//
 				bool				octave_reverse;		//Octave Reverse
 				bool				q_reverse;			//q, Q q_reverse
-				int					rest;				// r ƒRƒ}ƒ“ƒh‚Ì‹““®
-				int					wait;				// w ƒRƒ}ƒ“ƒh‚Ì‹““®
+				int					rest;				// r ã‚³ãƒãƒ³ãƒ‰ã®æŒ™å‹•
+				int					wait;				// w ã‚³ãƒãƒ³ãƒ‰ã®æŒ™å‹•
 	unsigned	int					QMax;				// qMax
 	unsigned	char				priority;
 
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
 	MMLfile(const char*	strFileName);
 	~MMLfile(void);
 
-				bool	eof(void);				//Œ»İ‚Ìƒtƒ@ƒCƒ‹‚ÌEOFƒ`ƒFƒbƒN
-				bool	eom(void);				//‚l‚l‚k‚ÌI—¹ƒ`ƒFƒbƒN
+				bool	eof(void);				//ç¾åœ¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®EOFãƒã‚§ãƒƒã‚¯
+				bool	eom(void);				//ï¼­ï¼­ï¼¬ã®çµ‚äº†ãƒã‚§ãƒƒã‚¯
 
-				void	include();				//Œ»ƒ|ƒCƒ“ƒ^‚É‚ ‚éƒtƒ@ƒCƒ‹‚ğ#include‚·‚é
+				void	include();				//ç¾ãƒã‚¤ãƒ³ã‚¿ã«ã‚ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’#includeã™ã‚‹
 	
 				void	SetMacro(int i_Lv);
 				void	DeleteMacro(int i_Lv);
@@ -78,21 +78,21 @@ public:
 				void	SetPatch(void);
 				bool	ChkPatch(unsigned int _no);
 
-				int		tellg(void);					//Œ»İ‚Ìƒtƒ@ƒCƒ‹‚Ìƒ|ƒCƒ“ƒ^æ“¾
-				void	StreamPointerMove(long iSize);	//Œ»İ‚Ìƒtƒ@ƒCƒ‹‚Ìƒ|ƒCƒ“ƒ^ˆÚ“®
-				void	Back_one(void);					//1•¶š–ß‚µ
-				void	Back(void);						//1•¶š–ß‚µi‘SŠpE”¼Šp•ÏŠ·‘Î‰j
+				int		tellg(void);					//ç¾åœ¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒ³ã‚¿å–å¾—
+				void	StreamPointerMove(long iSize);	//ç¾åœ¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒ³ã‚¿ç§»å‹•
+				void	Back_one(void);					//1æ–‡å­—æˆ»ã—
+				void	Back(void);						//1æ–‡å­—æˆ»ã—ï¼ˆå…¨è§’ãƒ»åŠè§’å¤‰æ›å¯¾å¿œï¼‰
 
-				char	read_char(void);	//1Byte“Ç‚İ‚İ
-				char	cRead(void);		//1Byte“Ç‚İ‚İi‘SŠpE”¼Šp•ÏŠ·‘Î‰j
-				char	GetChar(void);		//1Byte“Ç‚İ‚İiwith EOF & Commend checkj
-				string	GetString(void);	//""•t •¶š—ñ “Ç‚İ‚İ
-				int		GetNum(void);		//()•t  ”’l  “Ç‚İ‚İ
-				int		GetInt(void);		//”’l“Ç‚İ‚İ
-				int		GetLength(int DefaultLength);	//‰¹’·“Ç‚İ‚İi‰‰Z•t‚«j
-				int		readLength(int DefaultLength);	//‰¹’·“Ç‚İ‚İ
+				char	read_char(void);	//1Byteèª­ã¿è¾¼ã¿
+				char	cRead(void);		//1Byteèª­ã¿è¾¼ã¿ï¼ˆå…¨è§’ãƒ»åŠè§’å¤‰æ›å¯¾å¿œï¼‰
+				char	GetChar(void);		//1Byteèª­ã¿è¾¼ã¿ï¼ˆwith EOF & Commend checkï¼‰
+				string	GetString(void);	//""ä»˜ æ–‡å­—åˆ— èª­ã¿è¾¼ã¿
+				int		GetNum(void);		//()ä»˜  æ•°å€¤  èª­ã¿è¾¼ã¿
+				int		GetInt(void);		//æ•°å€¤èª­ã¿è¾¼ã¿
+				int		GetLength(int DefaultLength);	//éŸ³é•·èª­ã¿è¾¼ã¿ï¼ˆæ¼”ç®—ä»˜ãï¼‰
+				int		readLength(int DefaultLength);	//éŸ³é•·èª­ã¿è¾¼ã¿
 
-				int		GetCommandID(const Command_Info _command[], unsigned int _size);	//ƒRƒ}ƒ“ƒhID‚ğæ“¾
+				int		GetCommandID(const Command_Info _command[], unsigned int _size);	//ã‚³ãƒãƒ³ãƒ‰IDã‚’å–å¾—
 
 	unsigned	int		GetLine(void){return(nowFile->GetLine());};
 				void	SetLine(unsigned int i){nowFile->SetLine(i);};

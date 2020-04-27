@@ -11,13 +11,13 @@
 #include "mml_general.h"
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^iˆø”0Bytej
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆå¼•æ•°0Byteï¼‰
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	char	_code		ƒR[ƒh
-//		const		char	_strName[]	ƒNƒ‰ƒX‚Ì–¼‘O
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		unsigned	char	_code		ã‚³ãƒ¼ãƒ‰
+//		const		char	_strName[]	ã‚¯ãƒ©ã‚¹ã®åå‰
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 mml_general::mml_general(unsigned char _code, const _CHAR _strName[]):
 	MusicEvent(_strName)
@@ -28,14 +28,14 @@ mml_general::mml_general(unsigned char _code, const _CHAR _strName[]):
 }
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^iˆø”1Bytej
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆå¼•æ•°1Byteï¼‰
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	char	_code		ƒR[ƒh
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//		const		char	_strName[]	ƒNƒ‰ƒX‚Ì–¼‘O
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		unsigned	char	_code		ã‚³ãƒ¼ãƒ‰
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//		const		char	_strName[]	ã‚¯ãƒ©ã‚¹ã®åå‰
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 mml_general::mml_general(unsigned char _code, MMLfile* MML, const _CHAR _strName[]):
 	MusicEvent(_strName)
@@ -43,7 +43,7 @@ mml_general::mml_general(unsigned char _code, MMLfile* MML, const _CHAR _strName
 	int		_data = MML->GetInt();
 
 	if( (_data<-128) || (_data>255) ){
-		MML->Err(_T("ƒpƒ‰ƒ[ƒ^‚Ì’l‚ª”ÍˆÍ‚ğ‰z‚¦‚Ü‚µ‚½B"));
+		MML->Err(_T("ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å€¤ãŒç¯„å›²ã‚’è¶Šãˆã¾ã—ãŸã€‚"));
 	}
 
 	iSize = 2;
@@ -53,14 +53,14 @@ mml_general::mml_general(unsigned char _code, MMLfile* MML, const _CHAR _strName
 }
 
 //==============================================================
-//			ƒRƒ“ƒXƒgƒ‰ƒNƒ^iˆø”1Bytej
+//			ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆå¼•æ•°1Byteï¼‰
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	char	_code		ƒR[ƒh
-//		const		char	_data		ˆø”
-//		const		char	_strName[]	ƒNƒ‰ƒX‚Ì–¼‘O
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		unsigned	char	_code		ã‚³ãƒ¼ãƒ‰
+//		const		char	_data		å¼•æ•°
+//		const		char	_strName[]	ã‚¯ãƒ©ã‚¹ã®åå‰
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 mml_general::mml_general(unsigned char _code, char _data, const _CHAR _strName[]):
 	MusicEvent(_strName)
@@ -72,15 +72,15 @@ mml_general::mml_general(unsigned char _code, char _data, const _CHAR _strName[]
 }
 
 //==============================================================
-//			ƒRƒ“ƒXƒgƒ‰ƒNƒ^iˆø”2Bytej
+//			ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆå¼•æ•°2Byteï¼‰
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	char	_code		ƒR[ƒh
-//		const		char	_n1			ˆø”1
-//		const		char	_n2			ˆø”2
-//		const		char	_strName[]	ƒNƒ‰ƒX‚Ì–¼‘O
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		unsigned	char	_code		ã‚³ãƒ¼ãƒ‰
+//		const		char	_n1			å¼•æ•°1
+//		const		char	_n2			å¼•æ•°2
+//		const		char	_strName[]	ã‚¯ãƒ©ã‚¹ã®åå‰
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 mml_general::mml_general(unsigned char _code, char _n1, char _n2, const _CHAR _strName[]):
 	MusicEvent(_strName)
@@ -93,17 +93,17 @@ mml_general::mml_general(unsigned char _code, char _n1, char _n2, const _CHAR _s
 }
 
 //==============================================================
-//			ƒRƒ“ƒXƒgƒ‰ƒNƒ^iˆø”4Bytej
+//			ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆå¼•æ•°4Byteï¼‰
 //--------------------------------------------------------------
-//	œˆø”
-//		unsigned	char	_code		ƒR[ƒh
-//		const		char	_n1			ˆø”1
-//		const		char	_n2			ˆø”2
-//		const		char	_n3			ˆø”3
-//		const		char	_n4			ˆø”4
-//		const		char	_strName[]	ƒNƒ‰ƒX‚Ì–¼‘O
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		unsigned	char	_code		ã‚³ãƒ¼ãƒ‰
+//		const		char	_n1			å¼•æ•°1
+//		const		char	_n2			å¼•æ•°2
+//		const		char	_n3			å¼•æ•°3
+//		const		char	_n4			å¼•æ•°4
+//		const		char	_strName[]	ã‚¯ãƒ©ã‚¹ã®åå‰
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 mml_general::mml_general(unsigned char _code, char _n1, char _n2, char _n3, char _n4, const _CHAR _strName[]):
 	MusicEvent(_strName)
@@ -118,12 +118,12 @@ mml_general::mml_general(unsigned char _code, char _n1, char _n2, char _n3, char
 }
 
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 mml_general::~mml_general(void)
 {

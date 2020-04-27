@@ -11,37 +11,37 @@
 
 /****************************************************************/
 /*																*/
-/*			ƒNƒ‰ƒX’è‹`											*/
+/*			ã‚¯ãƒ©ã‚¹å®šç¾©											*/
 /*																*/
 /****************************************************************/
 class OPSW {
-//ƒƒ“ƒo[•Ï”
+//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
 public:
-	unsigned	char		cDebug;			//ƒfƒoƒbƒO—p
-				bool		fErr;			//ƒGƒ‰[o—Íæ	true:•W€ƒGƒ‰[o—Í^false:•W€o—Í
-				bool		saveNSF;		//.nsf ‚ğo—Í‚·‚é‚©
-				bool		saveASM;		//.s   ‚ğo—Í‚·‚é‚©
-				bool		flag_Optimize;	//Å“K‰»‚ğ—LŒø‚É‚·‚é‚©H
-				bool		flag_OptObj;	//Å“K‰»‚ğ—LŒø‚É‚·‚é‚©H
-				bool		flag_OptSeq;	//Å“K‰»‚ğ—LŒø‚É‚·‚é‚©H
-		//		bool		flag_TickCount;	//TickCount‚ğ–³Œø‚É‚·‚é‚©H
-				bool		flag_SearchPass;//SearchPass‚Ìˆ—Œ‹‰Ê‚ğo—Í‚·‚é‚©
-				char		fHelp;			//ƒwƒ‹ƒv‚ğw’è‚µ‚½‚©H
-				string		strMMLname;		//w’è‚µ‚½MMLƒtƒ@ƒCƒ‹–¼
-				string		strNSFname;		//w’è‚µ‚½NSFƒtƒ@ƒCƒ‹–¼
-				string		strASMname;		//w’è‚µ‚½ASMƒtƒ@ƒCƒ‹–¼
-				string		strCodeName;	//ROM Code‚Ì–¼‘O
+	unsigned	char		cDebug;			//ãƒ‡ãƒãƒƒã‚°ç”¨
+				bool		fErr;			//ã‚¨ãƒ©ãƒ¼å‡ºåŠ›å…ˆ	true:æ¨™æº–ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ï¼false:æ¨™æº–å‡ºåŠ›
+				bool		saveNSF;		//.nsf ã‚’å‡ºåŠ›ã™ã‚‹ã‹
+				bool		saveASM;		//.s   ã‚’å‡ºåŠ›ã™ã‚‹ã‹
+				bool		flag_Optimize;	//æœ€é©åŒ–ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ï¼Ÿ
+				bool		flag_OptObj;	//æœ€é©åŒ–ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ï¼Ÿ
+				bool		flag_OptSeq;	//æœ€é©åŒ–ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ï¼Ÿ
+		//		bool		flag_TickCount;	//TickCountã‚’ç„¡åŠ¹ã«ã™ã‚‹ã‹ï¼Ÿ
+				bool		flag_SearchPass;//SearchPassã®å‡¦ç†çµæœã‚’å‡ºåŠ›ã™ã‚‹ã‹
+				char		fHelp;			//ãƒ˜ãƒ«ãƒ—ã‚’æŒ‡å®šã—ãŸã‹ï¼Ÿ
+				string		strMMLname;		//æŒ‡å®šã—ãŸMMLãƒ•ã‚¡ã‚¤ãƒ«å
+				string		strNSFname;		//æŒ‡å®šã—ãŸNSFãƒ•ã‚¡ã‚¤ãƒ«å
+				string		strASMname;		//æŒ‡å®šã—ãŸASMãƒ•ã‚¡ã‚¤ãƒ«å
+				string		strCodeName;	//ROM Codeã®åå‰
 
-				SearchPass	m_pass_code;	//ŒŸõƒpƒX	".bin"ƒtƒ@ƒCƒ‹
-				SearchPass	m_pass_dmc;		//ŒŸõƒpƒX	".dmc"ƒtƒ@ƒCƒ‹
-				SearchPass	m_pass_inc;		//ŒŸõƒpƒX	ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹
+				SearchPass	m_pass_code;	//æ¤œç´¢ãƒ‘ã‚¹	".bin"ãƒ•ã‚¡ã‚¤ãƒ«
+				SearchPass	m_pass_dmc;		//æ¤œç´¢ãƒ‘ã‚¹	".dmc"ãƒ•ã‚¡ã‚¤ãƒ«
+				SearchPass	m_pass_inc;		//æ¤œç´¢ãƒ‘ã‚¹	ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«
 
-//ƒƒ“ƒo[ŠÖ”
+//ãƒ¡ãƒ³ãƒãƒ¼é–¢æ•°
 public:
-		OPSW();								//‰Šú‰»‚Ì‚İ
-		OPSW(int argc, char* argv[]);		//ˆø”“à—e‚©‚çAƒNƒ‰ƒX‚ğ‰Šú‰»•ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
-		~OPSW();							//ƒtƒ@ƒCƒ‹ƒNƒ[ƒY
+		OPSW();								//åˆæœŸåŒ–ã®ã¿
+		OPSW(int argc, char* argv[]);		//å¼•æ•°å†…å®¹ã‹ã‚‰ã€ã‚¯ãƒ©ã‚¹ã‚’åˆæœŸåŒ–ï¼†ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³
+		~OPSW();							//ãƒ•ã‚¡ã‚¤ãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
 private:
-void	opError(const _CHAR *stErrMsg);		//ƒIƒvƒVƒ‡ƒ“ƒGƒ‰[
+void	opError(const _CHAR *stErrMsg);		//ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚¨ãƒ©ãƒ¼
 void	print_help();						//help message
 };

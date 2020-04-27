@@ -11,24 +11,24 @@
 #include "Envelop.h"
 
 //==============================================================
-//		ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//		ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*			MML			MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//		unsigned	int		_id			ƒGƒ“ƒxƒ[ƒv”Ô†
-//		const		_CHAR	_strName[]	ƒIƒuƒWƒFƒNƒg–¼
-//	œ•Ô’l
-//					–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*			MML			MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//		unsigned	int		_id			ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ç•ªå·
+//		const		_CHAR	_strName[]	ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+//	â—è¿”å€¤
+//					ç„¡ã—
 //==============================================================
 Envelop::Envelop(MMLfile* MML, unsigned int _id, const _CHAR _strName[]):
 	MusicItem(_id, _strName),
 	m_id(_id)
 {
 	//----------------------
-	//Local•Ï”
+	//Localå¤‰æ•°
 
 
-//	’è”’è‹`
+//	å®šæ•°å®šç¾©
 enum	Command_ID_mml {
 	Env_Num,
 	Env_Sweep,
@@ -38,7 +38,7 @@ enum	Command_ID_mml {
 	Env_Commma
 };
 
-//	‚±‚ê‚ç‚ÍAMML\•¶‚Åg‚¦‚éƒRƒ}ƒ“ƒhB
+//	ã“ã‚Œã‚‰ã¯ã€MMLæ§‹æ–‡ã§ä½¿ãˆã‚‹ã‚³ãƒãƒ³ãƒ‰ã€‚
 const	static	Command_Info	Command[] = {
 		{	"$",	Env_Num		},
 		{	"%",	Env_Num		},
@@ -57,32 +57,32 @@ const	static	Command_Info	Command[] = {
 		{	"(",	Env_Sweep	},
 		{	"d",	Env_Hold	},
 		{	"D",	Env_Hold	},
-		{	"‚„",	Env_Hold	},
-		{	"‚c",	Env_Hold	},
+		{	"ï½„",	Env_Hold	},
+		{	"ï¼¤",	Env_Hold	},
 		{	"|",	Env_Loop	},
-		{	"b",	Env_Loop	},
+		{	"ï½œ",	Env_Loop	},
 		{	"l",	Env_Loop	},
 		{	"L",	Env_Loop	},
-		{	"‚Œ",	Env_Loop	},
-		{	"‚k",	Env_Loop	},
+		{	"ï½Œ",	Env_Loop	},
+		{	"ï¼¬",	Env_Loop	},
 		{	"r",	Env_Release	},
 		{	"R",	Env_Release	},
-		{	"‚’",	Env_Release	},
-		{	"‚q",	Env_Release	},
-		{	"@",	Env_Commma	},
-		{	"C",	Env_Commma	},
-		{	"A",	Env_Commma	},
+		{	"ï½’",	Env_Release	},
+		{	"ï¼²",	Env_Release	},
+		{	"ã€€",	Env_Commma	},
+		{	"ï¼Œ",	Env_Commma	},
+		{	"ã€",	Env_Commma	},
 		{	",",	Env_Commma	}
 };
 
 	unsigned	char	cData;
 				int		i;
 
-				int		iValue	=255;	//¡‚Ìİ’è’l
-				int		iLength	=0;		//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k—p
+				int		iValue	=255;	//ä»Šã®è¨­å®šå€¤
+				int		iLength	=0;		//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®ç”¨
 
 	//------------------------------
-	//ƒNƒ‰ƒX‚Ì‰Šúİ’è
+	//ã‚¯ãƒ©ã‚¹ã®åˆæœŸè¨­å®š
 
 	Loop_Normal		= -1;
 	Loop_Release	= -1;
@@ -95,43 +95,43 @@ const	static	Command_Info	Command[] = {
 
 
 	//------------------------------
-	//ƒRƒ“ƒpƒCƒ‹
+	//ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«
 
-	// { ‚ÌŒŸõ
+	// { ã®æ¤œç´¢
 	while(MML->cRead() != '{'){
 		if(MML->eof()){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌŠJn‚ğ¦‚·{‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹ã‚’ç¤ºã™{ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 	}
 
-	// } ‚ª—ˆ‚é‚Ü‚ÅA‹LqƒuƒƒbƒN“à‚ğƒRƒ“ƒpƒCƒ‹‚·‚éB
+	// } ãŒæ¥ã‚‹ã¾ã§ã€è¨˜è¿°ãƒ–ãƒ­ãƒƒã‚¯å†…ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã€‚
 	while((cData = MML->GetChar()) != '}'){
 		
-		// } ‚ª—ˆ‚é‘O‚ÉA[EOF]‚ª—ˆ‚½‚çƒGƒ‰[
+		// } ãŒæ¥ã‚‹å‰ã«ã€[EOF]ãŒæ¥ãŸã‚‰ã‚¨ãƒ©ãƒ¼
 		if( MML->eof() ){
-			MML->Err(_T("ƒuƒƒbƒN‚ÌI’[‚ğ¦‚·`}'‚ª‚ ‚è‚Ü‚¹‚ñB"));
+			MML->Err(_T("ãƒ–ãƒ­ãƒƒã‚¯ã®çµ‚ç«¯ã‚’ç¤ºã™`}'ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"));
 		}
 
-		//‚P‚Â–ß‚é
+		//ï¼‘ã¤æˆ»ã‚‹
 		MML->Back();
 
 
-		//ŠeƒRƒ}ƒ“ƒh–ˆ‚Ìˆ—
+		//å„ã‚³ãƒãƒ³ãƒ‰æ¯ã®å‡¦ç†
 		switch(MML->GetCommandID(Command, sizeof(Command)/sizeof(Command_Info))){
 
 			case(Env_Num):
 				MML->Back();
 				i = MML->GetInt();
 				if( (i<-64) || (i>127)){
-					MML->Err(_T("ƒGƒ“ƒxƒ[ƒv‚Í-64`127‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+					MML->Err(_T("ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã¯-64ã€œ127ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 				}
 
 				if(iValue == i){
-					iLength++;		//“¯‚¶‚¾‚Á‚½‚çAƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‚·‚é
+					iLength++;		//åŒã˜ã ã£ãŸã‚‰ã€ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®ã™ã‚‹
 				} else {
 					if(iLength>0){
-						setHold(iLength-1);	//¡‚Ü‚Å‚ÌŠÔ‚ğ‰ÁZ‚·‚éB
-						iLength	= 0;		//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‰Šú‰»
+						setHold(iLength-1);	//ä»Šã¾ã§ã®æ™‚é–“ã‚’åŠ ç®—ã™ã‚‹ã€‚
+						iLength	= 0;		//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®åˆæœŸåŒ–
 					}
 					iValue	= i;
 
@@ -143,7 +143,7 @@ const	static	Command_Info	Command[] = {
 			case(Env_Sweep):
 				if(iLength>0){
 					setHold(iLength-1);
-					iLength	= 0;	//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‰Šú‰»
+					iLength	= 0;	//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®åˆæœŸåŒ–
 				}
 				iValue = sweep(MML);
 				break;
@@ -151,36 +151,36 @@ const	static	Command_Info	Command[] = {
 			case(Env_Hold):
 				i = MML->GetInt();
 				if( (i<0) || (i>255)){
-					MML->Err(_T("ˆÛŠÔ‚Í0`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+					MML->Err(_T("ç¶­æŒæ™‚é–“ã¯0ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 				}
-			//	setHold(i + iLength);	//¡‚Ü‚Å‚ÌŠÔ‚ğ‰ÁZ‚·‚éB
-				iLength += i+1;			//ƒ‰ƒ“ƒŒƒ“ƒOƒX‚É‰ÁZ‚·‚éB
+			//	setHold(i + iLength);	//ä»Šã¾ã§ã®æ™‚é–“ã‚’åŠ ç®—ã™ã‚‹ã€‚
+				iLength += i+1;			//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹ã«åŠ ç®—ã™ã‚‹ã€‚
 				break;
 
 			case(Env_Loop):
-				iValue	=255;			//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‰Šú‰»
+				iValue	=255;			//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®åˆæœŸåŒ–
 				if(iLength>0){
-					setHold(iLength-1);	//ƒz[ƒ‹ƒhŠÔo—Í
-					iLength	= 0;		//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‰Šú‰»
+					setHold(iLength-1);	//ãƒ›ãƒ¼ãƒ«ãƒ‰æ™‚é–“å‡ºåŠ›
+					iLength	= 0;		//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®åˆæœŸåŒ–
 				}
 				if(Release == false){
 					if(ptEnvelop > 0x3F){
-						MML->Warning(_T("ƒ‹[ƒvˆÊ’u‚ğw’è‚Å‚«‚é”ÍˆÍ(64Byte)‚ğ’´‚¦‚Ü‚µ‚½B"));
+						MML->Warning(_T("ãƒ«ãƒ¼ãƒ—ä½ç½®ã‚’æŒ‡å®šã§ãã‚‹ç¯„å›²(64Byte)ã‚’è¶…ãˆã¾ã—ãŸã€‚"));
 					}
 					Loop_Normal		= ptEnvelop;
 				} else {
 					if(ptEnvelop > 0x3F){
-						MML->Warning(_T("ƒŠƒŠ[ƒX‚Ìƒ‹[ƒvˆÊ’u‚ğw’è‚Å‚«‚é”ÍˆÍ(64Byte)‚ğ’´‚¦‚Ü‚µ‚½B"));
+						MML->Warning(_T("ãƒªãƒªãƒ¼ã‚¹æ™‚ã®ãƒ«ãƒ¼ãƒ—ä½ç½®ã‚’æŒ‡å®šã§ãã‚‹ç¯„å›²(64Byte)ã‚’è¶…ãˆã¾ã—ãŸã€‚"));
 					}
 					Loop_Release	= ptEnvelop;
 				}
 				break;
 
 			case(Env_Release):
-				iValue	=255;			//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‰Šú‰»
+				iValue	=255;			//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®åˆæœŸåŒ–
 				if(iLength>0){
-					setHold(iLength-1);	//ƒz[ƒ‹ƒhŠÔo—Í
-					iLength	= 0;		//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‰Šú‰»
+					setHold(iLength-1);	//ãƒ›ãƒ¼ãƒ«ãƒ‰æ™‚é–“å‡ºåŠ›
+					iLength	= 0;		//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®åˆæœŸåŒ–
 				}
 				SetLoop(MML, Loop_Normal);
 				code[0] = (unsigned char)ptEnvelop;
@@ -197,10 +197,10 @@ const	static	Command_Info	Command[] = {
 		}
 	}
 
-	iValue	=255;			//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‰Šú‰»
+	iValue	=255;			//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®åˆæœŸåŒ–
 	if(iLength>0){
-		setHold(iLength-1);	//ƒz[ƒ‹ƒhŠÔo—Í
-		iLength	= 0;		//ƒ‰ƒ“ƒŒƒ“ƒOƒXˆ³k‰Šú‰»
+		setHold(iLength-1);	//ãƒ›ãƒ¼ãƒ«ãƒ‰æ™‚é–“å‡ºåŠ›
+		iLength	= 0;		//ãƒ©ãƒ³ãƒ¬ãƒ³ã‚°ã‚¹åœ§ç¸®åˆæœŸåŒ–
 	}
 
 	if(Release == true){
@@ -210,7 +210,7 @@ const	static	Command_Info	Command[] = {
 	}
 
 	if(code.size() > 256){
-		MML->Err(_T("ƒGƒ“ƒxƒ[ƒv‚Ì’è‹`’·‚ª255Byte‚ğ‰z‚¦‚Ü‚µ‚½B"));
+		MML->Err(_T("ã‚¨ãƒ³ãƒ™ãƒ­ãƒ¼ãƒ—ã®å®šç¾©é•·ãŒ255Byteã‚’è¶Šãˆã¾ã—ãŸã€‚"));
 	}
 
 	iSize = code.size();
@@ -220,63 +220,63 @@ void Envelop::SetLoop(MMLfile* MML, int LoopPoint)
 {
 	if(LoopPoint == -1){
 		if(Release == true){
-			MML->Warning(_T("ƒŠƒŠ[ƒX‚Ìƒ‹[ƒvƒ|ƒCƒ“ƒg‚ª‚ ‚è‚Ü‚¹‚ñBÅŒã‚Ì’l‚ğƒ‹[ƒv‚µ‚Ü‚·B"));
+			MML->Warning(_T("ãƒªãƒªãƒ¼ã‚¹æ™‚ã®ãƒ«ãƒ¼ãƒ—ãƒã‚¤ãƒ³ãƒˆãŒã‚ã‚Šã¾ã›ã‚“ã€‚æœ€å¾Œã®å€¤ã‚’ãƒ«ãƒ¼ãƒ—ã—ã¾ã™ã€‚"));
 			if(ptEnvelop > 0x3F){
-				MML->Warning(_T("ƒŠƒŠ[ƒX‚Ìƒ‹[ƒvˆÊ’u‚ğw’è‚Å‚«‚é”ÍˆÍ(63Byte)‚ğ’´‚¦‚Ü‚µ‚½B"));
+				MML->Warning(_T("ãƒªãƒªãƒ¼ã‚¹æ™‚ã®ãƒ«ãƒ¼ãƒ—ä½ç½®ã‚’æŒ‡å®šã§ãã‚‹ç¯„å›²(63Byte)ã‚’è¶…ãˆã¾ã—ãŸã€‚"));
 			}
 		} else {
-			MML->Warning(_T("ƒ‹[ƒvƒ|ƒCƒ“ƒg‚ª‚ ‚è‚Ü‚¹‚ñBÅŒã‚Ì’l‚ğƒ‹[ƒv‚µ‚Ü‚·B"));
+			MML->Warning(_T("ãƒ«ãƒ¼ãƒ—ãƒã‚¤ãƒ³ãƒˆãŒã‚ã‚Šã¾ã›ã‚“ã€‚æœ€å¾Œã®å€¤ã‚’ãƒ«ãƒ¼ãƒ—ã—ã¾ã™ã€‚"));
 			if(ptEnvelop > 0x3F){
-				MML->Warning(_T("ƒ‹[ƒvˆÊ’u‚ğw’è‚Å‚«‚é”ÍˆÍ(63Byte)‚ğ’´‚¦‚Ü‚µ‚½B"));
+				MML->Warning(_T("ãƒ«ãƒ¼ãƒ—ä½ç½®ã‚’æŒ‡å®šã§ãã‚‹ç¯„å›²(63Byte)ã‚’è¶…ãˆã¾ã—ãŸã€‚"));
 			}
 		}
 		code.append((char)1, (char)(ptEnvelop-1 | 0xC0));
 	} else {
 		if(ptEnvelop == Loop_Normal){
-			MML->Err(_T("LƒRƒ}ƒ“ƒh‚Åƒpƒ^[ƒ“’è‹`‚ğI‚í‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB"));
+			MML->Err(_T("Lã‚³ãƒãƒ³ãƒ‰ã§ãƒ‘ã‚¿ãƒ¼ãƒ³å®šç¾©ã‚’çµ‚ã‚ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"));
 		}
 		code.append((char)1, (char)(LoopPoint | 0xC0));
 	}
 	ptEnvelop++;
 }
 //==============================================================
-//		ƒfƒXƒgƒ‰ƒNƒ^
+//		ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //--------------------------------------------------------------
-//	œˆø”
-//				–³‚µ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//				ç„¡ã—
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 Envelop::~Envelop(void)
 {
 }
 
 //==============================================================
-//		ˆÛŠÔ‚ÌƒZƒbƒg
+//		ç¶­æŒæ™‚é–“ã®ã‚»ãƒƒãƒˆ
 //--------------------------------------------------------------
-//	œˆø”
-//		int		length		ˆÛŠÔ
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		int		length		ç¶­æŒæ™‚é–“
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	Envelop::setHold(int length)
 {
 	while(length>15){
 		code.append((char)1, (unsigned char)0x8F);
 		ptEnvelop++;
-		length -= 16;		//15‚ğ‘‚¯‚ÎA16ƒtƒŒ[ƒ€ˆÛ
+		length -= 16;		//15ã‚’æ›¸ã‘ã°ã€16ãƒ•ãƒ¬ãƒ¼ãƒ ç¶­æŒ
 	}
 	code.append((char)1, (char)((length & 0x0F) | 0x80));
 	ptEnvelop++;
 }
 
 //==============================================================
-//		ƒXƒC[ƒv
+//		ã‚¹ã‚¤ãƒ¼ãƒ—
 //--------------------------------------------------------------
-//	œˆø”
-//		MMLfile*	MML		MMLƒtƒ@ƒCƒ‹‚ÌƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MMLfile*	MML		MMLãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 int	Envelop::sweep(MMLfile* MML)
 {
@@ -294,41 +294,41 @@ int	Envelop::sweep(MMLfile* MML)
 	int		temp;
 
 	//--------------------------
-	//œMML“Ç‚İ‚İ
+	//â—MMLèª­ã¿è¾¼ã¿
 
 	//
 	iStart = MML->GetInt();
 	if( (iStart<-64) || (iStart>127)){
-		MML->Err(_T("ŠJn“_‚Í-64`127‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("é–‹å§‹ç‚¹ã¯-64ã€œ127ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 
 	cData = MML->GetChar();
 	if(cData != ','){
-		MML->Err(_T("ƒpƒ‰ƒ[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB"));
+		MML->Err(_T("ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 	}
 
 	iEnd = MML->GetInt();
 	if( (iEnd<-64) || (iEnd>127)){
-		MML->Err(_T("I—¹“_‚Í-64`127‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("çµ‚äº†ç‚¹ã¯-64ã€œ127ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 
 	cData = MML->GetChar();
 	if(cData != ','){
-		MML->Err(_T("ƒpƒ‰ƒ[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB"));
+		MML->Err(_T("ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 	}
 
 	iLength = MML->GetInt();
 	if( (iLength<1) || (iLength>255)){
-		MML->Err(_T("’·‚³‚Í1`255‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‰º‚³‚¢B"));
+		MML->Err(_T("é•·ã•ã¯1ã€œ255ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"));
 	}
 
 	cData = MML->GetChar();
 	if((cData != ')') && (cData != '}')){
-		MML->Err(_T("ƒpƒ‰ƒ[ƒ^‚ª‘«‚è‚Ü‚¹‚ñB"));
+		MML->Err(_T("ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 	}
 
 	//--------------------------
-	//œƒe[ƒuƒ‹ì¬
+	//â—ãƒ†ãƒ¼ãƒ–ãƒ«ä½œæˆ
 
 	iDelta = iEnd - iStart;
 
@@ -360,12 +360,12 @@ int	Envelop::sweep(MMLfile* MML)
 }
 
 //==============================================================
-//		ƒR[ƒh‚Ìæ“¾
+//		ã‚³ãƒ¼ãƒ‰ã®å–å¾—
 //--------------------------------------------------------------
-//	œˆø”
-//		MusicFile*	MUS		ƒR[ƒh‚ğo—Í‚·‚é‹Èƒf[ƒ^ƒtƒ@ƒCƒ‹EƒIƒuƒWƒFƒNƒg
-//	œ•Ô’l
-//				–³‚µ
+//	â—å¼•æ•°
+//		MusicFile*	MUS		ã‚³ãƒ¼ãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹æ›²ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+//	â—è¿”å€¤
+//				ç„¡ã—
 //==============================================================
 void	Envelop::getAsm(MusicFile* MUS)
 {
