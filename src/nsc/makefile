@@ -3,8 +3,8 @@
 
 CC			= gcc
 CXX			= g++
-CFLAGS		= -finput-charset=cp932 -fexec-charset=cp932 -O4 -Wall -I/usr/local/include -D_UNICODE
-CXXFLAGS	= -finput-charset=cp932 -fexec-charset=cp932 -O4 -Wall -I/usr/local/include -D_UNICODE
+CFLAGS		= -finput-charset=utf-8 -fexec-charset=utf-8 -O -Wall -I/usr/local/include -D_UNICODE
+#CXXFLAGS	= -finput-charset=cp932 -fexec-charset=cp932 -O4 -Wall -I/usr/local/include -D_UNICODE
 DEST		= /usr/local/bin
 LDFLAGS		= -L/usr/local/lib
 LIBS		= -lm
