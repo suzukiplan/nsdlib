@@ -2,7 +2,7 @@
 
 - nsd.lib version 1.28 のソースコードをベースにmacOS/Linux環境でnscコマンドをビルドできるようにしたものです
 - nsd.libの詳細は[オリジナルサイト](http://shaw.la.coocan.jp/nsdl/)で確認してください
-- オリジナルからの変更点は[commitログ](./commits/master)を参照してください
+- オリジナルからの変更点は[commitログ](https://github.com/suzukiplan/nsdlib/commits/master)を参照してください
 
 ## How to build & install
 
